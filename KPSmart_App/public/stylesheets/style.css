@@ -6,3 +6,53 @@ body {
 a {
   color: #00B7FF;
 }
+
+p {
+  color: #000000;
+}
+
+body{
+  background-color: #004c6b;
+  font-family: calibri;
+  color: #FFFFFF;
+  font-size: 14pt;
+
+}
+
+#container{
+  width: 80%;
+  text-align: center;
+
+  margin: auto;
+}
+
+#logo{
+  height: 180px;
+  border: 2pt;
+
+}
+
+#loginmessage{
+  height: 50px;
+
+}
+
+#logoimage{
+  height: 120px;
+}
+
+#username{
+
+}
+
+input {
+  padding: 10px 12px;
+  border: 2px solid white;
+  border-radius: 4px;
+
+}
+
+input:focus {
+  border: 3px solid lightblue;
+}
+

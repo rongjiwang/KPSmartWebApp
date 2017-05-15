@@ -1,5 +1,27 @@
-extends layout
+doctype html
+html
+    head
+        title
+         |   Login | Kelburn Post Service
 
-block content
-  h1= title
-  p Welcome to #{title}
+        link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    body
+        #container
+            #logo
+                img#logoimage(src='/images/logo.png')
+
+            #loginmessage
+                | Please sign in
+            #login
+                #username
+                    form
+                        | Username:
+                        br
+                        input(type='text', name='Username')
+                        br
+                #password
+                    form
+                        | Password:
+                        br
+                        input(type='password', name='Password')
+                        br
