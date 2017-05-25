@@ -1,8 +1,14 @@
 --DROP TABLE availableRoutes;
 
 -- the available routes, and amount of money it costs to use the routes, depending on the priority:
-CREATE TABLE availableRoutes (id INTEGER PRIMARY KEY, origin text, destination text, pricePerGram INTEGER,
-pricePerCubicCM INTEGER, priority text); 
+CREATE TABLE availableRoutes (
+    id INT PRIMARY KEY,
+    origin CHAR,
+    destination CHAR,
+    pricePerGram INT,
+    pricePerCubicCM INT,
+    priority CHAR
+);
 
 -- some dummy values for all the available routes, as well as their costs:
 INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,priority) VALUES ("Wellington","Auckland",10,5,"low");

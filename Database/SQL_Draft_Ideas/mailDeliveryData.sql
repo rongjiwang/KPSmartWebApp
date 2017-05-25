@@ -1,7 +1,7 @@
 --DROP TABLE mailDeliveryEvents;
 -- Create the table that will store the mail delivery events:
-CREATE TABLE mailDeliveryEvents (id INTEGER PRIMARY KEY AUTOINCREMENT, origin text, destination text,
-weight INTEGER, volume INTEGER, priority text); 
+CREATE TABLE mailDeliveryEvents (id SERIAL PRIMARY KEY, origin CHAR, destination CHAR,
+weight INT, volume INT, priority CHAR);
 -- Add data to mailDeliveryEvents: (some dummy values)
 INSERT INTO mailDeliveryEvents (origin,destination,weight,volume,priority) VALUES ("Wellington","Auckland",12.01,34.02,"low");
 INSERT INTO mailDeliveryEvents (origin,destination,weight,volume,priority) VALUES ("Wellington","Auckland",13.07,4.02,"low");
