@@ -2,7 +2,7 @@
 
 -- the available routes, and amount of money it costs to use the routes, depending on the priority:
 CREATE TABLE availableRoutes (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     origin CHAR,
     destination CHAR,
     pricePerGram INT,
