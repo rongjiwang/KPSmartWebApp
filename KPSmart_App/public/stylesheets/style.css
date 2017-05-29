@@ -267,10 +267,23 @@ button:hover span:after {
     margin-left: 72px;
 }
 
-#content {
-
+#priority input{
+    margin-left: -90px;
 }
 
+#submit{
+    float: right;
+}
+
+input:hover{
+    border-color: lightskyblue;
+}
+
+.pricing-min{
+    float: right;
+    padding-right: 15px;
+
+}
 
 
 
