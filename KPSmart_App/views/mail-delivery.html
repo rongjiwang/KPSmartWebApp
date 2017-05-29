@@ -17,11 +17,11 @@
         <div class="nav-contain">
 
             <ul id=" nav-events">
-                <li id="currenttab"><a href="#"><strong>Welcome</strong></a></li>
+                <li><a href="#"><strong>Welcome</strong></a></li>
 
                 <li id="drop" onclick="toggle_visibility()"><a href="#"><strong>Business Events</strong><span class="arrow"></span></a>
                     <ul id="be">
-                        <li><a href="#">Mail Delivery</a></li>
+                        <li id="currenttab"><a href="#">Mail Delivery</a></li>
                         <li><a href="price-update.html">Customer Price Update</a></li>
                         <li><a href="cost-update.html">Transport Cost Update</a></li>
                         <li><a href="route-management.html">Route Management</a></li>
@@ -90,7 +90,7 @@
             <input id="vol" type="number" placeholder="0.1 - 25.0" min="0.1" max="25.0">
             <br><br>
 
-            <input id="submit" type="submit" value="Submit">
+            <input type="submit" value="Submit">
 
         </form>
     </div>
