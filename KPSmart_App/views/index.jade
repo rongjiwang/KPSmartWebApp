@@ -1,27 +1,24 @@
 doctype html
-html
+html(lang='en')
     head
-        title
-         |   Login | Kelburn Post Service
-
-        link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+        meta(charset='UTF-8')
+        title Log In | KPSmart
+        link(rel='stylesheet', href='../public/stylesheets/style.css')
     body
         #container
             #logo
-                img#logoimage(src='/images/logo.png')
-
-            #loginmessage
-                | Please sign in
+                img#titlelogo(src='../public/images/logo.png')
             #login
+                p Enter your credentials
                 #username
                     form
-                        | Username:
-                        br
                         input(type='text', name='Username')
                         br
                 #password
                     form
-                        | Password:
-                        br
                         input(type='password', name='Password')
                         br
+                #loginbutton
+                    button
+                        span
+                            strong Log in
