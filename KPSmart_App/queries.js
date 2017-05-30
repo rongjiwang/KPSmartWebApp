@@ -1,12 +1,13 @@
 var pg = require('pg');
 
-var signedInUser = '';
+var signedInUser = 'Brah';
 var manager = false;
 var database = "postgres://postgres:w2sybb57@localhost:5432/cameronmclachlan";
 
 
 exports.getSignedInUser = function(){
-    return signedInUser;
+   console.log('brah' + signedInUser);
+   return signedInUser;
 }
 
 
@@ -37,7 +38,6 @@ exports.login = function(username, password, callback){
                 callback('error');
                 return
             }
-            console.log('got here 3');
             signedInUser = result.rows[0].username;
             manager = result.rows[0].manager;
             console.log(signedInUser);

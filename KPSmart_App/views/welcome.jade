@@ -43,19 +43,18 @@ html(lang='en')
                             a(href='#')
                                 strong Business Monitoring
                 #identifier
-                    | Logged in as
-                    i Chet
+                    | Logged in as !{signedInUser}
                     img#m-image(src='images/clerk.png')
                     br
                     span#m-status
-                        i Clerk
+                        i !{signedInUser}
         #body
             #page-title
                 | Welcome
             #content
-                p Welcome to the Kelburn Post Smart Mail Managment System, CHET.
+                p Welcome to the Kelburn Post Smart Mail Managment System, !{signedInUser}.
                 br
-                p You are logged in as a CLERK
+                p You are logged in as a !{signedInUser}
                 br
                 img#page-image(src='images/home.png')
                 p Please select an activity from the sidebar
