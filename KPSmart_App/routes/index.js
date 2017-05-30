@@ -28,9 +28,9 @@ router.post('/login', function(req, res) {
     var password = req.body.password;
     queries.login(username, password, function(err, result){
         if(err){
-            res.redirect('/');
+            res.redirect('/', {message: 'Incorrect Username or Password'});
         } else {
-            res.render('welcome', {signedInUser: username});
+            res.render('welcome', {signedInUser: queries.getSignedInUser()});
         }
     });
 });

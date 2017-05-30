@@ -43,12 +43,11 @@ html(lang='en')
                             a(href='businessMonitoring')
                                 strong Business Monitoring
                 #identifier
-                    | Logged in as
-                    i Chet
+                    | Logged in as !{signedInUser}
                     img#m-image(src='images/clerk.png')
                     br
                     span#m-status
-                        i Clerk
+                        i !{signedInUser}
         #body
             #page-title
                 | Mail Delivery
