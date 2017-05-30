@@ -3,22 +3,22 @@ html(lang='en')
     head
         meta(charset='UTF-8')
         title Log In | KPSmart
-        link(rel='stylesheet', href='../public/stylesheets/style.css')
+        link(rel='stylesheet', href='stylesheets/style.css')
     body
         #container
             #logo
-                img#titlelogo(src='../public/images/logo.png')
-            #login
-                p Enter your credentials
-                #username
-                    form
-                        input(type='text', name='Username')
+                img#titlelogo(src='images/logo.png')
+            form(role="form" method="post" action="/login")
+                #login
+                    p Enter your credentials
+                    #username
+                        input(type='text', name='username', placeholder='Username')
                         br
-                #password
-                    form
-                        input(type='password', name='Password')
+                    #password
+                        input(type='password', name='password', placeholder='Password')
                         br
-                #loginbutton
-                    button
-                        span
-                            strong Log in
+                    #loginbutton
+                        button
+                            span
+                                a(type='submit')
+                                    strong Log in

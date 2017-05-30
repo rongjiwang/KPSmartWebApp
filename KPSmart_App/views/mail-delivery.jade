@@ -3,17 +3,17 @@ html(lang='en')
     head
         meta(charset='UTF-8')
         title Mail Delivery | KPSmart
-        link(rel='stylesheet', href='../public/stylesheets/style.css')
+        link(rel='stylesheet', href='stylesheets/style.css')
     body
         #nav
             .sidenav
                 #nav-logo
-                    a(href='welcome.html', title='KPSmart Home')
-                        img(src='../public/images/logo.png', height='75')
+                    a(href='welcome', title='KPSmart Home')
+                        img(src='images/logo.png', height='75')
                 .nav-contain
-                    ul# nav-events
+                    ul#nav-events
                         li#currenttab
-                            a(href='#')
+                            a(href='welcome')
                                 strong Welcome
                         li#drop(onclick='toggle_visibility()')
                             a(href='#')
@@ -21,13 +21,13 @@ html(lang='en')
                                 span.arrow
                             ul#be
                                 li
-                                    a(href='#') Mail Delivery
+                                    a(href='mailDelivery') Mail Delivery
                                 li
-                                    a(href='price-update.html') Customer Price Update
+                                    a(href='priceUpdate') Customer Price Update
                                 li
-                                    a(href='cost-update.html') Transport Cost Update
+                                    a(href='transportCostUpdate') Transport Cost Update
                                 li
-                                    a(href='route-management.html') Route Management
+                                    a(href='routeManagement') Route Management
                         script(type='text/javascript').
                             function toggle_visibility() {
                                 var e = document.getElementById('be')
@@ -40,12 +40,12 @@ html(lang='en')
                                 }
                             }
                         li
-                            a(href='monitoring.html')
+                            a(href='businessMonitoring')
                                 strong Business Monitoring
                 #identifier
                     | Logged in as
                     i Chet
-                    img#m-image(src='../public/images/clerk.png')
+                    img#m-image(src='images/clerk.png')
                     br
                     span#m-status
                         i Clerk
@@ -56,7 +56,7 @@ html(lang='en')
                 p Please enter the details for the parcel you would like to send.
                 br
                 br
-                img#page-image(src='../public/images/delivery.png')
+                img#page-image(src='images/delivery.png')
                 form
                     | Parcel ID
                     br
