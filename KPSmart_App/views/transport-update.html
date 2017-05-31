@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Customer Price Update| KPSmart</title>
+    <title>Transport Cost Update| KPSmart</title>
     <link rel="stylesheet" href="../public/stylesheets/style.css">
 
 </head>
@@ -22,8 +22,8 @@
                 <li id="drop"  onclick="toggle_visibility()"><a href="#"><strong>Business Events</strong><span class="arrow"></span></a>
                     <ul id="be">
                         <li><a href="mail-delivery.html">Mail Delivery</a></li>
-                        <li id="currenttab"><a href="#">Customer Price Update</a></li>
-                        <li><a href="cost-update.html">Transport Cost Update</a></li>
+                        <li><a href="price-update.html">Customer Price Update</a></li>
+                        <li id="currenttab"><a href="#">Transport Cost Update</a></li>
                         <li><a href="route-management.html">Route Management</a></li>
                     </ul>
                 </li>
@@ -63,10 +63,10 @@
         <input id="select-route" list="routes" >
         <img src="../public/images/arrow.png" id="go" onclick="showRoute()"/><br><br>
 
-            <datalist id="routes">
-                <option value="Route 1">
-                <option value="Route 2">
-            </datalist>
+        <datalist id="routes">
+            <option value="Route 1">
+            <option value="Route 2">
+        </datalist>
 
         <script type="text/javascript">
             function showRoute() {

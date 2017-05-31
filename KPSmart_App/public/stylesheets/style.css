@@ -125,6 +125,7 @@ button:hover span:after {
     height: 200px;
     border: none;
     float: right;
+    padding-bottom: 60px;
 }
 
 #page-title{
@@ -284,6 +285,18 @@ input:hover{
     padding-right: 15px;
 
 }
+
+#route-price{
+    display: none;
+}
+
+#go{
+    transform: rotate(-90deg);
+    height: 16px;
+    padding-right: 10px;
+    border: none;
+}
+
 
 
 
