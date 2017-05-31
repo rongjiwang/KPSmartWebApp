@@ -2,7 +2,7 @@ var pg = require('pg');
 
 var signedInUser = 'Brah';
 var manager = false;
-var database = "postgres://postgres:w2sybb57@localhost:5432/cameronmclachlan";
+var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 
 
 exports.getSignedInUser = function(){
