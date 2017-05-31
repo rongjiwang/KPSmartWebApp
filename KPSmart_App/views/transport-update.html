@@ -17,7 +17,7 @@
         <div class="nav-contain">
 
             <ul id=" nav-events">
-                <li><a href="#"><strong>Welcome</strong></a></li>
+                <li><a href="welcome.html"><strong>Welcome</strong></a></li>
 
                 <li id="drop"  onclick="toggle_visibility()"><a href="#"><strong>Business Events</strong><span class="arrow"></span></a>
                     <ul id="be">
@@ -55,57 +55,70 @@
 </div>
 <div id="body">
     <div id="page-title">
-        Customer Price Update
+        Transport Cost Update
     </div>
     <div id="content">
-        <p>Please enter the pricing element you would like to adjust</p>
-        Select a Route &nbsp
-        <input id="select-route" list="routes" >
-        <img src="../public/images/arrow.png" id="go" onclick="showRoute()"/><br><br>
+        <p>Filter through the list to find a Route you would like to adjust the <strong>cost </strong>for.</p>
+        <p>You may also select the list from the table below.</p>
+        <img src="../public/images/transport.png" id="page-image">
+        <p>Filter your results &nbsp</p><br>
 
-        <datalist id="routes">
-            <option value="Route 1">
-            <option value="Route 2">
-        </datalist>
-
-        <script type="text/javascript">
-            function showRoute() {
-                var block = document.getElementById('route-price');
-                var routename = document.getElementById('select-route');
-
-                var routes = document.getElementsByTagName('option');
-
-                for( var i = 0; i < routes.length; i++){
-                    if(routes[i].value == routename.value){
-                        block.style.display = 'block';
-                        return;
-                    }
-                }
-            }
-        </script>
+        <table id="trans-filter">
+            <tr>
+                <td>Origin</td>
+                <td>Destination</td>
+                <td>Transport Firm</td>
+                <td>Type</td>
+            </tr>
+            <tr>
+                <td><input class="trans-filter-drop" id="lead-trans-drop" list="locations" placeholder="Origin"></td>
+                <td><input class="trans-filter-drop" list="locations" placeholder="Destination"></td>
+                <td><input class="trans-filter-drop" list="firms" placeholder="Firm"></td>
+                <td><input class="trans-filter-drop" list="trans-types" placeholder="Type"></td>
+            </tr>
+        </table>
+        <br>
 
 
+        <table id="data-table">
+            <tr>
+                <td class="table-head"><strong>Route Name</strong></td>
+                <td class="table-head"><strong>Origin</strong></td>
+                <td class="table-head"><strong>Destination</strong></td>
+                <td class="table-head"><strong>Transport Firm</strong></td>
+                <td class="table-head"><strong>Type</strong></td>
+            </tr>
+            <tr class="hover">
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="hover">
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="hover">
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="hover">
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+        </table>
 
-        <img src="../public/images/coin.png" id="page-image"><br>
 
-        <form id="route-price">
-            Price per Kilometre ($/km)<span class="pricing-min"><strong>- Current Price: $x:xx/km</strong></span>
-            <input type="number" placeholder="Price per km"> <span class="pricing-min">Cost: $x:xx</span><br>
-            <br>
-            Price per Kilogram ($/kg)<span class="pricing-min"><strong>- Current Price: $x:xx/km</strong></span>
-            <input type="number" placeholder="Price per kg"> <span class="pricing-min">Cost: $x:xx</span><br>
-            <br>
-
-            Price per Cubic Metre ($/m<sup>3</sup>)<span class="pricing-min"><strong>- Current Price: $x:xx/km</strong></span>
-            <input type="number" placeholder="Price per cubic m"> <span class="pricing-min">Cost: $x:xx</span><br>
-            <br>
-
-            Final Markup ($) <span class="pricing-min"><strong>Current Value: xx.xx%</strong></span><br>
-            <input type="number" placeholder="Final Markup"> <span class="pricing-min">Nominal Margin: 10.0%</span><br>
-            <br>
-
-            <input id="submit" type="submit" value="submit">
-        </form>
     </div>
 
 </div>
