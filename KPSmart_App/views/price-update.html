@@ -104,7 +104,12 @@
             <input type="number" placeholder="Final Markup"> <span class="pricing-min">Nominal Margin: 10.0%</span><br>
             <br>
 
-            <input id="submit" type="submit" value="submit">
+            <input id="submit" type="submit" value="submit" onclick="check()">
+            <script>
+                function check(){
+                    confirm("Are you sure about these changes?");
+                }
+            </script>
         </form>
     </div>
 

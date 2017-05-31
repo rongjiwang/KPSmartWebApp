@@ -321,8 +321,16 @@ input:hover{
 }
 #data-table td{
     border: none;
-    padding-right: 38px;
+    padding-right: 30px;
 
+}
+
+#data-table a{
+    color: black;
+}
+
+#data-table a:hover{
+    color: #FFFFFF;
 }
 
 
@@ -332,8 +340,8 @@ input:hover{
 
 }
 
-#data-table .table-head{
-
+#active-select{
+    float: right;
 }
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Transport Cost Update| KPSmart</title>
+    <title>Route Management| KPSmart</title>
     <link rel="stylesheet" href="../public/stylesheets/style.css">
 
 </head>
@@ -23,8 +23,8 @@
                     <ul id="be">
                         <li><a href="mail-delivery.html">Mail Delivery</a></li>
                         <li><a href="price-update.html">Customer Price Update</a></li>
-                        <li id="currenttab"><a href="#">Transport Cost Update</a></li>
-                        <li><a href="route-management.html">Route Management</a></li>
+                        <li><a href="transport-update.html">Transport Cost Update</a></li>
+                        <li id="currenttab"><a href="#">Route Management</a></li>
                     </ul>
                 </li>
                 <script type="text/javascript">
@@ -55,12 +55,14 @@
 </div>
 <div id="body">
     <div id="page-title">
-        Transport Cost Update
+        Route Managment
     </div>
     <div id="content">
-        <p>Filter through the list to find a Route you would like to adjust the <strong>cost </strong>for.</p>
+        <p>Filter through the list to find a Route you would like to manage. From this screen you can view the details
+        of any route on the KPS System and discontinue a selected route if required.</p>
+        <img src="../public/images/location.png" id="page-image">
         <p>You may also select the list from the table below.</p>
-        <img src="../public/images/transport.png" id="page-image">
+
         <p>Filter your results &nbsp</p><br>
 
         <table id="trans-filter">
@@ -88,7 +90,7 @@
                 <td class="table-head"><strong>Transport Firm</strong></td>
                 <td class="table-head"><strong>Type</strong></td>
             </tr>
-            <tr class="hover" onclick="document.location = 'route-cost-update.html';">
+            <tr class="hover" onclick="document.location = 'route-info.html';">
                 <td>Route 01</td>
                 <td>Wellington</td>
                 <td>Auckland</td>
