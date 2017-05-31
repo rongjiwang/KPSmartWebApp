@@ -46,11 +46,14 @@ html(lang='en')
                     | Logged in as !{signedInUser}
                     if manager
                         img#m-image(src='images/manager.png')
+                        br
+                        span#m-status
+                            i Manager
                     else
                         img#m-image(src='images/clerk.png')
-                    br
-                    span#m-status
-                        i !{signedInUser}
+                        br
+                        span#m-status
+                            i Clerk
         #body
             #page-title
                 | Welcome

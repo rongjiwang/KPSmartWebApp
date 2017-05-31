@@ -2,17 +2,17 @@ doctype html
 html(lang='en')
     head
         meta(charset='UTF-8')
-        title Transport Cost Update | KPSmart
+        title Transport Cost Update| KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
     body
         #nav
             .sidenav
                 #nav-logo
-                    a(href='welcome.html', title='KPSmart Home')
+                    a(href='welcome', title='KPSmart Home')
                         img(src='images/logo.png', height='75')
                 .nav-contain
-                    ul#nav-events
-                        li#currenttab
+                    ul# nav-events
+                        li
                             a(href='welcome')
                                 strong Welcome
                         li#drop(onclick='toggle_visibility()')
@@ -24,7 +24,7 @@ html(lang='en')
                                     a(href='mailDelivery') Mail Delivery
                                 li
                                     a(href='priceUpdate') Customer Price Update
-                                li
+                                li#currenttab
                                     a(href='transportCostUpdate') Transport Cost Update
                                 li
                                     a(href='routeManagement') Route Management
@@ -40,10 +40,10 @@ html(lang='en')
                                 }
                             }
                         li
-                            a(href='BusinessMonitoring')
+                            a(href='businessMonitoring')
                                 strong Business Monitoring
                 #identifier
-                    | Logged in as !{signedInUser}
+                    | Logged in as!{signedInUser}
                     if manager
                         img#m-image(src='images/manager.png')
                     else
@@ -55,43 +55,63 @@ html(lang='en')
             #page-title
                 | Transport Cost Update
             #content
-                p Please enter the details for the parcel you would like to send.
+                p
+                    | Filter through the list to find a Route you would like to adjust the
+                    strong cost
+                    | for.
+                p You may also select the list from the table below.
+                img#page-image(src='images/transport.png')
+                p Filter your results &nbsp
                 br
+                table#trans-filter
+                    tr
+                        td Origin
+                        td Destination
+                        td Transport Firm
+                        td Type
+                    tr
+                        td
+                            input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin')
+                        td
+                            input.trans-filter-drop(list='locations', placeholder='Destination')
+                        td
+                            input.trans-filter-drop(list='firms', placeholder='Firm')
+                        td
+                            input.trans-filter-drop(list='trans-types', placeholder='Type')
                 br
-                img#page-image(src='images/delivery.png')
-                form
-                    | Parcel ID
-                    br
-                    input(type='text', placeholder='Parcel ID')
-                    br
-                    br
-                    |             Origin
-                    br
-                    input(list='locations', placeholder='Select a Location')
-                    datalist#locations
-                        option(value='Auckland')
-                        option(value='Hamilton')
-                        option(value='Tauranga')
-                        option(value='Napier')
-                        option(value='Taupo')
-                        option(value='New Plymouth')
-                        option(value='Palmerston North')
-                        option(value='Wellington')
-                        option(value='Nelson')
-                        option(value='Chrischurch')
-                        option(value='Dunedin')
-                    br
-                    br
-                    |             Destination
-                    br
-                    input(list='locations', placeholder='Select a Location')
-                    br
-                    br
-                    |             Weight (kg)
-                    span#vol-lab Volume (m3)
-                    br
-                    input#weight(type='number', placeholder='0.1 - 25.0', min='0.1', max='25.0')
-                    input#vol(type='number', placeholder='0.1 - 25.0', min='0.1', max='25.0')
-                    br
-                    br
-                    input#submit(type='submit', value='Submit')
+                table#data-table
+                    tr
+                        td.table-head
+                            strong Route Name
+                        td.table-head
+                            strong Origin
+                        td.table-head
+                            strong Destination
+                        td.table-head
+                            strong Transport Firm
+                        td.table-head
+                            strong Type
+                    tr.hover
+                        td 1
+                        td 2
+                        td 2
+                        td 2
+                        td 2
+                    tr.hover
+                        td 2
+                        td 2
+                        td 2
+                        td 2
+                        td 2
+                    tr.hover
+                        td 2
+                        td 2
+                        td 2
+                        td 2
+                        td 2
+                    tr.hover
+                        td 2
+                        td 2
+                        td 2
+                        td 2
+                        td 2

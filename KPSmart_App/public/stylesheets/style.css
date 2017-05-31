@@ -63,13 +63,13 @@ p{
 
 input {
   padding: 7px 12px;
-  border: 2px solid white;
-  border-radius: 7px;
+    border: 2px solid white;
+    border-radius: 7px;
 
 }
 
 input:focus {
-    border: 3px solid lightskyblue;
+    border: 2px solid lightskyblue;
     border-radius: 7px;
     -webkit-transition: all 0.30s ease-in-out;
     outline: none;
@@ -125,6 +125,8 @@ button:hover span:after {
     height: 200px;
     border: none;
     float: right;
+    padding-bottom: 60px;
+    margin-right: -200px;
 }
 
 #page-title{
@@ -168,6 +170,8 @@ button:hover span:after {
     float: left;
     padding-right: 2%;
     border: none;
+    position: fixed;
+
 }
 
 #m-image{
@@ -249,6 +253,9 @@ button:hover span:after {
 }
 
 
+#body{
+    margin-left: 25%;
+}
 
 #content form input{
     width: 250px;
@@ -267,7 +274,65 @@ button:hover span:after {
     margin-left: 72px;
 }
 
-#content {
+#priority input{
+    margin-left: -90px;
+}
+
+#submit{
+    float: right;
+}
+
+input:hover{
+    border-color: lightskyblue;
+}
+
+.pricing-min{
+    float: right;
+    padding-right: 15px;
+
+}
+
+#route-price{
+    display: none;
+}
+
+#go{
+    transform: rotate(-90deg);
+    height: 16px;
+    padding-right: 10px;
+    border: none;
+}
+
+
+#trans-filter td{
+    border: none;
+    padding-right: 20px;
+}
+
+.trans-filter-drop{
+    width: 80px;
+}
+
+#data-table{
+    border: solid;
+    border-color: #0093c9;
+    background-color: #FFFFFF;
+    color: black;
+}
+#data-table td{
+    border: none;
+    padding-right: 38px;
+
+}
+
+
+#data-table tr.hover:hover{
+    background-color: #0093c9;
+    color: #FFFFFF;
+
+}
+
+#data-table .table-head{
 
 }
 
