@@ -44,7 +44,10 @@ html(lang='en')
                                 strong Business Monitoring
                 #identifier
                     | Logged in as !{signedInUser}
-                    img#m-image(src='images/clerk.png')
+                    if manager
+                        img#m-image(src='images/manager.png')
+                    else
+                        img#m-image(src='images/clerk.png')
                     br
                     span#m-status
                         i !{signedInUser}

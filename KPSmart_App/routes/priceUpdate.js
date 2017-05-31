@@ -5,7 +5,7 @@ var queries = require('../queries');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('price-update', {signedInUser: queries.getSignedInUser()});
+    res.render('price-update', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
 });
 
 module.exports = router;

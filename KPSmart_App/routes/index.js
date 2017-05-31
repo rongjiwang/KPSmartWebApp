@@ -23,14 +23,14 @@ router.get('/', function(req, res, next) {
 
 
 /* POST login page */
-router.post('/login', function(req, res) {
+router.post('/', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
     queries.login(username, password, function(err, result){
         if(err){
-            res.redirect('/', {message: 'Incorrect Username or Password'});
+            res.render('index', {message: 'Incorrect Username or Password'});
         } else {
-            res.render('welcome', {signedInUser: queries.getSignedInUser()});
+            res.render('welcome', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
         }
     });
 });

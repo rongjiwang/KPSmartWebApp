@@ -5,7 +5,7 @@ var queries = require('../queries');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('mail-delivery', {signedInUser: queries.getSignedInUser()});
+    res.render('mail-delivery', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
 });
 
 module.exports = router;
