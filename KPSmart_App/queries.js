@@ -10,6 +10,9 @@ exports.getSignedInUser = function(){
    return signedInUser;
 }
 
+exports.getDatabse = function(){
+    return database;
+}
 
 exports.isManager = function(){
     return manager;

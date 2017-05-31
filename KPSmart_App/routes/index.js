@@ -5,7 +5,7 @@ var queries = require('../queries');
 var pg = require('pg');
 
 // Different for everyPerson
-var database = "postgres://postgres:w2sybb57@localhost:5432/cameronmclachlan";
+var database = queries.getDatabse();
 
 pg.connect(database, function (err) {
     if (err) {
