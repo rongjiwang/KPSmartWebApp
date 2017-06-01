@@ -27,7 +27,9 @@ exports.login = function(username, password, callback){
             return;
         }
 
-        client.query("SELECT * FROM users WHERE Username = '" + username + "' AND Password='" + password + "';", function (error, result) {
+        var query = "SELECT * FROM users WHERE Username = '" + username + "' AND Password='" + password + "';"
+
+        client.query(query, function (error, result) {
             done();
             if (error) {
                 console.error('Failed to execute query.');
@@ -46,4 +48,51 @@ exports.login = function(username, password, callback){
             callback(null, result.rows[0]);
         });
     });
+}
+
+exports.mailDelivery = new function(mail){
+    pg.connect(database, function (err, client, done) {
+        if (err) {
+            console.error('Could not connect to the database.');
+            console.error(err);
+            callback(err);
+            return;
+        }
+        var query = '';
+        client.query(query, function (error, result) {
+            done();
+            if (error) {
+                console.error('Failed to execute query.');
+                console.error(error);
+                callback(err);
+                return;
+            }
+
+            if (result.rows[0] == null){
+                callback('error');
+                return
+            }
+            signedInUser = result.rows[0].username;
+            manager = result.rows[0].manager;
+            console.log(signedInUser);
+            callback(null, result.rows[0]);
+        });
+    });
+
+}
+
+exports.getDates = function(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd;
+    }
+    if(mm<10){
+        mm='0'+mm;
+    }
+    var today = dd+'/'+mm+'/'+yyyy;
+    return today;
 }

@@ -9,7 +9,11 @@ a {
     text-decoration: none;
 }
 
-
+e {
+    size: 12pt;
+    font-style: italic;
+    color: #FF0000;
+}
 p {
     size: 12pt;
     color: #000000;
@@ -282,6 +286,10 @@ button:hover span:after {
     float: right;
 }
 
+#confirm{
+   left: 50%
+
+}
 input:hover{
     border-color: lightskyblue;
 }

@@ -58,45 +58,18 @@ html(lang='en')
                         i !{signedInUser}
         #body
             #page-title
-                | Mail Delivery
+                | Mail Delivery Confirmation
             #content
-                p Please enter the details for the parcel you would like to send.
                 br
+                p Parcel ID: !{mailDelivery.ID}
+                p Parcel Origin: !{mailDelivery.origin}
+                p Parcel Destination: !{mailDelivery.dest}
+                p Parcel Weight: !{mailDelivery.weight}
+                p Parcel Volume: !{mailDelivery.volume}
+                p Total Cost: heaps
                 br
-                img#page-image(src='images/delivery.png')
-                form(role="form" method="post" action="mailDelivery")
-                    | Parcel ID
-                    br
-                    input(type='text', name='parcelID', placeholder='Parcel ID')
-                    br
-                    br
-                    |             Origin
-                    br
-                    input(list='locations', name= 'parcelOrigin', placeholder='Select a Location')
-                    datalist#locations
-                        option(value='Auckland')
-                        option(value='Hamilton')
-                        option(value='Tauranga')
-                        option(value='Napier')
-                        option(value='Taupo')
-                        option(value='New Plymouth')
-                        option(value='Palmerston North')
-                        option(value='Wellington')
-                        option(value='Nelson')
-                        option(value='Chrischurch')
-                        option(value='Dunedin')
-                    br
-                    br
-                    |             Destination
-                    br
-                    input(list='locations', name='parcelDest', placeholder='Select a Location')
-                    br
-                    br
-                    |             Weight (kg)
-                    span#vol-lab Volume (m3)
-                    br
-                    input#weight(type='number', name='parcelWeight', placeholder='0.1 - 25.0', min='0.1', max='25.0')
-                    input#vol(type='number', name='parcelVolume', placeholder='0.1 - 25.0', min='0.1', max='25.0')
-                    br
-                    br
-                    input#submit(type='submit', value='Submit')
+                input(type='submit', value='Confirm')
+
+
+
+
