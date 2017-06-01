@@ -1,7 +1,13 @@
 DROP TABLE IF EXISTS mailDeliveryEvents;
+
+-- TODO: EXTRA COLUMNS in mailDeliveryEvents: status (delivered or not), TIME STAMP (If delivered == true some random value, else 0 or NULL)
+-- TODO: Add more data.
+
+
 -- Create the table that will store the mail delivery events:
 CREATE TABLE mailDeliveryEvents (id SERIAL PRIMARY KEY, origin CHAR(20), destination CHAR(20),
 weight INT, volume INT, priority CHAR(20));
+
 -- Add data to mailDeliveryEvents: (some dummy values)
 INSERT INTO mailDeliveryEvents (origin,destination,weight,volume,priority) VALUES ('Wellington','Auckland',12.01,34.02,'low');
 INSERT INTO mailDeliveryEvents (origin,destination,weight,volume,priority) VALUES ('Wellington','Auckland',13.07,4.02,'low');
