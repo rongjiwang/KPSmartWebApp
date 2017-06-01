@@ -43,7 +43,7 @@ html(lang='en')
                             a(href='businessMonitoring')
                                 strong Business Monitoring
                         if manager
-                            li#dec-sup-tab
+                            li
                                 a(href='decisionSupport')
                                     strong Decision Support
                 #identifier
@@ -57,64 +57,43 @@ html(lang='en')
                         i !{signedInUser}
         #body
             #page-title
-                | Route Managment
+                | Route xx Information
             #content
+                p Below is the Route Information for Route xx.
                 p
-                    | Filter through the list to find a Route you would like to manage. From this screen you can view the details
-                    | of any route on the KPS System and discontinue a selected route if required.
-                img#page-image(src='images/location.png')
-                p You may also select the list from the table below.
-                p Filter your results &nbsp
+                    | Note that to adjust the cost values for this Route, you must go to the Transport Cost Update page.
+                p
+                    img#page-image(src='images/route.png')
+                h2 Metrics
+                |             Price per kilometre: $xx.xx
                 br
-                table#trans-filter
-                    tr
-                        td Origin
-                        td Destination
-                        td Transport Firm
-                        td Type
-                    tr
-                        td
-                            input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin')
-                        td
-                            input.trans-filter-drop(list='locations', placeholder='Destination')
-                        td
-                            input.trans-filter-drop(list='firms', placeholder='Firm')
-                        td
-                            input.trans-filter-drop(list='trans-types', placeholder='Type')
+                |             Price per kilogram: $xx.xx
                 br
-                table#data-table
-                    tr
-                        td.table-head
-                            strong Route Name
-                        td.table-head
-                            strong Origin
-                        td.table-head
-                            strong Destination
-                        td.table-head
-                            strong Transport Firm
-                        td.table-head
-                            strong Type
-                    tr.hover(onclick="document.location = 'routeInfo';")
-                        td Route 01
-                        td Wellington
-                        td Auckland
-                        td Mainfreight
-                        td Land
-                    tr.hover
-                        td Route 02
-                        td Wellington
-                        td Hamilton
-                        td NZ Couriers
-                        td Land
-                    tr.hover
-                        td Route 03
-                        td Wellington
-                        td Christchurch
-                        td Air New Zealand
-                        td Air
-                    tr.hover
-                        td Route 04
-                        td Auckland
-                        td Wellington
-                        td Air New Zealand
-                        td Air
+                |             Price per cubic metre: $xx.xx
+                br
+                p
+                p
+                h2 Logistics
+                |             Origin: xxxxxxxxxx
+                br
+                |             Destination: xxxxxxxxxx
+                br
+                |             Carrier: xxxxxxxxxxx
+                span.pricing-min  Carrier Departure Days: xxxxxx
+                br
+                |             Type: Land
+                span.pricing-min Carrier Departure Hours: xxxxxx
+                br
+                p
+                br
+                p
+                    | This route is currently ACTIVE. Would you like to deactivate it?
+                    span#active-select
+                        | Yes
+                        input(type='radio', name='active', value='Yes', checked='', onclick='check()')
+                        |                No
+                        input(type='radio', name='active', value='No', onclick='check()')
+                    script.
+                        function check() {
+                            confirm("Are you sure you would like to change this routes activity status?");
+                        }

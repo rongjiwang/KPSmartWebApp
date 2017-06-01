@@ -13,6 +13,14 @@ var mailDelivery = require('./routes/mailDelivery');
 var businessMonitoring = require('./routes/businessMonitoring');
 var transportCostUpdate = require('./routes/transportCostUpdate');
 var routeManagement = require('./routes/routeManagement');
+var routeInfo = require('./routes/routeInfo');
+var routeCost = require('./routes/routeCost');
+var decisionSupport = require('./routes/decisionSupport');
+
+
+
+
+
 
 
 
@@ -40,6 +48,13 @@ app.use('/priceUpdate', priceUpdate);
 app.use('/businessMonitoring', businessMonitoring);
 app.use('/transportCostUpdate', transportCostUpdate);
 app.use('/routeManagement', routeManagement);
+app.use('/routeInfo', routeInfo);
+app.use('/routeCost', routeCost);
+app.use('/decisionSupport', decisionSupport);
+
+
+
+
 
 
 // catch 404 and forward to error handler
@@ -66,5 +81,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

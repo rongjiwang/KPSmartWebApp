@@ -4,14 +4,14 @@ html(lang='en')
         meta(charset='UTF-8')
         title Transport Cost Update| KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
-    body
+    body(onload='showDecTab()')
         #nav
             .sidenav
                 #nav-logo
                     a(href='welcome', title='KPSmart Home')
                         img(src='images/logo.png', height='75')
                 .nav-contain
-                    ul# nav-events
+                    ul#nav-events
                         li
                             a(href='welcome')
                                 strong Welcome
@@ -42,8 +42,12 @@ html(lang='en')
                         li
                             a(href='businessMonitoring')
                                 strong Business Monitoring
+                        if manager
+                            li#dec-sup-tab
+                                a(href='decisionSupport')
+                                    strong Decision Support
                 #identifier
-                    | Logged in as!{signedInUser}
+                    | Logged in as !{signedInUser}
                     if manager
                         img#m-image(src='images/manager.png')
                     else
@@ -91,27 +95,27 @@ html(lang='en')
                             strong Transport Firm
                         td.table-head
                             strong Type
+                    tr.hover(onclick="document.location = 'routeCost';")
+                        td Route 01
+                        td Wellington
+                        td Auckland
+                        td Mainfreight
+                        td Land
                     tr.hover
-                        td 1
-                        td 2
-                        td 2
-                        td 2
-                        td 2
+                        td Route 02
+                        td Wellington
+                        td Hamilton
+                        td NZ Couriers
+                        td Land
                     tr.hover
-                        td 2
-                        td 2
-                        td 2
-                        td 2
-                        td 2
+                        td Route 03
+                        td Wellington
+                        td Christchurch
+                        td Air New Zealand
+                        td Air
                     tr.hover
-                        td 2
-                        td 2
-                        td 2
-                        td 2
-                        td 2
-                    tr.hover
-                        td 2
-                        td 2
-                        td 2
-                        td 2
-                        td 2
+                        td Route 04
+                        td Auckland
+                        td Wellington
+                        td Air New Zealand
+                        td Air

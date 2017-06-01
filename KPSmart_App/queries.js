@@ -1,12 +1,11 @@
 var pg = require('pg');
 
-var signedInUser = 'Brah';
+var signedInUser = '';
 var manager = false;
 var database = "postgres://postgres:w2sybb57@localhost:5432/cameronmclachlan";
 
 
 exports.getSignedInUser = function(){
-   console.log('brah' + signedInUser);
    return signedInUser;
 }
 

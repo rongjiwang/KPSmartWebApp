@@ -3,6 +3,7 @@ var router = express.Router();
 var queries = require('../queries');
 
 
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.render('route-management', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
