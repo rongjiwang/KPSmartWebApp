@@ -50,7 +50,7 @@ exports.login = function(username, password, callback){
     });
 }
 
-exports.mailDelivery = new function(mail){
+exports.mailDelivery = function(mail, callback){
     pg.connect(database, function (err, client, done) {
         if (err) {
             console.error('Could not connect to the database.');
@@ -59,29 +59,22 @@ exports.mailDelivery = new function(mail){
             return;
         }
         var query = '';
-        client.query(query, function (error, result) {
+
+        client.query(query, function(error, result){
             done();
-            if (error) {
-                console.error('Failed to execute query.');
+            if(error){
+                console.error('Failed to add mail.');
                 console.error(error);
                 callback(err);
                 return;
             }
-
-            if (result.rows[0] == null){
-                callback('error');
-                return
-            }
-            signedInUser = result.rows[0].username;
-            manager = result.rows[0].manager;
-            console.log(signedInUser);
-            callback(null, result.rows[0]);
+            callback(null);
         });
     });
 
 }
 
-exports.getDates = function(){
+exports.getDate = function(){
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!

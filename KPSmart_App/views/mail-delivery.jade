@@ -60,7 +60,7 @@ html(lang='en')
             #page-title
                 | Mail Delivery
             #content
-                p Please enter the details for the parcel you would like to send.
+                p Please enter the details for the parcel you would like to send. !{message}
                 br
                 br
                 img#page-image(src='images/delivery.png')
@@ -99,4 +99,5 @@ html(lang='en')
                     input#vol(type='number', name='parcelVolume', placeholder='0.1 - 25.0', min='0.1', max='25.0')
                     br
                     br
+                    e !{message}
                     input#submit(type='submit', value='Submit')
