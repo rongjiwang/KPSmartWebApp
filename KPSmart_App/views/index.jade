@@ -7,7 +7,7 @@ html(lang='en')
     body(onload='showDecTab()')
         #container
             #logo
-                img#titlelogo(src='images/logo.png')
+                img#titlelogo(class='img-rounded',src='images/logo.png')
             form(role="form" method="post" action="/")
                 #login
                     p Enter your credentials
@@ -25,5 +25,8 @@ html(lang='en')
                     #ErrorMessage
                     br
                     e !{message}
+        script(src="library/js/jquery-3.1.1.min.js")
+        script(src="library/js/jquery-ui.min.js")
+        script(src="main.js")
 
 
