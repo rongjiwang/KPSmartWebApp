@@ -29,18 +29,44 @@ INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,com
 UPDATE availableRoutes SET pricePerGram = 10, pricePerCubicCM = 12 WHERE
 origin = 'Wellington' AND destination = 'Auckland' AND priority = 'low';
 
+
 SELECT * FROM availableRoutes;
 
-/*for the business figures, total revenue:*/
--- Display the total amount of money made from each of the mail delivery events:
-SELECT SUM(weight*pricePerGram + volume*pricePerCubicCM) AS totalRevenue FROM mailDeliveryEvents,availableRoutes WHERE
- mailDeliveryEvents.priority = availableRoutes.priority AND
- mailDeliveryEvents.origin = availableRoutes.origin AND
- mailDeliveryEvents.destination = availableRoutes.destination;
+-----------------------
+--** TOTAL REVENUE **--
+-----------------------
 
- -- total expenditure:
-SELECT availableRoutes.origin, availableRoutes.destination, SUM(companyCostPerGram*weight) AS total_Amount_Spent_For_Weight,
-SUM (companyCostPerCubicCM*volume) AS total_Amount_Spent_For_Volume,
-SUM(companyCostPerGram*weight+companyCostPerCubicCM*volume) AS Total_Amount_Spent
-FROM availableRoutes,mailDeliveryEvents
-GROUP BY availableRoutes.origin,availableRoutes.destination
+CREATE VIEW revenueTable AS (
+SELECT m.origin AS mail_Origin ,m.destination AS mail_Destination,m.weight AS mail_Weight,
+m.volume AS mail_Volume,a.pricePerGram,a.pricePerCubicCM, a.priority,
+m.weight*a.pricePerGram + m.volume*a.pricePerCubicCM AS revenue
+FROM mailDeliveryEvents m JOIN availableRoutes a
+ON m.origin = a.origin AND m.destination = a.destination AND a.priority = m.priority);
+
+SELECT * FROM revenueTable;
+
+CREATE VIEW totalRevenueTablePerRoute AS (select mail_origin, mail_destination, SUM (mail_weight*pricePerGram + mail_volume*pricePerCubicCM) as total_revenue
+from revenueTable GROUP BY mail_origin, mail_destination ORDER BY total_revenue);
+
+SELECT * FROM totalRevenueTablePerRoute;
+
+select sum(total_revenue) from totalRevenueTablePerRoute AS totalRevenue;
+---------------------------
+--** TOTAL EXPENDITURE **--
+---------------------------
+
+-- generate a table that shows the company cost per gram and cubic cm, next to each of the mail delivery events:
+CREATE VIEW expenditureTable AS (
+SELECT m.origin AS mail_Origin ,m.destination AS mail_Destination,m.weight AS mail_Weight,
+m.volume AS mail_Volume,a.companyCostPerGram,a.companyCostPerCubicCM, a.priority,
+m.weight*a.companyCostPerGram + m.volume*a.companyCostPerCubicCM AS cost
+FROM mailDeliveryEvents m JOIN availableRoutes a
+ON m.origin = a.origin AND m.destination = a.destination AND a.priority = m.priority);
+
+-- showing the view generated above:
+SELECT * FROM expenditureTable;
+
+-- from that view, compute the total company expenditure per each route:
+select mail_origin, mail_destination, SUM (mail_weight*companyCostPerGram + mail_volume*companyCostPerCubicCM) as total_company_expenditure
+from expenditureTable GROUP BY mail_origin, mail_destination ORDER BY total_company_expenditure;
+

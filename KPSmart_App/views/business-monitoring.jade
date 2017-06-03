@@ -4,7 +4,7 @@ html(lang='en')
         meta(charset='UTF-8')
         title Business Monitoring | KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
-    body
+    body(onload='showDecTab()')
         #nav
             .sidenav
                 #nav-logo
@@ -12,7 +12,7 @@ html(lang='en')
                         img(src='images/logo.png', height='75')
                 .nav-contain
                     ul#nav-events
-                        li#currenttab
+                        li
                             a(href='welcome')
                                 strong Welcome
                         li#drop(onclick='toggle_visibility()')
@@ -39,9 +39,13 @@ html(lang='en')
                                     e.style.display = 'block';
                                 }
                             }
-                        li
+                        li#currenttab
                             a(href='businessMonitoring')
                                 strong Business Monitoring
+                        if manager
+                            li
+                                a(href='decisionSupport')
+                                    strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
                     if manager

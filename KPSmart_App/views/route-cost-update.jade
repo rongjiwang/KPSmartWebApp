@@ -1,0 +1,91 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Route xx Information | KPSmart
+        link(rel='stylesheet', href='stylesheets/style.css')
+    body(onload='showDecTab()')
+        #nav
+            .sidenav
+                #nav-logo
+                    a(href='welcome', title='KPSmart Home')
+                        img(src='images/logo.png', height='75')
+                .nav-contain
+                    ul#nav-events
+                        li
+                            a(href='welcome')
+                                strong Welcome
+                        li#drop(onclick='toggle_visibility()')
+                            a(href='#')
+                                strong Business Events
+                                span.arrow
+                            ul#be
+                                li
+                                    a(href='mailDelivery') Mail Delivery
+                                li
+                                    a(href='priceIpdate') Customer Price Update
+                                li#currenttab
+                                    a(href='transportUpdate') Transport Cost Update
+                                li
+                                    a(href='routeManagement') Route Management
+                        script(type='text/javascript').
+                            function toggle_visibility() {
+                                var e = document.getElementById('be')
+                                var arr = document.getElementsByClassName('arrow');
+                                if(e.style.display == 'block') {
+                                    e.style.display = 'none';
+                                }
+                                else {
+                                    e.style.display = 'block';
+                                }
+                            }
+                        li
+                            a(href='businessMonitoring')
+                                strong Business Monitoring
+                        if manager
+                            li
+                                a(href='decisionSupport')
+                                    strong Decision Support
+                #identifier
+                    | Logged in as !{signedInUser}
+                    if manager
+                        img#m-image(src='images/manager.png')
+                    else
+                        img#m-image(src='images/clerk.png')
+                    br
+                    span#m-status
+                        i !{signedInUser}
+        #body
+            #page-title
+                | Route xx Cost Update
+            #content
+                p Please select an element for the cost of this route to maintain.
+                img#page-image(src='images/transport2.png')
+                br
+                br
+                form#route-price-adj
+                    | Cost per Kilometre ($/km)
+                    span.pricing-min
+                        strong - Current Cost: $x:xx/km
+                    input(type='number', placeholder='Price per km')
+                    br
+                    br
+                    |             Cost per Kilogram ($/kg)
+                    span.pricing-min
+                        strong - Current Cost: $x:xx/km
+                    input(type='number', placeholder='Price per kg')
+                    br
+                    br
+                    |             Cost per Cubic Metre ($/m
+                    sup 3
+                    | )
+                    span.pricing-min
+                        strong - Current Cost: $x:xx/km
+                    input(type='number', placeholder='Price per cubic m')
+                    br
+                    br
+                    input#submit(type='submit', value='submit', onclick='check()')
+                    script.
+                        function check(){
+                            confirm("Are you sure about these changes?");
+                        }
