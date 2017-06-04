@@ -1,9 +1,11 @@
-var pg = require('pg');
-
 var signedInUser = '';
 var manager = false;
-var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 
+//---Database connection---
+var pg = require('pg');
+var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
+var client = new pg.Client(database);
+client.connect();
 
 exports.getSignedInUser = function(){
    return signedInUser;
@@ -19,7 +21,10 @@ exports.isManager = function(){
 
 
 exports.login = function(username, password, callback){
+    console.log('??');
+
     pg.connect(database, function (err, client, done) {
+
         if (err) {
             console.error('Could not connect to the database.');
             console.error(err);
@@ -28,7 +33,6 @@ exports.login = function(username, password, callback){
         }
 
         var query = "SELECT * FROM users WHERE Username = '" + username + "' AND Password='" + password + "';"
-
         client.query(query, function (error, result) {
             done();
             if (error) {

@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var queries = require('../queries');
+var db = require('../db/config');
 
-var mailDelivery = {ID:'', origin:'', dest:'', weight:0, volume:0, date:''};
 
 
 /* GET users listing. */
@@ -11,17 +11,28 @@ router.get('/', function(req, res, next) {
 });
 
 
-/* GET users listing. */
+//---------Add a new mail-----------
 router.post('/', function(req, res) {
-    mailDelivery.ID = req.body.parcelID;
-    mailDelivery.origin = req.body.parcelOrigin;
-    mailDelivery.dest = req.body.parcelDest;
-    mailDelivery.weight = req.body.parcelWeight;
-    mailDelivery.volume = req.body.parcelVolume;
-    if (mailDelivery.ID == '' || mailDelivery.origin == '' || mailDelivery.dest == '' || mailDelivery.weight == 0 || mailDelivery.volume == 0){
-        res.render('mail-delivery', {signedInUser: queries.getSignedInUser(), manager: queries.isManager(), message: 'Please make sure all fields are entered and try again'});
-    }else if(mailDelivery.dest == mailDelivery.origin){
-        res.render('mail-delivery', {signedInUser: queries.getSignedInUser(), manager: queries.isManager(), message: 'Parcel cannot have the same Origin and Destination!'});
+    var _origin = req.body.origin;
+    var _dest = req.body.destination;
+    var _freight = req.body.type_freight;
+    var _weight = req.body.weight;
+    var _volume = req.body.volume;
+    console.log(_origin+' '+_dest+' '+_freight+' '+_weight+' '+_volume);
+    //incompleted form
+    if (_origin=='' || _dest=='' || _freight=='' || _weight=='' ||_volume==''){
+        res.render('mail-delivery',
+            {signedInUser: queries.getSignedInUser(),
+                manager: queries.isManager(),
+                message: 'Please make sure all fields are entered and try again'});
+    //duplicate location
+    }else if(_origin == _dest){
+        res.render('mail-delivery',
+            {signedInUser: queries.getSignedInUser(),
+                manager: queries.isManager(),
+                message: 'Parcel cannot have the same Origin and Destination!'
+            });
+    //completed form
     }else {
         var date = queries.getDate();
         res.render('mail-delivery-confirm', {
@@ -33,6 +44,7 @@ router.post('/', function(req, res) {
     }
 });
 
+/*
 router.post('/confirm', function(req, res){
     res.render('mail-delivery', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
     queries.mailDelivery(mailDeliveryInput, function(err, result){
@@ -43,4 +55,5 @@ router.post('/confirm', function(req, res){
         }
     });
 });
+*/
 module.exports = router;
