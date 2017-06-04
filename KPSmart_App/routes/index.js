@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var queries = require('../queries');
-
 var pg = require('pg');
 
 // Different for everyPerson
@@ -27,7 +26,10 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
+    console.log('?/');
+
     queries.login(username, password, function(err, result){
+
         if(err){
             res.render('index', {message: 'Incorrect Username or Password'});
         } else {
