@@ -108,6 +108,7 @@ router.post('/confirm', function(req, res){
                 volume:_volume,
                 send_date:new Date(),
                 arrive_date:data.arrive_date,
+                routeid:route_id,
                 cost:total_cost
             });
         })

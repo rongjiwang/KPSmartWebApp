@@ -43,6 +43,13 @@ INSERT INTO ROUTE VALUES(
 INSERT INTO ROUTE VALUES(
     DEFAULT,'Wellington','Queens Town',false,0,0,0,true,2,10,120,true
 );
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Hamilton',false,0,0,0,true,2,15,150,true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Tauranga',true,4,6,30,true,1,12,120,true
+);
 
 INSERT INTO MAIL VALUES(
     DEFAULT,15,2,3,current_date,current_date+3,false,1
