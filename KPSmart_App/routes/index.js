@@ -26,7 +26,6 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    console.log('?/');
 
     queries.login(username, password, function(err, result){
 
