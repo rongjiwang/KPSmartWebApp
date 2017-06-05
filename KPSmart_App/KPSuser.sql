@@ -60,8 +60,8 @@ INSERT INTO MAIL VALUES(
 );
 
 INSERT INTO Users(Username, Password, Manager) VALUES
-('Jian','jian1',FALSE),
-('Dragos','dragos1', FALSE),
+('Jian','jian1',true),
+('Dragos','dragos1', true),
 ('Cameron', 'cameron1',TRUE),
-('Kevin', 'kevin1', FALSE),
-('Chet', 'chet1', FALSE);
+('Kevin', 'kevin1', true),
+('Chet', 'chet1', true);
