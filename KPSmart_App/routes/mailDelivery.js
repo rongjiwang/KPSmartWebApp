@@ -96,8 +96,7 @@ router.post('/confirm', function(req, res){
         [total_cost,_weight,_volume,days,false,route_id])
         .then(data =>{
             //console.log('success');
-            console.log(total_cost+' '+_weight+' '+_volume+' '+days+' '+route_id+' '+ _origin+' '+ _dest+' '+ _freight
-            );
+            //console.log(total_cost+' '+_weight+' '+_volume+' '+days+' '+route_id+' '+ _origin+' '+ _dest+' '+ _freight);
             res.render('receipt', {
                 signedInUser: queries.getSignedInUser(),
                 manager: queries.isManager(),

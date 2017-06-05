@@ -1,28 +1,75 @@
-//Created by rongjiwang on 5/06/17.
-
 doctype html
 html(lang='en')
     head
         meta(charset='UTF-8')
         title Mail Delivery | KPSmart
-        //link(rel='stylesheet', href='library/css/bootstrap.min.css')
-        link(rel='stylesheet', href='stylesheets/style.css')
+        link(rel='stylesheet', href='../stylesheets/style.css')
     body
-        .container
-                .page-title
-                    | Mail Delivery Confirmation
-                .content
+        #nav
+            .sidenav
+                #nav-logo
+                    a(href='welcome', title='KPSmart Home')
+                        img(src='../images/logo.png', height='75')
+                .nav-contain
+                    ul#nav-events
+                        li
+                            a(href='welcome')
+                                strong Welcome
+                        li#drop(onclick="toggle_visibility()")
+                            a(href='#')
+                                strong Business Events
+                                span.arrow
+                            ul#be
+                                li#currenttab
+                                    a(href='../mailDelivery') Mail Delivery
+                                li
+                                    a(href='../priceUpdate') Customer Price Update
+                                li
+                                    a(href='../transportCostUpdate') Transport Cost Update
+                                li
+                                    a(href='../routeManagement') Route Management
+                        script(type='text/javascript').
+                            function toggle_visibility() {
+                                var e = document.getElementById('be')
+                                var arr = document.getElementsByClassName('arrow');
+                                if (e.style.display == 'block') {
+                                    e.style.display = 'none';
+                                }
+                                else {
+                                    e.style.display = 'block';
+                                }
+                            }
+                        li
+                            a(href='../businessMonitoring')
+                                strong Business Monitoring
+                        if manager
+                            li
+                                a(href='../decisionSupport')
+                                    strong Decision Support
+                #identifier
+                    | Logged in as !{signedInUser}
+                    if manager
+                        img#m-image(src='../images/manager.png')
+                    else
+                        img#m-image(src='../images/clerk.png')
                     br
-                    P Parcel ID: !{_id}
-                    p Parcel Origin: !{origin}
-                    p Parcel Destination: !{dest}
-                    p Parcel Weight: !{weight}
-                    p Parcel Volume: !{volume}
-                    p Parcel freight: !{freight}
-                    p Parcel send-date: !{send_date}
-                    p Parcel arrive-date: !{arrive_date}
-                    p Parcel Total Cost: !{cost}
-
+                    span#m-status
+                        i !{signedInUser}
+        #body
+            #page-title
+                | Mail Delivery Receipt
+            #content
+                br
+                p Parcel ID: !{_id}
+                p Parcel Origin: !{origin}
+                p Parcel Destination: !{dest}
+                p Parcel Weight: !{weight}
+                p Parcel Volume: !{volume}
+                p Parcel freight: !{freight}
+                p Parcel send-date: !{send_date}
+                p Parcel arrive-date: !{arrive_date}
+                p Parcel Total Cost: !{cost}
+                br
 
 
 
