@@ -1,0 +1,30 @@
+//Created by rongjiwang on 5/06/17.
+
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Mail Delivery | KPSmart
+        //link(rel='stylesheet', href='library/css/bootstrap.min.css')
+        link(rel='stylesheet', href='stylesheets/style.css')
+    body
+        .container
+                .page-title
+                    | Mail Delivery Confirmation
+                .content
+                    br
+                    P Parcel ID: !{_id}
+                    p Parcel Origin: !{origin}
+                    p Parcel Destination: !{dest}
+                    p Parcel Weight: !{weight}
+                    p Parcel Volume: !{volume}
+                    p Parcel freight: !{freight}
+                    p Parcel send-date: !{send_date}
+                    p Parcel arrive-date: !{arrive_date}
+                    p Parcel Total Cost: !{cost}
+
+
+
+
+
+

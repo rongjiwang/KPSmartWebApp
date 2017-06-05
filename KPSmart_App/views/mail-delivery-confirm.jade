@@ -4,8 +4,7 @@ html(lang='en')
         meta(charset='UTF-8')
         title Mail Delivery | KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
-        script(type="text/javascript" src="app.js")
-    body(onload='showDecTab()')
+    body
         #nav
             .sidenav
                 #nav-logo
@@ -61,15 +60,17 @@ html(lang='en')
                 | Mail Delivery Confirmation
             #content
                 br
-                p Parcel ID: !{mailDelivery.ID}
-                p Parcel Origin: !{mailDelivery.origin}
-                p Parcel Destination: !{mailDelivery.dest}
-                p Parcel Weight: !{mailDelivery.weight}
-                p Parcel Volume: !{mailDelivery.volume}
-                p Date: !{date}
-                p Total Cost: heaps
+                p Parcel Origin: !{origin}
+                p Parcel Destination: !{dest}
+                p Parcel Weight: !{weight}
+                p Parcel Volume: !{volume}
+                p Parcel freight: !{freight}
+                p Parcel send-date: !{send_date}
+                p Parcel arrive-date: !{travel_date}
+                p Parcel Total Cost: !{cost}
                 br
-                input(href='mailDelivery', type='submit', value='Confirm')
+                form(role="form" method="post" action="mailDelivery/confirm")
+                    input(type='submit', value='Confirm')
 
 
 

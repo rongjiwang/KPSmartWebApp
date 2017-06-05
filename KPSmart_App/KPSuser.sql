@@ -12,12 +12,16 @@ CREATE TABLE ROUTE(
     id serial primary key,
     origin varchar(30),
     destination varchar(30),
+
     by_van boolean,
     van_travel_time int,
-    van_basecost_per_day int,
+    van_cost_per_kg_customer real,
+    van_basecost_per_day_business int,
     by_air boolean,
+
     air_travel_time int,
-    air_basecost_per_day int,
+    air_cost_per_kg_customer real,
+    air_basecost_per_day_business int,
     is_active boolean
 );
 
@@ -33,11 +37,11 @@ CREATE TABLE MAIL(
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Auckland',true,3,20,true,1,100,true
+    DEFAULT,'Wellington','Auckland',true,3,5,20,true,1,10,100,true
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Queens Town',false,0,0,true,2,120,true
+    DEFAULT,'Wellington','Queens Town',false,0,0,0,true,2,10,120,true
 );
 
 INSERT INTO MAIL VALUES(

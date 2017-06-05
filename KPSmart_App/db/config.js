@@ -2,7 +2,6 @@
  * Created by rongjiwang on 5/06/17.
  */
 
-/*
 var pgp = require("pg-promise")();
 
 var cn = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
@@ -11,4 +10,4 @@ var cn = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 
 var db = pgp(cn);
 
-module.exports = db;*/
+module.exports = db;
