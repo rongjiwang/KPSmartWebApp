@@ -5,7 +5,7 @@ var database = process.env.DATABASE_URL || "postgres://localhost:5432/cameronmcl
 
 //---Database connection---
 var pg = require('pg');
-var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
+//var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 var client = new pg.Client(database);
 client.connect();
 
@@ -79,6 +79,8 @@ exports.mailDelivery = function(mail, callback){
     });
 
 }
+
+
 
 exports.getDate = function(){
     var today = new Date();
