@@ -68,7 +68,10 @@ html(lang='en')
             #content
                 p Welcome to the Kelburn Post Smart Mail Managment System, !{signedInUser}.
                 br
-                p You are logged in as a !{signedInUser}
+                if manager
+                    p You are logged in as a Manager
+                else
+                    p You are logged in as a Clerk
                 br
                 img#page-image(src='images/home.png')
                 p Please select an activity from the sidebar

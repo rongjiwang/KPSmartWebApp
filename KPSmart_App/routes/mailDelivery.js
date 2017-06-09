@@ -51,21 +51,21 @@ router.post('/', function(req, res) {
             });
     }else {
         //database search for that route with same origin and destination
-        db.any('select * from route where origin=$1 and destination=$2',
+        /*db.any('select * from route where origin=$1 and destination=$2',
             [_origin, _dest])
             .then(data => {
                 // per kg cost
-                total_cost = _freight=='van'?data[0].van_cost_per_kg_customer : data[0].air_cost_per_kg_customer;
-                total_cost = total_cost*_weight*_volume;
-                days = _freight=='van'?data[0].van_travel_time : data[0].air_travel_time;
-                route_id = data[0].id;
+                //total_cost = _freight=='van'?data[0].van_cost_per_kg_customer : data[0].air_cost_per_kg_customer;
+                // total_cost = total_cost*_weight*_volume;
+                //days = _freight=='van'?data[0].van_travel_time : data[0].air_travel_time;
+                //route_id = data[0].id;
 
-                let _is_active = data[0].is_active;
+                //let_is_active = data[0].is_active;
 
                 //if route disable , then redirect user
                 //if(!_is_active){
 
-                //}
+                }
                 res.render('mail-delivery-confirm', {
                     signedInUser: queries.getSignedInUser(),
                     manager: queries.isManager(),
@@ -84,14 +84,14 @@ router.post('/', function(req, res) {
                 console.log('Error:',error);
                 res.render('mail-delivery',
                     {message:'Please, Choose the locations from options, try again.'});
-            });
+            });*/
         //todo show the route is disabled, show the common transaction route
         //todo if success, then add mail to the mail list, show in green success message
     }
 });
 
 
-router.post('/confirm', function(req, res){
+router.post('/confirm', function(req, res){/*
     db.one('insert into mail values(default,$1,$2,$3,current_date,current_date+$4,$5,$6) returning *',
         [total_cost,_weight,_volume,days,false,route_id])
         .then(data =>{
@@ -115,7 +115,7 @@ router.post('/confirm', function(req, res){
         .catch(error => {
             console.error('Error:',error);
 
-        });
+        });*/
 });
 
 module.exports = router;

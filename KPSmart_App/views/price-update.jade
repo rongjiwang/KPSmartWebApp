@@ -2,9 +2,14 @@ doctype html
 html(lang='en')
     head
         meta(charset='UTF-8')
-        title Customer Price Update| KPSmart
+        title Customer Price Update | KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
-    body
+    body(onload='show()')
+        script.
+            function show() {
+                block = document.getElementById('be');
+                block.style.display = 'block';
+            }
         #nav
             .sidenav
                 #nav-logo
@@ -13,7 +18,7 @@ html(lang='en')
                 .nav-contain
                     ul#nav-events
                         li
-                            a(href='welcome')
+                            a(href='#')
                                 strong Welcome
                         li#drop(onclick='toggle_visibility()')
                             a(href='#')
@@ -23,7 +28,7 @@ html(lang='en')
                                 li
                                     a(href='mailDelivery') Mail Delivery
                                 li#currenttab
-                                    a(href='priceUpdate') Customer Price Update
+                                    a(href='#') Customer Price Update
                                 li
                                     a(href='transportCostUpdate') Transport Cost Update
                                 li
@@ -40,12 +45,11 @@ html(lang='en')
                                 }
                             }
                         li
-                            a(href='businessMonitoring')
+                            a(href='business-monitoring')
                                 strong Business Monitoring
-                        if manager
-                            li#dec-sup-tab
-                                a(href='decisionSupport')
-                                    strong Decision Support
+                        li#dec-sup-tab
+                            a(href='decision-support')
+                                strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
                     if manager
@@ -59,59 +63,63 @@ html(lang='en')
             #page-title
                 | Customer Price Update
             #content
-                p Please enter the pricing element you would like to adjust
-                |         Select a Route &nbsp
-                input#select-route(list='routes')
-                img#go(src='images/arrow.png', onclick='showRoute()')
-                br
-                br
-                datalist#routes
-                    option(value='Route 1')
-                    option(value='Route 2')
-                script(type='text/javascript').
-                    function showRoute() {
-                        var block = document.getElementById('route-price');
-                        var routename = document.getElementById('select-route');
-                        var routes = document.getElementsByTagName('option');
-                        for( var i = 0; i < routes.length; i++){
-                            if(routes[i].value == routename.value){
-                                block.style.display = 'block'
-                                return;
-                            }
-                        }
-                    }
+                p
+                    | Filter through the list to find a Route you would like to adjust the
+                    strong Price
+                    | for.
+                p You may also select the list from the table below.
                 img#page-image(src='images/coin.png')
+                p Filter your results &nbsp
                 br
-                form#route-price
-                    | Price per Kilometre ($/km)
-                    span.pricing-min
-                        strong - Current Price: $x:xx/km
-                    input(type='number', placeholder='Price per km')
-                    span.pricing-min Cost: $x:xx
-                    br
-                    br
-                    |             Price per Kilogram ($/kg)
-                    span.pricing-min
-                        strong - Current Price: $x:xx/km
-                    input(type='number', placeholder='Price per kg')
-                    span.pricing-min Cost: $x:xx
-                    br
-                    br
-                    |             Price per Cubic Metre ($/m
-                    sup 3
-                    | )
-                    span.pricing-min
-                        strong - Current Price: $x:xx/km
-                    input(type='number', placeholder='Price per cubic m')
-                    span.pricing-min Cost: $x:xx
-                    br
-                    br
-                    |             Final Markup ($)
-                    span.pricing-min
-                        strong Current Value: xx.xx%
-                    br
-                    input(type='number', placeholder='Final Markup')
-                    span.pricing-min Nominal Margin: 10.0%
-                    br
-                    br
-                    input#submit(type='submit', value='submit')
+                table#trans-filter
+                    tr
+                        td Origin
+                        td Destination
+                        td Transport Firm
+                        td Type
+                    tr
+                        td
+                            input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin')
+                        td
+                            input.trans-filter-drop(list='locations', placeholder='Destination')
+                        td
+                            input.trans-filter-drop(list='firms', placeholder='Firm')
+                        td
+                            input.trans-filter-drop(list='trans-types', placeholder='Type')
+                br
+                table#data-table
+                    tr
+                        td.table-head
+                            strong Route Name
+                        td.table-head
+                            strong Origin
+                        td.table-head
+                            strong Destination
+                        td.table-head
+                            strong Transport Firm
+                        td.table-head
+                            strong Type
+                    tr.hover(onclick="document.location = 'routePrice';")
+                        td Route 01
+                        td Wellington
+                        td Auckland
+                        td Mainfreight
+                        td Land
+                    tr.hover
+                        td Route 02
+                        td Wellington
+                        td Hamilton
+                        td NZ Couriers
+                        td Land
+                    tr.hover
+                        td Route 03
+                        td Wellington
+                        td Christchurch
+                        td Air New Zealand
+                        td Air
+                    tr.hover
+                        td Route 04
+                        td Auckland
+                        td Wellington
+                        td Air New Zealand
+                        td Air

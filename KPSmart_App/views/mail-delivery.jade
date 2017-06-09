@@ -7,7 +7,12 @@ html(lang='en')
         link(rel='stylesheet', href='stylesheets/style.css')
 
         script(type="text/javascript" src="app.js")
-    body
+    body(onload='show()')
+        script.
+            function show() {
+                block = document.getElementById('be');
+                block.style.display = 'block';
+            }
 
         #nav
             .sidenav
@@ -99,11 +104,14 @@ html(lang='en')
                         option(value='Air (1-3 working days)')
                     br
                     br
-                    |             Weight (kg)
-                    span#vol-lab Volume (m3)
+                    | Weight (kg)
+                    span#vol-lab
+                        | Volume (m
+                        sup 3
+                        | )
                     br
-                    input#weight(type='number', name='weight', placeholder='0.1 - 25.0')
-                    input#vol(type='number', name='volume', placeholder='0.1 - 25.0')
+                    input#weight(type='number', name='weight', step='0.1', placeholder='0.1 - 25.0')
+                    input#vol(type='number', name='volume', step='0.01' placeholder='0.01 - 1.00')
                     br
                     br
                     e !{message}
