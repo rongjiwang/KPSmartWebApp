@@ -17,6 +17,7 @@ var transportCostUpdate = require('./routes/transportCostUpdate');
 var routeManagement = require('./routes/routeManagement');
 var routeInfo = require('./routes/routeInfo');
 var routeCost = require('./routes/routeCost');
+var routePrice = require('./routes/routePrice');
 var decisionSupport = require('./routes/decisionSupport');
 
 var app = express();
@@ -45,7 +46,9 @@ app.use('/transportCostUpdate', transportCostUpdate);
 app.use('/routeManagement', routeManagement);
 app.use('/routeInfo', routeInfo);
 app.use('/routeCost', routeCost);
+app.use('/routePrice', routePrice);
 app.use('/decisionSupport', decisionSupport);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
