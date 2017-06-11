@@ -35,6 +35,7 @@ body{
     width: 80%;
     text-align: center;
     margin: auto;
+
 }
 
 
@@ -144,6 +145,7 @@ button:hover span:after {
     font-size: 36pt;
     font-weight: normal;
 
+
 }
 
 #content{
@@ -152,6 +154,7 @@ button:hover span:after {
     font-size: 12pt;
     color: #FFFFFF;
     width: 70%;
+    border: none;
 }
 
 #identifier{
@@ -352,6 +355,27 @@ input:hover{
     float: right;
 }
 
+#rev{
+    background-color: #FFFFFF;
+    padding: 10px 10px 10px 10px;
+    border: solid;
+    border-color: #0093c9;
+}
+
+.metrics{
+    border: solid;
+    border-color: #0093c9;
+    background-color: #FFFFFF;
+    color: black;
+    width: 650px;
+}
+
+#times{
+    background-color: #FFFFFF;
+    padding: 10px 10px 10px 10px;
+    border: solid;
+    border-color: #0093c9;
+}
 
 
 
