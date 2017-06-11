@@ -2,8 +2,9 @@ doctype html
 html(lang='en')
     head
         meta(charset='UTF-8')
-        title Business Monitoring| KPSmart
+        title Business Monitoring | KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js')
     body(onload='show()')
         script.
             function show(){
@@ -26,13 +27,13 @@ html(lang='en')
                                 span.arrow
                             ul#be
                                 li
-                                    a(href='mail-delivery.html') Mail Delivery
+                                    a(href='mailDelivery') Mail Delivery
                                 li
-                                    a(href='price-update.html') Customer Price Update
+                                    a(href='priceUpdate') Customer Price Update
                                 li
-                                    a(href='transport-update.html') Transport Cost Update
+                                    a(href='transportUpdate') Transport Cost Update
                                 li
-                                    a(href='route-management.html') Route Management
+                                    a(href='routeManagement') Route Management
                         script(type='text/javascript').
                             function toggle_visibility() {
                                 var e = document.getElementById('be')
@@ -51,12 +52,14 @@ html(lang='en')
                             a(href='#')
                                 strong Decision Support
                 #identifier
-                    | Logged in as
-                    i Chet
-                    img#m-image(src='../public/images/clerk.png')
+                    | Logged in as !{signedInUser}
+                    if manager
+                        img#m-image(src='images/manager.png')
+                    else
+                        img#m-image(src='images/clerk.png')
                     br
                     span#m-status
-                        i Clerk
+                        i !{signedInUser}
         #body
             #page-title
                 | Business Monitoring

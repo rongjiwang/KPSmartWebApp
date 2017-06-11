@@ -1,7 +1,7 @@
 body {
-
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 a {
@@ -136,6 +136,8 @@ button:hover span:after {
 
 #page-title{
     float: left;
+    position: fixed;
+    background-color: #004c6b;
     width: 65%;
     border-bottom-style: solid;
     border-color: #0093c9;
@@ -155,7 +157,11 @@ button:hover span:after {
     color: #FFFFFF;
     width: 70%;
     border: none;
+    padding-top: 100px;
+
 }
+
+
 
 #identifier{
     padding: 10px 10px 15px 10px;
