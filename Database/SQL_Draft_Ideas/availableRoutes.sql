@@ -1,7 +1,7 @@
-DROP TABLE If EXISTS availableRoutes;
+DROP TABLE If EXISTS KPSavailableRoutes;
 
 -- the available routes, and amount of money it costs to use the routes, depending on the priority:
-CREATE TABLE availableRoutes (
+CREATE TABLE KPSavailableRoutes (
     id SERIAL PRIMARY KEY,
     origin CHAR(20),
     destination CHAR(20),
@@ -9,48 +9,115 @@ CREATE TABLE availableRoutes (
     pricePerCubicCM INT,
     companyCostPerGram INT,
     companyCostPerCubicCM INT,
-    priority CHAR(20)
+    deliveryType CHAR(20) -- Land/Sea: For "low" priority, Air: For "high" priority
 );
 
 -- some dummy values for all the available routes, as well as their costs:
-INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,priority) VALUES ('Wellington','Auckland',10,5,3,7,'low');
-INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,priority) VALUES ('Wellington','Auckland',22,19,2,3,'high');
 
-INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,priority) VALUES ('Christchurch','Wellington',12,2,2,5,'low');
-INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,priority) VALUES ('Christchurch','Wellington',42,14,5,3,'high');
+-----------------------
+--** AKL TO ... **--
+-----------------------
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('AKL','HAM',10,5,13,7,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('AKL','HAM',15,10,4,7,'air');
 
-INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,priority) VALUES ('Taupo','Waikanai',13,4,5,8,'low');
-INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,priority) VALUES ('Taupo','Waikanai',21,14,6,4,'high');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('AKL','WEL',20,3,3,7,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('AKL','WEL',25,8,13,17,'air');
 
-INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,priority) VALUES ('Wellington','Taupo',13,5,4,5,'low');
-INSERT INTO availableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,priority) VALUES ('Wellington','Taupo',23,15,12,7,'high');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('AKL','CHC',30,5,35,17,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('AKL','CHC',35,10,31,5,'air');
 
--- for customer price updates:
-UPDATE availableRoutes SET pricePerGram = 10, pricePerCubicCM = 12 WHERE
-origin = 'Wellington' AND destination = 'Auckland' AND priority = 'low';
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('AKL','DUN',40,15,32,9,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('AKL','DUN',45,20,23,17,'air');
+
+-----------------------
+--** HAM TO ... **--
+-----------------------
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('HAM','AKL',17,19,2,7,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('HAM','AKL',22,24,13,27,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('HAM','WEL',23,25,32,2,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('HAM','WEL',28,30,6,5,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('HAM','CHC',10,5,32,9,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('HAM','CHC',15,6,23,7,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('HAM','DUN',14,35,43,67,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('HAM','DUN',15,45,23,67,'air');
 
 
-SELECT * FROM availableRoutes;
+-----------------------
+--** WEL TO ... **--
+-----------------------
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('WEL','AKL',14,35,43,67,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('WEL','AKL',15,45,23,67,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('WEL','HAM',10,5,3,7,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('WEL','HAM',15,6,23,7,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('WEL','CHC',14,35,43,67,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('WEL','CHC',15,45,23,67,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('WEL','DUN',10,5,3,7,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('WEL','DUN',15,6,23,7,'air');
+
+-----------------------
+--** CHC TO ... **--
+-----------------------
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('CHC','AKL',17,19,2,7,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('CHC','AKL',22,24,13,27,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('CHC','HAM',14,35,43,67,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('CHC','HAM',15,45,23,67,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('CHC','WEL',17,19,2,7,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('CHC','WEL',22,24,13,27,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('CHC','DUN',10,5,3,7,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('CHC','DUN',15,6,23,7,'air');
+
+-----------------------
+--** DUN TO ... **--
+-----------------------
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('DUN','AKL',10,5,3,7,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('DUN','AKL',15,6,23,7,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('DUN','HAM',14,35,43,67,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('DUN','HAM',15,45,23,67,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('DUN','WEL',10,5,3,7,'land');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('DUN','WEL',15,6,23,7,'air');
+
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('DUN','CHC',14,35,43,67,'sea');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType) VALUES ('DUN','CHC',15,45,23,67,'air');
+
+
+
+SELECT * FROM KPSavailableRoutes;
 
 -----------------------
 --** TOTAL REVENUE **--
 -----------------------
 
 CREATE VIEW revenueTable AS (
-SELECT m.origin AS mail_Origin ,m.destination AS mail_Destination,m.weight AS mail_Weight,
-m.volume AS mail_Volume,a.pricePerGram,a.pricePerCubicCM, a.priority,
-m.weight*a.pricePerGram + m.volume*a.pricePerCubicCM AS revenue
-FROM mailDeliveryEvents m JOIN availableRoutes a
-ON m.origin = a.origin AND m.destination = a.destination AND a.priority = m.priority);
+SELECT M.origin AS mail_Origin ,M.destination AS mail_Destination,M.weight AS mail_Weight,
+M.volume AS mail_Volume,A.pricePerGram,A.pricePerCubicCM, A.deliveryType,
+M.weight*A.pricePerGram + M.volume*A.pricePerCubicCM AS revenue
+FROM kpsmailDeliveryEvents m JOIN kpsavailableRoutes a
+ON M.origin = A.origin AND M.destination = A.destination AND A.deliveryType = M.deliveryType);
 
 SELECT * FROM revenueTable;
 
 CREATE VIEW totalRevenueTablePerRoute AS (select mail_origin, mail_destination, SUM (mail_weight*pricePerGram + mail_volume*pricePerCubicCM) as total_revenue
 from revenueTable GROUP BY mail_origin, mail_destination ORDER BY total_revenue);
 
-SELECT * FROM totalRevenueTablePerRoute;
+CREATE VIEW tableA AS (SELECT * FROM totalRevenueTablePerRoute);
 
 select sum(total_revenue) from totalRevenueTablePerRoute AS totalRevenue;
+
+SELECT * FROM tableA; -- The table for the total_revenue
 ---------------------------
 --** TOTAL EXPENDITURE **--
 ---------------------------
@@ -58,15 +125,36 @@ select sum(total_revenue) from totalRevenueTablePerRoute AS totalRevenue;
 -- generate a table that shows the company cost per gram and cubic cm, next to each of the mail delivery events:
 CREATE VIEW expenditureTable AS (
 SELECT m.origin AS mail_Origin ,m.destination AS mail_Destination,m.weight AS mail_Weight,
-m.volume AS mail_Volume,a.companyCostPerGram,a.companyCostPerCubicCM, a.priority,
+m.volume AS mail_Volume,a.companyCostPerGram,a.companyCostPerCubicCM, a.deliveryType,
 m.weight*a.companyCostPerGram + m.volume*a.companyCostPerCubicCM AS cost
-FROM mailDeliveryEvents m JOIN availableRoutes a
-ON m.origin = a.origin AND m.destination = a.destination AND a.priority = m.priority);
+FROM KPSmailDeliveryEvents m JOIN KPSavailableRoutes a
+ON m.origin = a.origin AND m.destination = a.destination AND a.deliveryType = m.deliveryType);
 
 -- showing the view generated above:
 SELECT * FROM expenditureTable;
 
 -- from that view, compute the total company expenditure per each route:
-select mail_origin, mail_destination, SUM (mail_weight*companyCostPerGram + mail_volume*companyCostPerCubicCM) as total_company_expenditure
-from expenditureTable GROUP BY mail_origin, mail_destination ORDER BY total_company_expenditure;
+CREATE VIEW tableB AS (select mail_origin, mail_destination, SUM (mail_weight*companyCostPerGram + mail_volume*companyCostPerCubicCM) as total_company_expenditure
+from expenditureTable GROUP BY mail_origin, mail_destination ORDER BY total_company_expenditure);
 
+SELECT * FROM tableB; -- The table for the total expendeture
+-----------------------
+--**CRITICAL ROUTES**--
+-----------------------
+
+-- Create a view of all the routes with their current expenditure and revenue values:
+CREATE VIEW revenueAndExpediture AS (
+-- Query to show the total revenue and expedeture of every route, next to each origin,destination pair.
+SELECT a.mail_origin,a.mail_destination,a.total_revenue, b.total_company_expenditure
+ FROM tableA a
+ JOIN tableB b
+ ON a.mail_origin = b.mail_origin
+ AND a.mail_destination = b.mail_destination);
+
+-- Display the data from that view:
+SELECT * FROM revenueAndExpediture;
+
+-- Find Critical Routes (Routes for which the compnay is paying more than they are receiving)
+-- and display the difference between money made and money spent (i.e money lost):
+SELECT mail_origin,mail_destination, re.total_company_expenditure - re.total_revenue as money_lost
+FROM revenueAndExpediture re WHERE re.total_revenue < re.total_company_expenditure;
