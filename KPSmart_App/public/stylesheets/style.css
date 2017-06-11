@@ -28,7 +28,7 @@ body{
 }
 
 #username{
-    padding-bottom: 10px;
+    padding-bottom: 2%;
 }
 
 #container{
@@ -46,8 +46,8 @@ p{
 }
 
 #titlelogo{
-  padding-top: 15px;
-  height: 100px;
+  padding-top: 6%;
+  height: 60%;
 }
 
 #logo{
@@ -58,12 +58,12 @@ p{
 }
 
 #loginbutton{
-    padding-top: 15px;
+    padding-top: 1%;
 
 }
 
 #logoimage{
-  height: 120px;
+  height: 10%;
 }
 
 input {
@@ -157,21 +157,23 @@ button:hover span:after {
     color: #FFFFFF;
     width: 70%;
     border: none;
-    padding-top: 100px;
+    padding-top: 13%;
 
 }
 
 
 
 #identifier{
-    padding: 10px 10px 15px 10px;
+    padding: 5% 5% 20% 5%;
     background-color: #262626;
+    width: 91.5%;
+    margin-left: -1%;
 
 
 }
 
 .nav-contain{
-    height: 77.3%;
+    height: 77%;
 }
 
 #m-status{
