@@ -100,26 +100,11 @@ html(lang='en')
                         td.table-head
                             strong Type
                     tr.hover(onclick="document.location = 'routePrice';")
-                        td Route 01
-                        td Wellington
-                        td Auckland
-                        td Mainfreight
-                        td Land
-                    tr.hover
-                        td Route 02
-                        td Wellington
-                        td Hamilton
-                        td NZ Couriers
-                        td Land
-                    tr.hover
-                        td Route 03
-                        td Wellington
-                        td Christchurch
-                        td Air New Zealand
-                        td Air
-                    tr.hover
-                        td Route 04
-                        td Auckland
-                        td Wellington
-                        td Air New Zealand
-                        td Air
+                        each item in data
+                            td #{item.id}
+                            td #{item.origin}
+                            td #{item.destination}
+                            td #{item.transportfirm}
+                            td #{item.deliverytype}
+                            tr.hover
+
