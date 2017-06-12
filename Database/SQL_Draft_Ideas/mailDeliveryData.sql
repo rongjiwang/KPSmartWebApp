@@ -6,10 +6,10 @@ DROP TABLE IF EXISTS KPSmailDeliveryEvents;
 
 -- Create the table that will store the mail delivery events:
 CREATE TABLE KPSmailDeliveryEvents (id SERIAL PRIMARY KEY, origin CHAR(20), destination CHAR(20),
-weight INT, volume INT, priority CHAR(20), deliveryType CHAR(20),deliveryTime INT);
+weight INT, volume INT, priority CHAR(20), deliveryType CHAR(20),startDate date,deliveryTime INT);
 
 -- Add data to KPSmailDeliveryEvents: (some dummy values)
-INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',12.01,34.02,'low','land',5);
+INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',12.01,34.02,'low','land',current_date,5);
 INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',13.07,4.02,'low','land',6);
 INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',15.1,3.02,'low','land',3);
 INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('CHC','WEL',10.1,3.01,'high','air',2);
