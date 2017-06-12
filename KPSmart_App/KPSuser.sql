@@ -12,18 +12,16 @@ CREATE TABLE ROUTE(
     id serial primary key,
     origin varchar(30),
     destination varchar(30),
-
-    by_van boolean,
-    van_travel_time int,
-    van_cost_per_kg_customer real,
-    van_basecost_per_day_business int,
-    by_air boolean,
-
-    air_travel_time int,
-    air_cost_per_kg_customer real,
-    air_basecost_per_day_business int,
+    cost_per_kg_customer real,
+    cost_per_volume_customer real,
+    cost_per_kg_business real,
+    cost_per_volume_business real,
+    priority varchar(10),
+    deliveryType varchar(20),
+    travel_time int,
+    transportFirm varchar(20),
     is_active boolean
-);
+    );
 
 CREATE TABLE MAIL(
     id serial primary key,
@@ -37,18 +35,33 @@ CREATE TABLE MAIL(
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Auckland',true,3,5,20,true,1,10,100,true
+    DEFAULT,'Wellington','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Queens Town',false,0,0,0,true,2,10,120,true
+    DEFAULT,'Wellington','Queens Town',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
 );
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Hamilton',false,0,0,0,true,2,15,150,true
+    DEFAULT,'Wellington','Hamilton',0.6,0.6,0.3,0.3,'Low','ship',6,'Ship NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Tauranga',true,4,6,30,true,1,12,120,true
+    DEFAULT,'Wellington','Tauranga',0.5,0.5,0.2,0.2,'Low','van',3,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Auckland',0.5,0.5,0.3,0.3,'Low','van',3,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Queens Town',0.6,0.6,0.4,0.4,'Low','ship',7,'Ship NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Hamilton',0.6,0.6,0.3,0.3,'High','air',6,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Tauranga',0.5,0.5,0.2,0.2,'High','air',3,'Air NZ',true
 );
 
 INSERT INTO MAIL VALUES(
@@ -60,8 +73,8 @@ INSERT INTO MAIL VALUES(
 );
 
 INSERT INTO Users(Username, Password, Manager) VALUES
-('Jian','jian1',false),
-('Dragos','dragos1', false),
+('Jian','jian1',true),
+('Dragos','dragos1', true),
 ('Cameron', 'cameron1',true),
-('Kevin', 'kevin1', false),
+('Kevin', 'kevin1', true),
 ('Chet', 'chet1', true);

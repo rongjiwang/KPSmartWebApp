@@ -4,7 +4,7 @@ var queries = require('../queries');
 var db = require('../db/config');
 
 /* Global vars */
-var total_cost = 0,_weight = 0,_volume = 0,days = 0,route_id = -1, _origin ='', _dest = '', _freight = '';
+var total_cost = 0,_weight = 0,_volume = 0,days = 0,route_id = -1, _origin ='', _dest = '', _freight = '', _company='';
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.render('mail-delivery', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
@@ -18,8 +18,8 @@ router.post('/', function(req, res) {
      _freight = req.body.type_freight;
      _weight = req.body.weight;
      _volume = req.body.volume;
-    if(_freight == 'Van (3-7 working days)'){_freight = 'van';}
-    if(_freight == 'Air (1-3 working days)'){_freight = 'air';}
+    //if(_freight == 'Low'){_freight = 'low';}
+    //if(_freight == 'High'){_freight = 'air';}
     console.log(_origin+' '+_dest+' '+_freight+' '+_weight+' '+_volume);
     //incompleted form
     if (_origin=='' || _dest=='' || _freight=='' || _weight=='' ||_volume==''){
@@ -43,7 +43,7 @@ router.post('/', function(req, res) {
                 message: 'Please, weight or volume only accept positive value.'
             });
     //undefined freight
-    }else if(_freight != 'van' && _freight != 'air') {
+    }else if(_freight != 'Low' && _freight != 'High') {
         res.render('mail-delivery',
             {signedInUser: queries.getSignedInUser(),
                 manager: queries.isManager(),
@@ -51,27 +51,24 @@ router.post('/', function(req, res) {
             });
     }else {
         //database search for that route with same origin and destination
-        /*db.any('select * from route where origin=$1 and destination=$2',
-            [_origin, _dest])
+        db.any('select * from route where origin=$1 and destination=$2 and priority=$3',
+            [_origin, _dest, _freight])
             .then(data => {
-                // per kg cost
-                //total_cost = _freight=='van'?data[0].van_cost_per_kg_customer : data[0].air_cost_per_kg_customer;
-                // total_cost = total_cost*_weight*_volume;
-                //days = _freight=='van'?data[0].van_travel_time : data[0].air_travel_time;
-                //route_id = data[0].id;
+                // total cost
+                total_cost = data[0].cost_per_kg_customer*data[0].cost_per_volume_customer*_weight*_volume;
+                var random_day = Math.floor(Math.random() * 3);
+                days = data[0].travel_time+random_day;
+                route_id = data[0].id;
+                _freight = data[0].deliverytype;
+                _company = data[0].transportfirm;
 
-                //let_is_active = data[0].is_active;
-
-                //if route disable , then redirect user
-                //if(!_is_active){
-
-                }
                 res.render('mail-delivery-confirm', {
                     signedInUser: queries.getSignedInUser(),
                     manager: queries.isManager(),
                     origin:_origin,
                     dest:_dest,
                     freight:_freight,
+                    company:_company,
                     weight:_weight,
                     volume:_volume,
                     send_date:new Date(),
@@ -84,14 +81,15 @@ router.post('/', function(req, res) {
                 console.log('Error:',error);
                 res.render('mail-delivery',
                     {message:'Please, Choose the locations from options, try again.'});
-            });*/
+            });
         //todo show the route is disabled, show the common transaction route
         //todo if success, then add mail to the mail list, show in green success message
     }
 });
 
 
-router.post('/confirm', function(req, res){/*
+router.post('/confirm', function(req, res){
+    console.log('Hello!');
     db.one('insert into mail values(default,$1,$2,$3,current_date,current_date+$4,$5,$6) returning *',
         [total_cost,_weight,_volume,days,false,route_id])
         .then(data =>{
@@ -104,6 +102,7 @@ router.post('/confirm', function(req, res){/*
                 origin:_origin,
                 dest:_dest,
                 freight:_freight,
+                company:_company,
                 weight:_weight,
                 volume:_volume,
                 send_date:new Date(),
@@ -115,7 +114,7 @@ router.post('/confirm', function(req, res){/*
         .catch(error => {
             console.error('Error:',error);
 
-        });*/
+        });
 });
 
 module.exports = router;

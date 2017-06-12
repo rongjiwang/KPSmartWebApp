@@ -76,6 +76,9 @@ html(lang='en')
                         td Freight Type
                         td.parcel-details-value !{freight}
                     tr
+                        td Freight Brand
+                        td.parcel-details-value !{company}
+                    tr
                         td Date Sent
                         td.parcel-details-value !{send_date}
                     tr
@@ -83,11 +86,11 @@ html(lang='en')
                         td.parcel-details-value !{travel_date}
                     tr
                         td(style='border-top: solid #0093c9')
-                            strong Total Cost:
+                            strong Total Cost:$
                         td.parcel-details-value(style='border-top: solid #0093c9') !{cost}
                 br
-                form(role='form', method='post')
-                    input.button(type='submit', value='Confirm', action='mailDelivery/confirm')
+                form(role='form', method='post', action='mailDelivery/confirm')
+                    input.button(type='submit', value='Confirm')
                     input.button(type='submit', value='Back', onclick='goBack()')
                     script.
                         function goBack(){

@@ -18,14 +18,14 @@ query = client.query('CREATE TABLE ROUTE(' +
     'id serial primary key,' +
     'origin varchar(30),' +
     'destination varchar(30),' +
-    'by_van boolean,' +
-    'van_travel_time int,' +
-    'van_cost_per_kg_customer real,' +
-    'van_basecost_per_day_business int,' +
-    'by_air boolean,' +
-    'air_travel_time int,' +
-    'air_cost_per_kg_customer real,' +
-    'air_basecost_per_day_business int,' +
+    'travel_time int,' +
+    'cost_per_kg_customer real,' +
+    'cost_per_volume_customer real,' +
+    'cost_per_kg_business real,' +
+    'cost_per_volume_business real,' +
+    'priority varchar(10),'+
+    'deliveryType varchar(20),'+
+    'transportFirm varchar(20),'+
     'is_active boolean' +
     ');');
 

@@ -4,7 +4,7 @@
 
 var pgp = require("pg-promise")();
 
-var cn = process.env.DATABASE_URL || "postgres://localhost:5432/cameronmclachlan";
+var cn = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 
 //pgp.pg.defaults.ssl = true; //cloud connection
 
