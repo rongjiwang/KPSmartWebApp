@@ -339,7 +339,7 @@ input:hover{
 }
 
 .trans-filter-drop{
-    width: 80px;
+    width: 90%;
 }
 
 #data-table{
@@ -347,6 +347,7 @@ input:hover{
     border-color: #0093c9;
     background-color: #FFFFFF;
     color: black;
+    width: 100%;
 }
 #data-table td{
     border: none;
