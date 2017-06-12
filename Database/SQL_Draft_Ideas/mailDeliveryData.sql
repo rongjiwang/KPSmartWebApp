@@ -10,11 +10,11 @@ weight INT, volume INT, priority CHAR(20), deliveryType CHAR(20),startDate date,
 
 -- Add data to KPSmailDeliveryEvents: (some dummy values)
 INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',12.01,34.02,'low','land',current_date,5);
-INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',13.07,4.02,'low','land',6);
-INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',15.1,3.02,'low','land',3);
-INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('CHC','WEL',10.1,3.01,'high','air',2);
-INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('HAM','AKL',7.1,9.03,'high','air',1);
-INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('HAM','DUN',13.1,23.01,'low','sea',4);
+INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',13.07,4.02,'low','land',current_date,6);
+INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('WEL','AKL',15.1,3.02,'low','land',current_date,3);
+INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('CHC','WEL',10.1,3.01,'high','air',current_date,2);
+INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('HAM','AKL',7.1,9.03,'high','air',current_date,1);
+INSERT INTO KPSmailDeliveryEvents (origin,destination,weight,volume,priority,deliveryType,deliveryTime) VALUES ('HAM','DUN',13.1,23.01,'low','sea',current_date,4);
 
 
 -- selecting data from KPSmailDeliveryEvents, show all the rows from the table
