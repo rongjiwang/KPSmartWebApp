@@ -186,6 +186,7 @@ button:hover span:after {
     padding-right: 2%;
     border: none;
     position: fixed;
+    height:91%;
 
 }
 
@@ -198,7 +199,7 @@ button:hover span:after {
 .sidenav {
     width: 100%;
     background: #3f3f3f;
-    height: 500px;
+    height: 100%;
     font-size: 12pt;
     border: solid;
     border-color: #000000;
