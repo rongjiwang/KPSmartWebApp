@@ -2,7 +2,7 @@ doctype html
 html(lang='en')
     head
         meta(charset='UTF-8')
-        title Mail Delivery | KPSmart
+        title Mail Delivery Confirm| KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
     body
         #nav
@@ -15,7 +15,7 @@ html(lang='en')
                         li
                             a(href='welcome')
                                 strong Welcome
-                        li#drop(onclick="toggle_visibility()")
+                        li#drop(onclick='toggle_visibility()')
                             a(href='#')
                                 strong Business Events
                                 span.arrow
@@ -42,10 +42,6 @@ html(lang='en')
                         li
                             a(href='businessMonitoring')
                                 strong Business Monitoring
-                        if manager
-                            li
-                                a(href='decisionSupport')
-                                    strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
                     if manager
@@ -56,22 +52,44 @@ html(lang='en')
                     span#m-status
                         i !{signedInUser}
         #body
-            #page-title
-                | Mail Delivery Confirmation
+            #page-title Mail Delivery Confirmation
             #content
                 br
-                p Parcel Origin: !{origin}
-                p Parcel Destination: !{dest}
-                p Parcel Weight: !{weight}
-                p Parcel Volume: !{volume}
-                p Parcel freight: !{freight}
-                p Parcel send-date: !{send_date}
-                p Parcel travel-days: !{travel_date}
-                p Parcel Total Cost: !{cost}
+                p
+                    | Please confirm your Parcel Details. You may change the Origin, Destination, Weight, and
+                    | Volume of the Parcel if they are incorrect by selecting the back button.
+                img#page-image(src='images/confirm-parcel.png')
+                table#parcel-details
+                    tr
+                        td Origin
+                        td.parcel-details-value !{origin}
+                    tr
+                        td Destination
+                        td.parcel-details-value !{dest}
+                    tr
+                        td Weight
+                        td.parcel-details-value !{weight}
+                    tr
+                        td Volume
+                        td.parcel-details-value !{volume}
+                    tr
+                        td Freight Type
+                        td.parcel-details-value !{freight}
+                    tr
+                        td Date Sent
+                        td.parcel-details-value !{send date}
+                    tr
+                        td Travel Time
+                        td.parcel-details-value !{travel date}
+                    tr
+                        td(style='border-top: solid #0093c9')
+                            strong Total Cost:
+                        td.parcel-details-value(style='border-top: solid #0093c9') !{cost}
                 br
-                form(role="form" method="post" action="mailDelivery/confirm")
-                    input(type='submit', value='Confirm')
-
-
-
-
+                form(role='form', method='post')
+                    input.button(type='submit', value='Confirm', action='mailDelivery/confirm')
+                    input.button(type='submit', value='Back', onclick='goBack()')
+                    script.
+                        function goBack(){
+                            window.history.back();
+                        }

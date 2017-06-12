@@ -161,16 +161,22 @@ button:hover span:after {
 
 }
 
+#parcel-details{
+    width: 75%;
+}
+
 #parcel-details td{
     width: 10%;
 }
 
 .parcel-details-cost{
-    border-bottom: solid;
-
+    border-top: solid;
+    border-color: #0093c9;
 }
 
-
+.parcel-details-value{
+    text-align: right;
+}
 
 
 #identifier{

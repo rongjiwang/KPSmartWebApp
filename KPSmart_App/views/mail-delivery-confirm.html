@@ -46,46 +46,57 @@
             Please confirm your Parcel Details. You may change the Origin, Destination, Weight, and
             Volume of the Parcel if they are incorrect by selecting the back button.
         </p>
+
+        <img src="images/confirm-parcel.png" id="page-image">
+
         <table id="parcel-details">
             <tr>
                 <td>Origin</td>
-                <td>"value"</td>
+                <td class="parcel-details-value">"value"</td>
             </tr>
             <tr>
                 <td>Destination</td>
-                <td>"value"</td>
+                <td class="parcel-details-value">"value"</td>
             </tr>
             <tr>
                 <td>Weight</td>
-                <td>"value"</td>
+                <td class="parcel-details-value">"value"</td>
             </tr>
             <tr>
                 <td>Volume</td>
-                <td>"value"</td>
+                <td class="parcel-details-value">"value"</td>
             </tr>
             <tr>
                 <td>Freight Type</td>
-                <td>"value"</td>
+                <td class="parcel-details-value">"value"</td>
             </tr>
             <tr>
                 <td>Date Sent</td>
-                <td>"value"</td>
+                <td class="parcel-details-value">"value"</td>
             </tr>
             <tr>
                 <td>Travel Time</td>
-                <td>"value"</td>
+                <td class="parcel-details-value">"value"</td>
             </tr>
             <tr>
-                <td class="parcel-details-cost"><strong>Total Cost: </strong></td>
-                <td>"value"</td>
+                <td  style="border-top: solid #0093c9"><strong>Total Cost: </strong></td>
+                <td style="border-top: solid #0093c9" class="parcel-details-value">"value"</td>
             </tr>
+
         </table>
 
 
 
         <br>
-        <form role="form" method="post" action="mailDelivery/confirm">
-            <input type="submit" value="Confirm">
+        <form role="form" method="post" >
+            <input class="button" type="submit" value="Confirm" action="mailDelivery/confirm">
+            <input class="button" type="submit" value="Back" onclick="goBack()">
+
+            <script>
+                function goBack(){
+                    window.history.back();
+                }
+            </script>
         </form>
     </div>
 </div>
