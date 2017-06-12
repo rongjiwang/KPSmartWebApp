@@ -4,7 +4,12 @@ html(lang='en')
         meta(charset='UTF-8')
         title Route Management| KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
-    body
+    body(onload='show()')
+        script.
+            function show() {
+                block = document.getElementById('be');
+                block.style.display = 'block';
+            }
         #nav
             .sidenav
                 #nav-logo

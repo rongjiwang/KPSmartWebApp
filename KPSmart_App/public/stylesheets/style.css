@@ -164,12 +164,11 @@ button:hover span:after {
 
 
 #identifier{
+    margin-top: -1%;
     padding: 5% 5% 20% 5%;
     background-color: #262626;
-    width: 91.5%;
+    width: 91.6%;
     margin-left: -1%;
-
-
 }
 
 .nav-contain{
