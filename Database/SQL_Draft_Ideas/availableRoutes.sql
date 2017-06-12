@@ -10,89 +10,88 @@ CREATE TABLE KPSavailableRoutes (
     companyCostPerGram INT,
     companyCostPerCubicCM INT,
     deliveryType CHAR(20), -- Land/Sea: For "low" priority, Air: For "high" priority
-    active BOOLEAN DEFAULT 'true'
-);
+    active BOOLEAN);
 
 -- some dummy values for all the available routes, as well as their costs:
 
 -----------------------
 --** AKL TO ... **--
 -----------------------
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','HAM',10,5,13,7,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','HAM',15,10,4,7,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','HAM',10,5,13,7,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','HAM',15,10,4,7,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','WEL',20,3,3,7,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','WEL',25,8,13,17,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','WEL',20,3,3,7,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','WEL',25,8,13,17,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','CHC',30,5,35,17,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','CHC',35,10,31,5,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','CHC',30,5,35,17,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','CHC',35,10,31,5,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','DUN',40,15,32,9,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','DUN',45,20,23,17,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','DUN',40,15,32,9,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('AKL','DUN',45,20,23,17,'air',true);
 
 -----------------------
 --** HAM TO ... **--
 -----------------------
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','AKL',17,19,2,7,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','AKL',22,24,13,27,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','AKL',17,19,2,7,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','AKL',22,24,13,27,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','WEL',23,25,32,2,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','WEL',28,30,6,5,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','WEL',23,25,32,2,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','WEL',28,30,6,5,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','CHC',10,5,32,9,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','CHC',15,6,23,7,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','CHC',10,5,32,9,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','CHC',15,6,23,7,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','DUN',14,35,43,67,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','DUN',15,45,23,67,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','DUN',14,35,43,67,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('HAM','DUN',15,45,23,67,'air',true);
 
 
 -----------------------
 --** WEL TO ... **--
 -----------------------
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','AKL',14,35,43,67,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','AKL',15,45,23,67,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','AKL',14,35,43,67,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','AKL',15,45,23,67,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','HAM',10,5,3,7,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','HAM',15,6,23,7,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','HAM',10,5,3,7,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','HAM',15,6,23,7,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','CHC',14,35,43,67,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','CHC',15,45,23,67,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','CHC',14,35,43,67,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','CHC',15,45,23,67,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','DUN',10,5,3,7,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','DUN',15,6,23,7,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','DUN',10,5,3,7,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('WEL','DUN',15,6,23,7,'air',true);
 
 -----------------------
 --** CHC TO ... **--
 -----------------------
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','AKL',17,19,2,7,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','AKL',22,24,13,27,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','AKL',17,19,2,7,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','AKL',22,24,13,27,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','HAM',14,35,43,67,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','HAM',15,45,23,67,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','HAM',14,35,43,67,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','HAM',15,45,23,67,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','WEL',17,19,2,7,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','WEL',22,24,13,27,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','WEL',17,19,2,7,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','WEL',22,24,13,27,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','DUN',10,5,3,7,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','DUN',15,6,23,7,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','DUN',10,5,3,7,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('CHC','DUN',15,6,23,7,'air',true);
 
 -----------------------
 --** DUN TO ... **--
 -----------------------
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','AKL',10,5,3,7,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','AKL',15,6,23,7,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','AKL',10,5,3,7,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','AKL',15,6,23,7,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','HAM',14,35,43,67,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','HAM',15,45,23,67,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','HAM',14,35,43,67,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','HAM',15,45,23,67,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','WEL',10,5,3,7,'land');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','WEL',15,6,23,7,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','WEL',10,5,3,7,'land',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','WEL',15,6,23,7,'air',true);
 
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','CHC',14,35,43,67,'sea');
-INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','CHC',15,45,23,67,'air');
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','CHC',14,35,43,67,'sea',true);
+INSERT INTO KPSavailableRoutes (origin,destination,pricePerGram,pricePerCubicCM,companyCostPerGram,companyCostPerCubicCM,deliveryType,active) VALUES ('DUN','CHC',15,45,23,67,'air',true);
 
 
 SELECT * FROM KPSavailableRoutes;
