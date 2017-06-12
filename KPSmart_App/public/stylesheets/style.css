@@ -165,7 +165,7 @@ button:hover span:after {
     width: 10%;
 }
 
-#parcel-details-cost{
+.parcel-details-cost{
     border-bottom: solid;
 
 }
