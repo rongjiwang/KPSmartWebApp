@@ -3,7 +3,7 @@ html(lang='en')
     head
         meta(charset='UTF-8')
         title Route xx Information | KPSmart
-        link(rel='stylesheet', href='stylesheets/style.css')
+        link(rel='stylesheet', href='../stylesheets/style.css')
     body(onload='show()')
         script.
             function show() {
@@ -14,12 +14,12 @@ html(lang='en')
         #nav
             .sidenav
                 #nav-logo
-                    a(href='welcome', title='KPSmart Home')
-                        img(src='images/logo.png', height='75')
+                    a(href='../welcome', title='KPSmart Home')
+                        img(src='../images/logo.png', height='75')
                 .nav-contain
                     ul#nav-events
                         li
-                            a(href='welcome')
+                            a(href='../welcome')
                                 strong Welcome
                         li#drop(onclick='toggle_visibility()')
                             a(href='#')
@@ -27,13 +27,13 @@ html(lang='en')
                                 span.arrow
                             ul#be
                                 li
-                                    a(href='mailDelivery') Mail Delivery
+                                    a(href='../mailDelivery') Mail Delivery
                                 li
-                                    a(href='priceIpdate') Customer Price Update
+                                    a(href='../priceUpdate') Customer Price Update
                                 li#currenttab
-                                    a(href='transportUpdate') Transport Cost Update
+                                    a(href='../transportCostUpdate') Transport Cost Update
                                 li
-                                    a(href='routeManagement') Route Management
+                                    a(href='../routeManagement') Route Management
                         script(type='text/javascript').
                             function toggle_visibility() {
                                 var e = document.getElementById('be')
@@ -46,42 +46,38 @@ html(lang='en')
                                 }
                             }
                         li
-                            a(href='businessMonitoring')
+                            a(href='../businessMonitoring')
                                 strong Business Monitoring
                         if manager
                             li
-                                a(href='decisionSupport')
+                                a(href='../decisionSupport')
                                     strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
                     if manager
-                        img#m-image(src='images/manager.png')
+                        img#m-image(src='../images/manager.png')
                     else
-                        img#m-image(src='images/clerk.png')
+                        img#m-image(src='../images/clerk.png')
                     br
                     span#m-status
                         i !{signedInUser}
         #body
             #page-title
-                | Route xx Cost Update
+                | Route #{data[0].id} Cost Update
             #content
                 p Please select an element for the cost of this route to maintain.
-                img#page-image(src='images/transport2.png')
+                p(style="color:#008000") #{message}
+                img#page-image(src='../images/transport2.png')
                 br
                 br
-                form#route-price-adj
-                    | Cost per Kilometre ($/km)
-                    br
-                    span.pricing-min
-                        strong - Current Cost: $x:xx/km
-                    input(type='number', placeholder='Price per km')
-                    br
-                    br
+                form#route-price-adj(role="form" method="post" action="/routeCost")
                     |             Cost per Kilogram ($/kg)
                     br
                     span.pricing-min
-                        strong - Current Cost: $x:xx/km
-                    input(type='number', placeholder='Price per kg')
+                        strong - Current Cost: $ #{data[0].cost_per_kg_business}/km
+                    input(type='number', placeholder='Price per kg' name="newPriceKg")
+                    br
+                    br
                     br
                     br
                     |             Cost per Cubic Metre ($/m
@@ -89,8 +85,10 @@ html(lang='en')
                     | )
                     br
                     span.pricing-min
-                        strong - Current Cost: $x:xx/km
-                    input(type='number', placeholder='Price per cubic m')
+                        strong - Current Cost: $ #{data[0].cost_per_volume_business}/km
+                    input(type='number', placeholder='Price per cubic m', name="newPriceVolume")
+                    br
+                    br
                     br
                     br
                     input#submit(type='submit', value='submit', onclick='check()')

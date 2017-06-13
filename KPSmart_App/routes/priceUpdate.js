@@ -6,7 +6,7 @@ var db = require('../db/config');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    db.any('select * from route').then(data => {
+    db.any('select * from route order by id asc').then(data => {
         console.log(data);
         res.render('price-update', {signedInUser: queries.getSignedInUser(), manager: queries.isManager(), data: data});
 

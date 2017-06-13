@@ -376,6 +376,12 @@ input:hover{
 
 }
 
+#data-table td.hover:hover{
+    background-color: #0093c9;
+    color: #FFFFFF;
+
+}
+
 #active-select{
     float: right;
 }

@@ -26,13 +26,13 @@ html(lang='en')
                                 span.arrow
                             ul#be
                                 li
-                                    a(href='mailDelivery') Mail Delivery
+                                    a(href='../mailDelivery') Mail Delivery
                                 li#currenttab
                                     a(href='#') Customer Price Update
                                 li
-                                    a(href='transportCostUpdate') Transport Cost Update
+                                    a(href='../transportCostUpdate') Transport Cost Update
                                 li
-                                    a(href='routeManagement') Route Management
+                                    a(href='../routeManagement') Route Management
                         script(type='text/javascript').
                             function toggle_visibility() {
                                 var e = document.getElementById('be')
@@ -45,10 +45,10 @@ html(lang='en')
                                 }
                             }
                         li
-                            a(href='business-monitoring')
+                            a(href='../business-monitoring')
                                 strong Business Monitoring
                         li#dec-sup-tab
-                            a(href='decision-support')
+                            a(href='../decision-support')
                                 strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
@@ -87,6 +87,7 @@ html(lang='en')
                         td
                             input.trans-filter-drop(list='trans-types', placeholder='Type')
                 br
+
                 table#data-table
                     tr
                         td.table-head
@@ -99,12 +100,17 @@ html(lang='en')
                             strong Transport Firm
                         td.table-head
                             strong Type
-                    tr.hover(onclick="document.location = 'routePrice';")
+                    tr
                         each item in data
-                            td #{item.id}
-                            td #{item.origin}
-                            td #{item.destination}
-                            td #{item.transportfirm}
-                            td #{item.deliverytype}
-                            tr.hover
+                            tr.hover(onclick="_passvalue(#{item.id})")
+                                td #{item.id}
+                                td #{item.origin}
+                                td #{item.destination}
+                                td #{item.transportfirm}
+                                td #{item.deliverytype}
+                        script(type="text/javascript").
+                            function _passvalue(id){
+                                console.log(id);
+                                document.location = 'routePrice/'+id;
+                            }
 
