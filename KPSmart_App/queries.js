@@ -1,6 +1,6 @@
 var signedInUser = '';
 var manager = false;
-var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
+var database = process.env.DATABASE_URL || "postgres://localhost:5432/cameronmclachlan";
 
 
 //---Database connection---
@@ -79,6 +79,80 @@ exports.mailDelivery = function(mail, callback){
     });
 
 }
+
+exports.getAllRoutes = function(callback){
+    pg.connect(database, function (err, client, done) {
+        if (err) {
+            console.error('Could not connect to the database.');
+            console.error(err);
+            callback(err);
+            return;
+        }
+
+        var query = "SELECT * FROM ROUTE;";
+        client.query(query, function (error, result) {
+            done();
+            if (error) {
+                console.error('Failed to execute query.');
+                console.error(error);
+                callback(error)
+                return;
+            }
+            callback(null, result.rows);
+        });
+    });
+}
+
+exports.getBusinessMonitoring = function(callback){
+    pg.connect(database, function (err, client, done) {
+        if (err) {
+            console.error('Could not connect to the database.');
+            console.error(err);
+            callback(err);
+            return;
+        }
+
+        var query1 =
+            "CREATE VIEW revenueAndExpenditure AS ( " +
+            "SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination, " +
+            "m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType, " +
+            "r.cost_per_kg_customer, r.cost_per_volume_customer, " +
+            "r.cost_per_kg_business, r.cost_per_volume_business, " +
+            "m.weight * r.cost_per_kg_customer + m.volume * r.cost_per_volume_customer AS revenue, " +
+            "m.weight * r.cost_per_kg_business + m.volume * r.cost_per_volume_business AS expenditure " +
+            "FROM mail m JOIN route r " +
+            "ON m.route_id = r.id); " +
+            "CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType, SUM (weight * cost_per_kg_customer + volume * cost_per_volume_customer) as total_revenue, " +
+            "SUM (weight * cost_per_kg_business + volume * cost_per_volume_business) as total_expenditure from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType ORDER BY RouteID); " +
+            "CREATE VIEW BusinessMonitoring AS (SELECT * FROM TotalsPerRoute); " +
+            "SELECT * FROM BusinessMonitoring;";
+
+        var query2 = "DROP VIEW revenueAndExpenditure CASCADE;";
+        var r = null;
+        client.query(query1, function (error, result) {
+            done();
+            if (error) {
+                console.error('Failed to execute query query1');
+                console.error(error);
+                callback(error)
+                return;
+            }
+            r = result;
+        });
+        client.query(query2, function (error, result) {
+            done();
+            if (error) {
+                console.error('Failed to execute query query2');
+                console.error(error);
+                callback(error)
+                return;
+            }
+            callback(null, r.rows);
+
+        });
+    });
+}
+
 
 
 
