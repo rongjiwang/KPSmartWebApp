@@ -86,6 +86,10 @@ INSERT INTO Users(Username, Password, Manager) VALUES
 ('Kevin', 'kevin1', true),
 ('Chet', 'chet1', true);
 
+/*
+
+Querries
+
 -- RevenueAndExpenditure Table
 CREATE VIEW revenueAndExpenditure AS (
 SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
@@ -119,10 +123,12 @@ m.send_date, m.arrive_date,
 m.arrive_date - m.send_date AS deliveryTime
 FROM mail m JOIN route r
 ON m.route_id = r.id);
+*/
 
 
 
-SELECT r.origin, r.destination, ROUND(Avg(m.arrive_date - m.send_date),2) AS averageDays  FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.id;
+SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, ROUND(Avg(m.arrive_date - m.send_date),2) AS averageDays
+FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.id;
 
 
 DROP VIEW revenueAndExpenditure CASCADE;

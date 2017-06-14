@@ -105,41 +105,37 @@ html(lang='en')
                             strong Type
                         td
                             strong Average Delivery Time (days)
-                    tr
-                        td Route 1
-                        td Auckland
-                        td Wellington
-                        td Air
-                        td 3
-                    tr
-                        td Route 1
-                        td Auckland
-                        td Wellington
-                        td Air
-                        td 4
-                    tr
-                        td Route 1
-                        td Auckland
-                        td Wellington
-                        td Air
-                        td 3
-                    tr
-                        td Route 1
-                        td Auckland
-                        td Wellington
-                        td Air
-                        td 4
+                    each avg in avgDays
+                        tr
+                            td Route !{avg.routeid}
+                            td !{avg.origin}
+                            td !{avg.destination}
+                            td !{avg.deliverytype}
+                            td !{avg.averagedays}
+                        tr
+
                 script.
+                    var graph = document.getElementById("rev");
+                    var ggraph = document.getElementById("times");
+
+                    // Revenue and Expenditure
                     var r = !{JSON.stringify(routes)};
                     var routeLabels = [];
                     var revenue = [];
                     var expenditure = [];
-                    var graph = document.getElementById("rev");
-                    var ggraph = document.getElementById("times");
                     for(i = 0; i < r.length; i++){
                         routeLabels[i] = 'Route ' + r[i].routeid;
                         revenue[i] = r[i].total_revenue;
                         expenditure[i] = r[i].total_expenditure;
+                    }
+
+                    // Average days
+                    var a = !{JSON.stringify(avgDays)};
+                    var avgDaysLabels = [];
+                    var avgDaysData = [];
+                    for (i = 0; i < a.length; i++) {
+                        avgDaysLabels[i] = 'Route ' + a[i].id;
+                        avgDaysData[i] = a[i].averagedays;
                     }
 
                     var timeChart = new Chart(graph, {
@@ -192,9 +188,7 @@ html(lang='en')
                     var timeChart = new Chart(ggraph, {
                         type: 'bar',
                         data: {
-                            labels: ["Route 1", "Route 2", "Route 3", "Route 4", "Route 5", "Route 6", "Route 7", "Route 8", "Route 9",
-                                "Route 10", "Route 11", "Route 12", "Route 13", "Route 14", "Route 15", "Route 16", "Route 17", "Route 18", "Route 19",
-                                "Route 20", "Route 21", "Route 22", "Route 23", "Route 24", "Route 25", "Route 26",],
+                            labels: avgDaysLabels,
                             datasets: [
                                 {
                                     label: "Average Days Taken",
@@ -214,8 +208,7 @@ html(lang='en')
                                     pointHoverBorderWidth: 2,
                                     pointRadius: 3,
                                     pointHitDetectionRadius: 10,
-                                    data: [5, 5, 4, 3, 5, 3, 4, 4, 5, 7, 4, 3, 7,
-                                        5, 6, 4, 3, 3, 6, 6, 3, 4, 5, 4, 3, 7],
+                                    data: avgDaysData,
                                 }]
                         }
                     });

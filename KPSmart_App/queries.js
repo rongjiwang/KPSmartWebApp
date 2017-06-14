@@ -162,7 +162,9 @@ exports.getBusinessMonitoringB = function(callback){
             return;
         }
 
-        var query = "SELECT * FROM ROUTE;";
+        var query = "SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, " +
+                    "ROUND(Avg(m.arrive_date - m.send_date),0) AS averageDays " +
+                    "FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.id;";
         client.query(query, function (error, result) {
             done();
             if (error) {
