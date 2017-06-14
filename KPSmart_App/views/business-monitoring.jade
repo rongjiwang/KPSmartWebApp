@@ -4,7 +4,7 @@ html(lang='en')
         meta(charset='UTF-8')
         title Business Monitoring | KPSmart
         link(rel='stylesheet', href='stylesheets/style.css')
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js')
+        script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js')
     body
         #nav
             .sidenav
@@ -64,7 +64,7 @@ html(lang='en')
                     | Post Network.
                 h1 Revenue & Expenditure
                 h2 Overview
-                canvas#rev(width='600px' value=#{routes})
+                canvas#rev(width='600px')
                 h2 Metrics
                 table.metrics
                     tr
@@ -130,22 +130,17 @@ html(lang='en')
                         td Air
                         td 4
                 script.
+                    var r = !{JSON.stringify(routes)};
                     var routeLabels = [];
                     var revenue = [];
                     var expenditure = [];
-                    var i = 0;
-                    console.log("hello");
-                    var routes = document.getElementById("rev").value;
-                    console.log(routes[0]);
-
-                     for( route in routes){
-                        routeLabels[i] = "Route " + route.routeid;
-                        revenue[i] = route.total_revenue;
-                        expenditure[i] = route.total_expenditure;
-                        i++;
-                    }
                     var graph = document.getElementById("rev");
                     var ggraph = document.getElementById("times");
+                    for(i = 0; i < r.length; i++){
+                        routeLabels[i] = 'Route ' + r[i].routeid;
+                        revenue[i] = r[i].total_revenue;
+                        expenditure[i] = r[i].total_expenditure;
+                    }
 
                     var timeChart = new Chart(graph, {
                         type: 'bar',
@@ -170,8 +165,7 @@ html(lang='en')
                                     pointHoverBorderWidth: 2,
                                     pointRadius: 3,
                                     pointHitDetectionRadius: 10,
-                                    data: [100, 200, 65, 33, 187, 32, 12, 43, 65, 98, 106, 186, 153,
-                                        153, 186, 106, 98, 65, 43, 12, 32, 187, 33, 65, 200, 100],
+                                    data: revenue,
                                 },
                                 {
                                     label: "Expenditure",
@@ -191,8 +185,7 @@ html(lang='en')
                                     pointHoverBorderWidth: 2,
                                     pointRadius: 3,
                                     pointHitDetectionRadius: 10,
-                                    data: [80, 180, 45, 13, 167, 12, 02, 33, 55, 78, 86, 166, 133,
-                                        153, 166, 86, 78, 45, 23, 02, 52, 177, 33, 55, 90, 80],
+                                    data: expenditure,
                                 }]
                         }
                     });
