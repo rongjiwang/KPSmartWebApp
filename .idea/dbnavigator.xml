@@ -40,8 +40,13 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/mailDeliveryData.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
+    <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/KPSuser.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
+    <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/KPSuser.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
     <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/availableRoutes.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
+    <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/availableRoutes.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
+    <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/mailDeliveryData.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
+    <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/mailDeliveryData.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
+    <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/mailDeliveryData.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
     <mapping file-url="file://$PROJECT_DIR$/Database/SQL_Draft_Ideas/KPSuser.sql" connection-id="e5e9493b-6ec9-4523-a4db-d0150ba877a8" current-schema="information_schema" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
