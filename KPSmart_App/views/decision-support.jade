@@ -8,10 +8,10 @@ html(lang='en')
         #nav
             .sidenav
                 #nav-logo
-                    a(href='welcome', title='KPSmart Home')
+                    a(href='welcome.html', title='KPSmart Home')
                         img(src='images/logo.png', height='75')
                 .nav-contain
-                    ul#nav-events
+                    ul# nav-events
                         li
                             a(href='welcome')
                                 strong Welcome
@@ -32,7 +32,7 @@ html(lang='en')
                             function toggle_visibility() {
                                 var e = document.getElementById('be')
                                 var arr = document.getElementsByClassName('arrow');
-                                if(e.style.display == 'block') {
+                                if (e.style.display == 'block') {
                                     e.style.display = 'none';
                                 }
                                 else {
@@ -40,12 +40,11 @@ html(lang='en')
                                 }
                             }
                         li
-                            a(href='businessMonitoring')
+                            a(href='BusinessMonitoring')
                                 strong Business Monitoring
-                        if manager
-                            li#currenttab
-                                a(href='decisionSupport')
-                                    strong Decision Support
+                        li#currenttab
+                            a(href='#')
+                                strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
                     if manager
@@ -58,44 +57,120 @@ html(lang='en')
         #body
             #page-title
                 | Decision Support
-            #content
-                p Please enter the details for the parcel you would like to send.
-                br
-                br
-                img#page-image(src='images/delivery.png')
-                form
-                    | Parcel ID
-                    br
-                    input(type='text', placeholder='Parcel ID')
-                    br
-                    br
-                    |             Origin
-                    br
-                    input(list='locations', placeholder='Select a Location')
-                    datalist#locations
-                        option(value='Auckland')
-                        option(value='Hamilton')
-                        option(value='Tauranga')
-                        option(value='Napier')
-                        option(value='Taupo')
-                        option(value='New Plymouth')
-                        option(value='Palmerston North')
-                        option(value='Wellington')
-                        option(value='Nelson')
-                        option(value='Chrischurch')
-                        option(value='Dunedin')
-                    br
-                    br
-                    |             Destination
-                    br
-                    input(list='locations', placeholder='Select a Location')
-                    br
-                    br
-                    |             Weight (kg)
-                    span#vol-lab Volume (m3)
-                    br
-                    input#weight(type='number', placeholder='0.1 - 25.0', min='0.1', max='25.0')
-                    input#vol(type='number', placeholder='0.1 - 25.0', min='0.1', max='25.0')
-                    br
-                    br
-                    input#submit(type='submit', value='Submit')
+            #content.business(style='width: 80%')
+                p
+                    | As a Manager, you can compare the Revenue and Expenditure of a range of routes over a selected range of
+                    | calendar days.
+                p
+                    | You can filter your range of Routes to be examined by their Origin, Destination, Transport Firm used,
+                    | and Type of transport (Land, Air, or Sea).
+                table
+                    tr
+                        td
+                            | Begin Date
+                        td
+                            | End Date
+                    tr
+                        td
+                            input(type='date', placeholder='DD/MM/YYYY')
+                        td
+                            input(type='date', placeholder='DD/MM/YYYY')
+                table#trans-filter
+                    tr
+                        td Origin
+                        td Destination
+                        td Transport Firm
+                        td Type
+                    tr
+                        td
+                            input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin')
+                        td
+                            input.trans-filter-drop(list='locations', placeholder='Destination')
+                        td
+                            input.trans-filter-drop(list='firms', placeholder='Firm')
+                        td
+                            input.trans-filter-drop(list='trans-types', placeholder='Type')
+                canvas#decision-chart(style='display: none')
+                script.
+                    var graph = document.getElementById("decision-chart");
+                    var decision = new Chart(graph, {
+                        type: 'line',
+                        data: {
+                            labels: ["Route 1", "Route 2", "Route 3", "Route 4", "Route 5", "Route 6", "Route 7", "Route 8", "Route 9",
+                                "Route 10", "Route 11", "Route 12", "Route 13", "Route 14", "Route 15", "Route 16", "Route 17", "Route 18", "Route 19",
+                                "Route 20", "Route 21", "Route 22", "Route 23", "Route 24", "Route 25", "Route 26",],
+                            datasets: [
+                                {
+                                    label: "Revenue",
+                                    fill: false,
+                                    backgroundColor: "rgba(0,147,201,1)",
+                                    borderColor: "rgba(0,147,201,1)",
+                                    borderCapStyle: 'butt',
+                                    borderDash: [],
+                                    borderDashOffset: 0.0,
+                                    borderJoinStyle: 'miter',
+                                    pointBorderColor: "rgba(0,147,201,1)",
+                                    pointBackgroundColor: "#fff",
+                                    pointBorderWidth: 1,
+                                    pointHoverRadius: 5,
+                                    pointHoverBackgroundColor: "rgba(0,147,201,1)",
+                                    pointHoverBorderColor: "rgba(255,255,255,1)",
+                                    pointHoverBorderWidth: 2,
+                                    pointRadius: 3,
+                                    pointHitDetectionRadius: 10,
+                                    data: [100, 200, 65, 33, 187, 32, 12, 43, 65, 98, 106, 186, 153,
+                                        153, 186, 106, 98, 65, 43, 12, 32, 187, 33, 65, 200, 100],
+                                },
+                                {
+                                    label: "Expenditure",
+                                    fill: false,
+                                    backgroundColor: "rgba(0,76,107,1)",
+                                    borderColor: "rgba(0,147,201,1)",
+                                    borderCapStyle: 'butt',
+                                    borderDash: [],
+                                    borderDashOffset: 0.0,
+                                    borderJoinStyle: 'miter',
+                                    pointBorderColor: "rgba(0,147,201,1)",
+                                    pointBackgroundColor: "#fff",
+                                    pointBorderWidth: 1,
+                                    pointHoverRadius: 5,
+                                    pointHoverBackgroundColor: "rgba(0,147,201,1)",
+                                    pointHoverBorderColor: "rgba(255,255,255,1)",
+                                    pointHoverBorderWidth: 2,
+                                    pointRadius: 3,
+                                    pointHitDetectionRadius: 10,
+                                    data: [80, 180, 45, 13, 167, 12, 02, 33, 55, 78, 86, 166, 133,
+                                        153, 166, 86, 78, 45, 23, 02, 52, 177, 33, 55, 90, 80],
+                                }]
+                        }
+                    });
+                    var timeChart = new Chart(ggraph, {
+                        type: 'bar',
+                        data: {
+                            labels: ["Route 1", "Route 2", "Route 3", "Route 4", "Route 5", "Route 6", "Route 7", "Route 8", "Route 9",
+                                "Route 10", "Route 11", "Route 12", "Route 13", "Route 14", "Route 15", "Route 16", "Route 17", "Route 18", "Route 19",
+                                "Route 20", "Route 21", "Route 22", "Route 23", "Route 24", "Route 25", "Route 26",],
+                            datasets: [
+                                {
+                                    label: "Average Days Taken",
+                                    fill: false,
+                                    backgroundColor: "rgba(0,147,201,1)",
+                                    borderColor: "rgba(0,147,201,1)",
+                                    borderCapStyle: 'butt',
+                                    borderDash: [],
+                                    borderDashOffset: 0.0,
+                                    borderJoinStyle: 'miter',
+                                    pointBorderColor: "rgba(0,147,201,1)",
+                                    pointBackgroundColor: "#fff",
+                                    pointBorderWidth: 1,
+                                    pointHoverRadius: 5,
+                                    pointHoverBackgroundColor: "rgba(0,147,201,1)",
+                                    pointHoverBorderColor: "rgba(255,255,255,1)",
+                                    pointHoverBorderWidth: 2,
+                                    pointRadius: 3,
+                                    pointHitDetectionRadius: 10,
+                                    data: [5, 5, 4, 3, 5, 3, 4, 4, 5, 7, 4, 3, 7,
+                                        5, 6, 4, 3, 3, 6, 6, 3, 4, 5, 4, 3, 7],
+                                }]
+                        }
+                    });

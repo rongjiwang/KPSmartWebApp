@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <title>Decision Support | KPSmart</title>
     <link rel="stylesheet" href="../public/stylesheets/style.css">
-    <link rel="stylesheet" href="/libs/hw.datepicker/hw.datepicker.min.css">
-    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-    <script src="/libs/hw.datepicker/hw.datepicker.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" />
 
 </head>
@@ -82,11 +80,20 @@
         <table>
             <tr>
                 <td>
-                    <input type="text" id="hw_datepicker" />
-                    <button id="hw_datepicker_trigger">pick</button>
+                    Begin Date
                 </td>
-                <td>
 
+                <td>
+                    End Date
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="date" placeholder="DD/MM/YYYY">
+                </td>
+
+                <td>
+                    <input type="date" placeholder="DD/MM/YYYY">
                 </td>
             </tr>
         </table>
@@ -106,26 +113,12 @@
             </tr>
         </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <canvas id="decision-chart" style="display: none"></canvas>
 
         <script>
-            var graph = document.getElementById("rev");
-            var ggraph = document.getElementById("times");
-            var timeChart = new Chart(graph, {
-                type: 'bar',
+            var graph = document.getElementById("decision-chart");
+            var decision = new Chart(graph, {
+                type: 'line',
                 data: {
                     labels: ["Route 1", "Route 2", "Route 3", "Route 4", "Route 5", "Route 6", "Route 7", "Route 8", "Route 9",
                         "Route 10", "Route 11", "Route 12", "Route 13", "Route 14", "Route 15", "Route 16", "Route 17", "Route 18", "Route 19",
