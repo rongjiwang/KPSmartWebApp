@@ -5,7 +5,7 @@ var queries = require('../queries');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    queries.getBusinessMonitoring(function(err, result){
+    queries.getBusinessMonitoringA(function(err, result){
         if(err){
             console.log(err);
         } else {

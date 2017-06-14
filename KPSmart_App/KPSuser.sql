@@ -75,6 +75,10 @@ INSERT INTO MAIL VALUES(
     DEFAULT,25,2,3,current_date,current_date+1,false,2
 );
 
+INSERT INTO MAIL VALUES(
+    DEFAULT,15,2,3,current_date,current_date+5,false,2
+);
+
 INSERT INTO Users(Username, Password, Manager) VALUES
 ('Jian','jian1',true),
 ('Dragos','dragos1', true),
@@ -82,7 +86,7 @@ INSERT INTO Users(Username, Password, Manager) VALUES
 ('Kevin', 'kevin1', true),
 ('Chet', 'chet1', true);
 
--- Business Monitoring Table
+-- RevenueAndExpenditure Table
 CREATE VIEW revenueAndExpenditure AS (
 SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
 m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType,
@@ -98,8 +102,29 @@ SELECT * FROM revenueAndExpenditure;
 CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType, SUM (weight * cost_per_kg_customer + volume * cost_per_volume_customer) as total_revenue,
 SUM (weight * cost_per_kg_business + volume * cost_per_volume_business) as total_expenditure from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType ORDER BY RouteID);
 
-CREATE VIEW BusinessMonitoring AS (SELECT * FROM TotalsPerRoute);
+CREATE VIEW BusinessMonitoringA AS (SELECT * FROM TotalsPerRoute);
 
 select sum(total_revenue) from TotalsPerRoute AS totalRevenue;
 
-SELECT * FROM BusinessMonitoring; -- The table for businessMonitoring
+SELECT * FROM BusinessMonitoringA; -- The table for RevenueAndExpenditure
+
+
+-- AverageDeliveryTimes Table
+SELECT ROUND(Avg(arrive_date - send_date),2) AS averageDays FROM mail;
+
+CREATE VIEW averageDeliveryDays AS (
+SELECT r.id AS RouteID, r.origin AS Origin ,
+r.destination AS Destination, r.deliveryType AS DeliveryType,
+m.send_date, m.arrive_date,
+m.arrive_date - m.send_date AS deliveryTime
+FROM mail m JOIN route r
+ON m.route_id = r.id);
+
+
+
+SELECT r.origin, r.destination, ROUND(Avg(m.arrive_date - m.send_date),2) AS averageDays  FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.id;
+
+
+DROP VIEW revenueAndExpenditure CASCADE;
+
+DROP VIEW averageDeliveryDays CASCADE;

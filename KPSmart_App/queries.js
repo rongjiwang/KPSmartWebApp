@@ -103,7 +103,7 @@ exports.getAllRoutes = function(callback){
     });
 }
 
-exports.getBusinessMonitoring = function(callback){
+exports.getBusinessMonitoringA = function(callback){
     pg.connect(database, function (err, client, done) {
         if (err) {
             console.error('Could not connect to the database.');
@@ -153,7 +153,39 @@ exports.getBusinessMonitoring = function(callback){
     });
 }
 
+exports.getBusinessMonitoringB = function(callback){
+    pg.connect(database, function (err, client, done) {
+        if (err) {
+            console.error('Could not connect to the database.');
+            console.error(err);
+            callback(err);
+            return;
+        }
 
+        var query = "SELECT * FROM ROUTE;";
+        client.query(query, function (error, result) {
+            done();
+            if (error) {
+                console.error('Failed to execute query.');
+                console.error(error);
+                callback(error)
+                return;
+            }
+            callback(null, result.rows);
+        });
+    });
+}
+
+var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+// a and b are javascript Date objects
+exports.dateDiffInDays = function(a, b) {
+    // Discard the time and time-zone information.
+    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+}
 
 
 exports.getDate = function(){
