@@ -96,6 +96,7 @@ router.post('/confirm', function(req, res){
             //console.log('success');
             //console.log(total_cost+' '+_weight+' '+_volume+' '+days+' '+route_id+' '+ _origin+' '+ _dest+' '+ _freight);
             res.render('receipt', {
+                message: 'Mail has been processed!',
                 signedInUser: queries.getSignedInUser(),
                 manager: queries.isManager(),
                 _id:data.id,
