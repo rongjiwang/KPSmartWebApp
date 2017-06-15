@@ -180,11 +180,18 @@ button:hover span:after {
 
 
 #identifier{
-    margin-top: -1%;
+    margin-top: -15%;
     padding: 5% 5% 20% 5%;
     background-color: #262626;
     width: 91.6%;
     margin-left: -1%;
+}
+
+#identifier #logout{
+    text-align: right;
+    padding-left: 0 !important;
+    color: #0093c9;
+
 }
 
 .nav-contain{
