@@ -425,7 +425,7 @@ BEGIN
                     BEGIN
                         -- Finally insert into mail table
                         INSERT INTO MAIL VALUES(
-                            k, cost, weight, volume, send_date, arrive_date, is_arrived, j
+                            k, cost, weight, volume, send_date, arrive_date, is_arrived, i
                         );
                         k := k + 1;
                     END;
@@ -515,6 +515,9 @@ DROP VIEW averageDeliveryDays CASCADE;*/
 
 
 
+--working on this stuff
+/*
+
 CREATE VIEW revenueAndExpenditure AS (
 SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
 m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType,
@@ -542,3 +545,4 @@ SELECT t.origin ,t.destination, t.total_expenditure - t.total_revenue as money_l
 FROM TotalsPerRoute t WHERE t.total_revenue < t.total_expenditure;
 
 DROP VIEW revenueAndExpenditure CASCADE;
+*/

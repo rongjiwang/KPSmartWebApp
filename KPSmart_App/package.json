@@ -1,6 +1,6 @@
 {
   "name": "kpsmart-app",
-  "version": "0.0.0",
+  "version": "6.6.6",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
