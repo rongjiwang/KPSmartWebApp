@@ -197,15 +197,15 @@ button:hover span:after {
 }
 
 #active-parcels{
-    display: none;
+    display: block;
 }
 
 #rev-exp{
-    display: none;
+    display: block;
 }
 
 #av-times{
-    display: none;
+    display: block;
 }
 
 .head-hover:hover{

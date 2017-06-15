@@ -44,6 +44,7 @@ INSERT INTO ROUTE VALUES(
 INSERT INTO ROUTE VALUES(
     DEFAULT,'Wellington','Hamilton',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
 );
+
 INSERT INTO ROUTE VALUES(
     DEFAULT,'Wellington','Rotorua',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
 );
@@ -82,8 +83,6 @@ INSERT INTO ROUTE VALUES(
 INSERT INTO ROUTE VALUES(
     DEFAULT,'Wellington','Dunedin',0.6,0.6,0.4,0.4,'Low','ship',8,'Ship NZ',true
 );
-
-
 
 
 INSERT INTO ROUTE VALUES(
@@ -338,7 +337,8 @@ INSERT INTO ROUTE VALUES(
 
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Dunedin','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+    (DEFAULT,'Dunedin','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true),
+    (DEFAULT,'Dunedin','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true),
 );
 
 INSERT INTO ROUTE VALUES(
@@ -412,6 +412,7 @@ INSERT INTO Users(Username, Password, Manager) VALUES
 ('Chet', 'chet1', true);
 
 
+
 /*
 
 Querries
@@ -454,13 +455,11 @@ ON m.route_id = r.id);
 
 
 SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, ROUND(Avg(m.arrive_date - m.send_date),0) AS averageDays
-FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.id;
+FROM mail m JOIN route r ON m.route_id = r.id WHERE r.is_active = true GROUP BY r.id;
 
-// include routes that havent sent any mail yet
-SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, ROUND(Avg(m.arrive_date - m.send_date),0) AS averageDays
-FROM mail m , route r GROUP BY r.id;
 
 DROP VIEW revenueAndExpenditure CASCADE;
 
 DROP VIEW averageDeliveryDays CASCADE;
 */
+

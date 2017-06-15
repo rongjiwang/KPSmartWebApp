@@ -87,9 +87,9 @@ html(lang='en')
                             td
                             td
 
+                h1.head-hover(onclick='drop("rev-exp")') Revenue & Expenditure
 
                 div#rev-exp
-                    h1.head-hover(onclick='drop("active-parcels")') Revenue & Expenditure
                     h2 Overview
                     canvas#rev(width='600px')
                     h2 Metrics
@@ -116,8 +116,9 @@ html(lang='en')
                                 td !{route.total_revenue}
                                 td !{route.total_expenditure}
                             tr
+                h1.head-hover(onclick='drop("av-times")') Average Delivery Times
                 div#av-times
-                    h1.head-hover(onclick='drop("av-times")') Average Delivery Times
+
                     h2 Overview
                     canvas#times
                     h2 Metrics
@@ -141,7 +142,15 @@ html(lang='en')
                                 td !{avg.deliverytype}
                                 td !{avg.averagedays}
                             tr
-
+                script.
+                    function drop(s) {
+                        var block = document.getElementById(s);
+                        if(block.style.display == 'none'){
+                            block.style.display = 'block';
+                        }else{
+                             block.style.display = 'none';
+                        }
+                    }
                 script.
                     var graph = document.getElementById("rev");
                     var ggraph = document.getElementById("times");
@@ -211,6 +220,15 @@ html(lang='en')
                                     pointHitDetectionRadius: 10,
                                     data: expenditure,
                                 }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
                         }
                     });
                     var timeChart = new Chart(ggraph, {
