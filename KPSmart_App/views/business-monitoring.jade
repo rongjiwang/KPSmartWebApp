@@ -82,25 +82,26 @@ html(lang='en')
                             td
                                 input.trans-filter-drop(list='firms', placeholder='Status')
                     br
-                    table.metrics
-                        tr
-                            td ID
-                            td Origin
-                            td Destination
-                            td Weight
-                            td Volume
-                            td Date Sent
-                            td Status
-                        each mail in mailDeliveries
+                    div#mailTable
+                        table.metrics
                             tr
-                                td Mail !{mail.id}
-                                td !{mail.origin}
-                                td !{mail.destination}
-                                td !{mail.weight}
-                                td !{mail.volume}
-                                td !{queries.formatDate(mail.send_date)}
-                                td !{mail.case}
-                            tr
+                                td ID
+                                td Origin
+                                td Destination
+                                td Weight
+                                td Volume
+                                td Date Sent
+                                td Status
+                            each mail in mailDeliveries
+                                tr
+                                    td Mail !{mail.id}
+                                    td !{mail.origin}
+                                    td !{mail.destination}
+                                    td !{mail.weight}
+                                    td !{mail.volume}
+                                    td !{queries.formatDate(mail.send_date)}
+                                    td !{mail.case}
+                                tr
 
                 h1.head-hover(onclick='drop("rev-exp")') Revenue & Expenditure
 
@@ -108,55 +109,57 @@ html(lang='en')
                     h2 Overview
                     canvas#rev(width='600px')
                     h2 Metrics
-                    table.metrics
-                        tr
-                            td
-                                strong Route
-                            td
-                                strong Origin
-                            td
-                                strong Destination
-                            td
-                                strong Type
-                            td
-                                strong Total Revenue ($)
-                            td
-                                strong Total Expenditure ($)
-                        each route in routes
+                    div#routeTable
+                        table.metrics
                             tr
-                                td Route !{route.routeid}
-                                td !{route.origin}
-                                td !{route.destination}
-                                td !{route.deliverytype}
-                                td !{route.total_revenue}
-                                td !{route.total_expenditure}
-                            tr
+                                td
+                                    strong Route
+                                td
+                                    strong Origin
+                                td
+                                    strong Destination
+                                td
+                                    strong Type
+                                td
+                                    strong Total Revenue ($)
+                                td
+                                    strong Total Expenditure ($)
+                            each route in routes
+                                tr
+                                    td Route !{route.routeid}
+                                    td !{route.origin}
+                                    td !{route.destination}
+                                    td !{route.deliverytype}
+                                    td !{route.total_revenue}
+                                    td !{route.total_expenditure}
+                                tr
                 h1.head-hover(onclick='drop("av-times")') Average Delivery Times
                 div#av-times
 
                     h2 Overview
                     canvas#times
                     h2 Metrics
-                    table.metrics
-                        tr
-                            td
-                                strong Route Name
-                            td
-                                strong Origin
-                            td
-                                strong Destination
-                            td
-                                strong Type
-                            td
-                                strong Avg Delivery Time (days)
-                        each avg in avgDays
+                    div#deliveryTable
+                        table.metrics
                             tr
-                                td Route !{avg.id}
-                                td !{avg.origin}
-                                td !{avg.destination}
-                                td !{avg.deliverytype}
-                                td !{avg.averagedays}
-                            tr
+                                td
+                                    strong Route Name
+                                td
+                                    strong Origin
+                                td
+                                    strong Destination
+                                td
+                                    strong Type
+                                td
+                                    strong Avg Delivery Time (days)
+                            each avg in avgDays
+                                tr
+                                    td Route !{avg.id}
+                                    td !{avg.origin}
+                                    td !{avg.destination}
+                                    td !{avg.deliverytype}
+                                    td !{avg.averagedays}
+                                tr
                 script.
                     function drop(s) {
                         var block = document.getElementById(s);
