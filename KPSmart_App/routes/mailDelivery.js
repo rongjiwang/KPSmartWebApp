@@ -93,7 +93,6 @@ router.post('/', function(req, res) {
 
 
 router.post('/confirm', function(req, res){
-    console.log('Hello!');
     db.one('insert into mail values(default,$1,$2,$3,current_date,current_date+$4,$5,$6) returning *',
         [total_cost,_weight,_volume,days,false,route_id])
         .then(data =>{

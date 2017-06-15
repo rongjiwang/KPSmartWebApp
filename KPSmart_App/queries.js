@@ -67,7 +67,7 @@ exports.getMailDeliveries = function(callback){
 
         var query = "SELECT m.id, r.origin, r.destination, m.weight, m.volume, m.send_date, " +
                     "CASE WHEN current_date < m.arrive_date THEN 'In Transit' ELSE 'Delivered' END " +
-                    "FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.origin, r.destination, m.id;";
+                    "FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.origin, r.destination, m.id ORDER BY m.id;";
 
         client.query(query, function(error, result){
             done();
@@ -167,7 +167,7 @@ exports.getAverageDays = function(callback){
 
         var query = "SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, " +
                     "ROUND(Avg(m.arrive_date - m.send_date),0) AS averageDays " +
-                    "FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.id;";
+                    "FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.id ORDER BY r.id;";
         client.query(query, function (error, result) {
             done();
             if (error) {

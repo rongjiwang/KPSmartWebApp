@@ -17,9 +17,6 @@ router.get('/', function(req, res, next) {
                         if(err){
                             console.log(err);
                         } else {
-                            console.log("A: " + resultA);
-                            console.log("B: " + resultB);
-                            console.log("C: " + resultC);
                             res.render('business-monitoring', {signedInUser: queries.getSignedInUser(), manager: queries.isManager(),
                                                                 routes: resultA, avgDays: resultB, mailDeliveries: resultC, queries: queries});
 

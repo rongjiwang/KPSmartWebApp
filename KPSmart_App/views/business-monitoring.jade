@@ -69,6 +69,19 @@ html(lang='en')
                 // ACTIVE ITEMS AREA
                 h1.head-hover(onclick="drop('mail-deliveries')") Mail Deliveries
                 #mail-deliveries
+                    table#trans-filter
+                        tr
+                            td Origin
+                            td Destination
+                            td Status
+                        tr
+                            td
+                                input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin')
+                            td
+                                input.trans-filter-drop(list='locations', placeholder='Destination')
+                            td
+                                input.trans-filter-drop(list='firms', placeholder='Status')
+                    br
                     table.metrics
                         tr
                             td ID
@@ -138,7 +151,7 @@ html(lang='en')
                                 strong Average Delivery Time (days)
                         each avg in avgDays
                             tr
-                                td Route !{avg.routeid}
+                                td Route !{avg.id}
                                 td !{avg.origin}
                                 td !{avg.destination}
                                 td !{avg.deliverytype}

@@ -36,15 +36,12 @@ CREATE TABLE MAIL(
 
 -- generate a table that shows the company cost per gram and cubic cm, next to each of the mail delivery events:
 
-FOR i IN 1..10 LOOP
-   INSERT INTO MAIL VALUES(
-    DEFAULT,15,2,3,current_date - 5,current_date-2,false,1
-);
-END LOOP;
 
-INSERT INTO MAIL VALUES(
-    DEFAULT,15,2,3,current_date - 5,current_date-2,false,1
-);
+
+
+
+
+
 
 INSERT INTO ROUTE VALUES(
     DEFAULT,'Wellington','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
@@ -395,44 +392,52 @@ INSERT INTO ROUTE VALUES(
 
 
 
+-- Just a small loop to generate some random mail deliveries
+DO
+$do$
+BEGIN
+    DECLARE
+        k integer := 0;
+    BEGIN
+        FOR i IN 1..83 LOOP
+            DECLARE
+                a integer := round((CAST((1 + (random() * 20)) AS numeric)),0);
 
-INSERT INTO MAIL VALUES(
-    DEFAULT,15,2,3,current_date - 5,current_date-2,false,1
-);
+            BEGIN
+                FOR j IN 1..a LOOP
+                    DECLARE
+                        -- Generate a random weight and volume
+                        weight integer := round((CAST((1 + (random() * 6)) AS numeric)),0);
+                        volume integer := round((CAST((1 + (random() * 5) + (weight/2)) AS numeric)),0);
 
-INSERT INTO MAIL VALUES(
-    DEFAULT,15,6,7,current_date,current_date+10,false,1
-);
+                        -- Generate a random send and arrival date
+                        send_date date := current_date - CAST(round((CAST((1 + (random() * 100)) AS numeric)),0)AS integer);
+                        --arrive_date date := send + round((CAST(1 + (random() * 10) AS numeric)),0);
+                        arrive_date date := send_date + CAST(round((CAST((1 + (random() * 10)) AS numeric)),0)AS integer);
+
+                        is_arrived boolean := (arrive_date < current_date);
+
+                        -- Generate a random cost depending on assign kg/volume costs
+                        cost_per_kg_customer numeric := 0.2;
+                        cost_per_volume_customer numeric := 0.3;
+                        cost integer := round((CAST( cost_per_kg_customer * cost_per_volume_customer * weight * volume AS numeric)),0);
+
+                    BEGIN
+                        -- Finally insert into mail table
+                        INSERT INTO MAIL VALUES(
+                            k, cost, weight, volume, send_date, arrive_date, is_arrived, j
+                        );
+                        k := k + 1;
+                    END;
+                END LOOP;
+            END;
+        END LOOP;
+    END;
+
+END
+$do$;
 
 
-INSERT INTO MAIL VALUES(
-    DEFAULT,25,4,2,current_date,current_date+1,false,2
-);
-
-INSERT INTO MAIL VALUES(
-    DEFAULT,15,5,1,current_date,current_date+5,false,2
-);
-
-
-
-
-
-INSERT INTO MAIL VALUES(
-    DEFAULT,15,3,2,current_date - 8,current_date-7,false,3
-);
-
-INSERT INTO MAIL VALUES(
-    DEFAULT,15,7,6,current_date,current_date+8,false,4
-);
-
-
-INSERT INTO MAIL VALUES(
-    DEFAULT,25,2,4,current_date-1,current_date+5,false,4
-);
-
-INSERT INTO MAIL VALUES(
-    DEFAULT,15,1,5,current_date-3,current_date+6,false,4
-);
 
 
 
