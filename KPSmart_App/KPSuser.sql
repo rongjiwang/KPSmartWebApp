@@ -447,11 +447,11 @@ $do$;
 
 
 INSERT INTO Users(Username, Password, Manager) VALUES
-('Jian','jian1',true),
-('Dragos','dragos1', true),
+('Jian','jian1',false),
+('Dragos','dragos1', false),
 ('Cameron', 'cameron1',true),
-('Kevin', 'kevin1', true),
-('Chet', 'chet1', true);
+('Kevin', 'kevin1', false),
+('Chet', 'chet1', false);
 
 
 
@@ -516,7 +516,7 @@ DROP VIEW averageDeliveryDays CASCADE;*/
 
 
 --working on this stuff
-/*
+
 
 CREATE VIEW revenueAndExpenditure AS (
 SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
@@ -527,6 +527,7 @@ m.weight * r.cost_per_kg_customer + m.volume * r.cost_per_volume_customer AS rev
 m.weight * r.cost_per_kg_business + m.volume * r.cost_per_volume_business AS expenditure
 FROM mail m JOIN route r
 ON m.route_id = r.id);
+
 
 SELECT * FROM revenueAndExpenditure;
 
@@ -545,4 +546,4 @@ SELECT t.origin ,t.destination, t.total_expenditure - t.total_revenue as money_l
 FROM TotalsPerRoute t WHERE t.total_revenue < t.total_expenditure;
 
 DROP VIEW revenueAndExpenditure CASCADE;
-*/
+

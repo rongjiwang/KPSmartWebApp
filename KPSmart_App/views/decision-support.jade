@@ -11,7 +11,7 @@ html(lang='en')
                     a(href='welcome.html', title='KPSmart Home')
                         img(src='images/logo.png', height='75')
                 .nav-contain
-                    ul# nav-events
+                    ul#nav-events
                         li
                             a(href='welcome')
                                 strong Welcome
@@ -42,9 +42,10 @@ html(lang='en')
                         li
                             a(href='BusinessMonitoring')
                                 strong Business Monitoring
-                        li#currenttab
-                            a(href='#')
-                                strong Decision Support
+                        if manager
+                            li
+                                a(href='decisionSupport')
+                                    strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
                     if manager

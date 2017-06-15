@@ -47,9 +47,10 @@ html(lang='en')
                         li
                             a(href='../businessMonitoring')
                                 strong Business Monitoring
-                        li#dec-sup-tab
-                            a(href='../decisionSupport')
-                                strong Decision Support
+                        if manager
+                            li
+                                a(href='decisionSupport')
+                                    strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
                     if manager
