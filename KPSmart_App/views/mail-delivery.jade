@@ -3,7 +3,6 @@ html(lang='en')
     head
         meta(charset='UTF-8')
         title Mail Delivery | KPSmart
-        //link(rel='stylesheet', href='library/css/bootstrap.min.css')
         link(rel='stylesheet', href='stylesheets/style.css')
 
         script(type="text/javascript" src="app.js")
@@ -78,17 +77,9 @@ html(lang='en')
                     br
                     input(list='locations', name='origin', placeholder='Select a Location')
                     datalist#locations
-                        option(value='Auckland')
-                        option(value='Hamilton')
-                        option(value='Tauranga')
-                        option(value='Napier')
-                        option(value='Taupo')
-                        option(value='New Plymouth')
-                        option(value='Palmerston North')
-                        option(value='Wellington')
-                        option(value='Nelson')
-                        option(value='Chrischurch')
-                        option(value='Dunedin')
+                        each item in data
+                            option(value='#{item.origin}')
+
                     br
                     br
                     |             Destination

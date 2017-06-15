@@ -39,14 +39,22 @@ INSERT INTO ROUTE VALUES(
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Queens Town',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+    DEFAULT,'Wellington','Hamilton',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
 );
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Hamilton',0.6,0.6,0.3,0.3,'Low','ship',6,'Ship NZ',true
+    DEFAULT,'Wellington','Rotorua',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Tauranga',0.5,0.5,0.2,0.2,'Low','van',3,'Van NZ',true
+    DEFAULT,'Wellington','Palmerston North',0.5,0.5,0.2,0.2,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Christchurch',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Dunedin',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
@@ -54,15 +62,327 @@ INSERT INTO ROUTE VALUES(
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Queens Town',0.6,0.6,0.4,0.4,'Low','ship',7,'Ship NZ',true
+    DEFAULT,'Wellington','Hamilton',0.6,0.6,0.4,0.4,'Low','ship',6,'Ship NZ',true
 );
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Hamilton',0.6,0.6,0.3,0.3,'High','air',6,'Air NZ',true
+    DEFAULT,'Wellington','Rotorua',0.6,0.6,0.3,0.3,'Low','van',2,'Van NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Tauranga',0.5,0.5,0.2,0.2,'High','air',3,'Air NZ',true
+    DEFAULT,'Wellington','Palmerston North',0.5,0.5,0.2,0.2,'Low','van',1,'Van NZ',true
 );
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Christchurch',0.5,0.5,0.3,0.3,'Low','ship',7,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Wellington','Dunedin',0.6,0.6,0.4,0.4,'Low','ship',8,'Ship NZ',true
+);
+
+
+
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Rotorua',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Palmerston North',0.5,0.5,0.2,0.2,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Christchurch',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Dunedin',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Auckland',0.5,0.5,0.3,0.3,'Low','ship',10,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Wellington',0.6,0.6,0.4,0.4,'Low','ship',6,'Ship NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Rotorua',0.6,0.6,0.3,0.3,'Low','ship',7,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Palmerston North',0.5,0.5,0.2,0.2,'Low','ship',6,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Christchurch',0.5,0.5,0.3,0.3,'Low','van',3,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Hamilton','Dunedin',0.6,0.6,0.4,0.4,'Low','van',2,'Van NZ',true
+);
+
+
+
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Hamilton',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Rotorua',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Palmerston North',0.5,0.5,0.2,0.2,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Christchurch',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Dunedin',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Hamilton',0.5,0.5,0.3,0.3,'Low','ship',10,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Wellington',0.6,0.6,0.4,0.4,'Low','van',3,'Van NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Rotorua',0.6,0.6,0.3,0.3,'Low','van',3,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Palmerston North',0.5,0.5,0.2,0.2,'Low','van',4,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Christchurch',0.5,0.5,0.3,0.3,'Low','ship',10,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Auckland','Dunedin',0.6,0.6,0.4,0.4,'Low','ship',11,'Ship NZ',true
+);
+
+
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Hamilton',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Auckland',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Palmerston North',0.5,0.5,0.2,0.2,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Christchurch',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Dunedin',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Hamilton',0.5,0.5,0.3,0.3,'Low','ship',8,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Wellington',0.6,0.6,0.4,0.4,'Low','van',2,'Van NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Auckland',0.6,0.6,0.3,0.3,'Low','van',2,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Palmerston North',0.5,0.5,0.2,0.2,'Low','van',4,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Christchurch',0.5,0.5,0.3,0.3,'Low','ship',10,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Rotorua','Dunedin',0.6,0.6,0.4,0.4,'Low','ship',11,'Ship NZ',true
+);
+
+
+
+
+
+
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Hamilton',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Auckland',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Rotorua',0.5,0.5,0.2,0.2,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Christchurch',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Dunedin',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Hamilton',0.5,0.5,0.3,0.3,'Low','ship',8,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Wellington',0.6,0.6,0.4,0.4,'Low','van',1,'Van NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Auckland',0.6,0.6,0.3,0.3,'Low','van',2,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Rotorua',0.5,0.5,0.2,0.2,'Low','van',2,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Christchurch',0.5,0.5,0.3,0.3,'Low','ship',10,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Palmerston North','Dunedin',0.6,0.6,0.4,0.4,'Low','ship',11,'Ship NZ',true
+);
+
+
+
+
+
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Rotorua',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Palmerston North',0.5,0.5,0.2,0.2,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Hamilton',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Dunedin',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Auckland',0.5,0.5,0.3,0.3,'Low','ship',10,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Wellington',0.6,0.6,0.4,0.4,'Low','ship',6,'Ship NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Rotorua',0.6,0.6,0.3,0.3,'Low','ship',7,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Palmerston North',0.5,0.5,0.2,0.2,'Low','ship',6,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Hamilton',0.5,0.5,0.3,0.3,'Low','van',3,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Christchurch','Dunedin',0.6,0.6,0.4,0.4,'Low','van',2,'Van NZ',true
+);
+
+
+
+
+
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Rotorua',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Palmerston North',0.5,0.5,0.2,0.2,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Hamilton',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Christchurch',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Auckland',0.5,0.5,0.3,0.3,'Low','ship',10,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Wellington',0.6,0.6,0.4,0.4,'Low','ship',6,'Ship NZ',true
+);
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Rotorua',0.6,0.6,0.3,0.3,'Low','ship',7,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Palmerston North',0.5,0.5,0.2,0.2,'Low','ship',6,'Ship NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Hamilton',0.5,0.5,0.3,0.3,'Low','van',3,'Van NZ',true
+);
+
+INSERT INTO ROUTE VALUES(
+    DEFAULT,'Dunedin','Christchurch',0.6,0.6,0.4,0.4,'Low','van',2,'Van NZ',true
+);
+
+
+
+
 
 INSERT INTO MAIL VALUES(
     DEFAULT,15,2,3,current_date,current_date+3,false,1

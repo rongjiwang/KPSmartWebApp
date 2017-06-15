@@ -7,7 +7,13 @@ var db = require('../db/config');
 var total_cost = 0,_weight = 0,_volume = 0,days = 0,route_id = -1, _origin ='', _dest = '', _freight = '', _company='';
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('mail-delivery', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
+    db.any('select Distinct route.origin from route where is_active=$1',[true]).then(data => {
+        //console.log(data);
+        res.render('mail-delivery', {signedInUser: queries.getSignedInUser(), manager: queries.isManager(), data:data});
+
+    }).catch(error => {
+        console.log('Error: ' + error);
+    });
 });
 
 
@@ -82,8 +88,6 @@ router.post('/', function(req, res) {
                 res.render('mail-delivery',
                     {message:'Please, Choose the locations from options, try again.'});
             });
-        //todo show the route is disabled, show the common transaction route
-        //todo if success, then add mail to the mail list, show in green success message
     }
 });
 
