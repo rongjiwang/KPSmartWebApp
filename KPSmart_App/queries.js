@@ -56,7 +56,7 @@ exports.login = function(username, password, callback){
     });
 }
 
-exports.mailDelivery = function(mail, callback){
+exports.getMailDeliveries = function(callback){
     pg.connect(database, function (err, client, done) {
         if (err) {
             console.error('Could not connect to the database.');
@@ -64,7 +64,10 @@ exports.mailDelivery = function(mail, callback){
             callback(err);
             return;
         }
-        var query = '';
+
+        var query = "SELECT m.id, r.origin, r.destination, m.weight, m.volume, m.send_date, " +
+                    "CASE WHEN current_date < m.arrive_date THEN 'In Transit' ELSE 'Delivered' END " +
+                    "FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.origin, r.destination, m.id;";
 
         client.query(query, function(error, result){
             done();
@@ -74,7 +77,7 @@ exports.mailDelivery = function(mail, callback){
                 callback(err);
                 return;
             }
-            callback(null);
+            callback(null, result.rows);
         });
     });
 
@@ -103,7 +106,7 @@ exports.getAllRoutes = function(callback){
     });
 }
 
-exports.getBusinessMonitoringA = function(callback){
+exports.getRevenueAndExpenditure = function(callback){
     pg.connect(database, function (err, client, done) {
         if (err) {
             console.error('Could not connect to the database.');
@@ -153,7 +156,7 @@ exports.getBusinessMonitoringA = function(callback){
     });
 }
 
-exports.getBusinessMonitoringB = function(callback){
+exports.getAverageDays = function(callback){
     pg.connect(database, function (err, client, done) {
         if (err) {
             console.error('Could not connect to the database.');
@@ -193,4 +196,19 @@ exports.getDate = function(){
     }
     var today = dd+'/'+mm+'/'+yyyy;
     return today;
+}
+
+exports.formatDate = function(date){
+    var dd = date.getDate();
+    var mm = date.getMonth()+1; //January is 0!
+
+    var yyyy = date.getFullYear();
+    if(dd<10){
+        dd='0'+dd;
+    }
+    if(mm<10){
+        mm='0'+mm;
+    }
+    var formattedDate = dd+'/'+mm+'/'+yyyy;
+    return formattedDate;
 }

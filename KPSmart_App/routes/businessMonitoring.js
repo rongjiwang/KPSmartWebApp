@@ -5,22 +5,34 @@ var queries = require('../queries');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    queries.getBusinessMonitoringA(function(err, resultA){
+    queries.getRevenueAndExpenditure(function(err, resultA){
         if(err){
             console.log(err);
         } else {
-            queries.getBusinessMonitoringB(function(err, resultB){
+            queries.getAverageDays(function(err, resultB){
                 if(err){
                     console.log(err);
                 } else {
-                    console.log("A: " + resultA);
-                    console.log("B: " + resultB);
+                    queries.getMailDeliveries(function(err, resultC){
+                        if(err){
+                            console.log(err);
+                        } else {
+                            console.log("A: " + resultA);
+                            console.log("B: " + resultB);
+                            console.log("C: " + resultC);
+                            res.render('business-monitoring', {signedInUser: queries.getSignedInUser(), manager: queries.isManager(),
+                                                                routes: resultA, avgDays: resultB, mailDeliveries: resultC, queries: queries});
 
-                    res.render('business-monitoring', {signedInUser: queries.getSignedInUser(), manager: queries.isManager(), routes: resultA, avgDays: resultB});
+                        }
+
+                    });
                 }
+
             });
         }
     });
 });
+
+
 
 module.exports = router;

@@ -67,25 +67,27 @@ html(lang='en')
                 p
                     | Select a heading to display the Business Information.
                 // ACTIVE ITEMS AREA
-                h1.head-hover(onclick="drop('active-parcels')") Active Parcels
-                #active-parcels
+                h1.head-hover(onclick="drop('mail-deliveries')") Mail Deliveries
+                #mail-deliveries
                     table.metrics
                         tr
-                            td ParcelID
+                            td ID
                             td Origin
                             td Destination
                             td Weight
                             td Volume
                             td Date Sent
                             td Status
-                        tr
-                            td
-                            td
-                            td
-                            td
-                            td
-                            td
-                            td
+                        each mail in mailDeliveries
+                            tr
+                                td Mail !{mail.id}
+                                td !{mail.origin}
+                                td !{mail.destination}
+                                td !{mail.weight}
+                                td !{mail.volume}
+                                td !{queries.formatDate(mail.send_date)}
+                                td !{mail.case}
+                            tr
 
                 h1.head-hover(onclick='drop("rev-exp")') Revenue & Expenditure
 

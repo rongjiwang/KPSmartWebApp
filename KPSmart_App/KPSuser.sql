@@ -36,6 +36,15 @@ CREATE TABLE MAIL(
 
 -- generate a table that shows the company cost per gram and cubic cm, next to each of the mail delivery events:
 
+FOR i IN 1..10 LOOP
+   INSERT INTO MAIL VALUES(
+    DEFAULT,15,2,3,current_date - 5,current_date-2,false,1
+);
+END LOOP;
+
+INSERT INTO MAIL VALUES(
+    DEFAULT,15,2,3,current_date - 5,current_date-2,false,1
+);
 
 INSERT INTO ROUTE VALUES(
     DEFAULT,'Wellington','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
@@ -388,21 +397,49 @@ INSERT INTO ROUTE VALUES(
 
 
 INSERT INTO MAIL VALUES(
-    DEFAULT,15,2,3,current_date,current_date+3,false,1
+    DEFAULT,15,2,3,current_date - 5,current_date-2,false,1
 );
 
 INSERT INTO MAIL VALUES(
-    DEFAULT,15,2,3,current_date,current_date+10,false,1
+    DEFAULT,15,6,7,current_date,current_date+10,false,1
 );
 
 
 INSERT INTO MAIL VALUES(
-    DEFAULT,25,2,3,current_date,current_date+1,false,2
+    DEFAULT,25,4,2,current_date,current_date+1,false,2
 );
 
 INSERT INTO MAIL VALUES(
-    DEFAULT,15,2,3,current_date,current_date+5,false,2
+    DEFAULT,15,5,1,current_date,current_date+5,false,2
 );
+
+
+
+
+
+INSERT INTO MAIL VALUES(
+    DEFAULT,15,3,2,current_date - 8,current_date-7,false,3
+);
+
+INSERT INTO MAIL VALUES(
+    DEFAULT,15,7,6,current_date,current_date+8,false,4
+);
+
+
+INSERT INTO MAIL VALUES(
+    DEFAULT,25,2,4,current_date-1,current_date+5,false,4
+);
+
+INSERT INTO MAIL VALUES(
+    DEFAULT,15,1,5,current_date-3,current_date+6,false,4
+);
+
+
+
+
+
+
+
 
 INSERT INTO Users(Username, Password, Manager) VALUES
 ('Jian','jian1',true),
@@ -413,8 +450,9 @@ INSERT INTO Users(Username, Password, Manager) VALUES
 
 
 
-/*
 
+
+/*
 Querries
 
 -- RevenueAndExpenditure Table
@@ -453,13 +491,15 @@ ON m.route_id = r.id);
 
 
 
-
+-- Average Days
 SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, ROUND(Avg(m.arrive_date - m.send_date),0) AS averageDays
 FROM mail m JOIN route r ON m.route_id = r.id WHERE r.is_active = true GROUP BY r.id;
 
+-- Business Monitoring Mail Delivery
+SELECT m.id, r.origin, r.destination, m.weight, m.volume, m.send_date,
+CASE WHEN current_date < m.arrive_date THEN 'In Transit' ELSE 'Delivered' END
+FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.origin, r.destination, m.id;
 
 DROP VIEW revenueAndExpenditure CASCADE;
 
-DROP VIEW averageDeliveryDays CASCADE;
-*/
-
+DROP VIEW averageDeliveryDays CASCADE;*/
