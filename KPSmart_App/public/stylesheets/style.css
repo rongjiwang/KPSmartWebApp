@@ -448,6 +448,7 @@ input:hover{
     height: 200px;
     width: 650px;
     overflow-y: scroll;
+    display: block;
 }
 
 
@@ -455,13 +456,14 @@ input:hover{
     height: 200px;
     overflow-y: scroll;
     width: 650px;
-
+    display: block;
 }
 
 #routeTable{
     height: 200px;
     overflow-y: scroll;
     width: 650px;
+    display: block;
 
 }
 
