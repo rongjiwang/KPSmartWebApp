@@ -44,7 +44,7 @@ html(lang='en')
                             a(href='#')
                                 strong Business Monitoring
                         li#dec-sup-tab
-                            a(href='#')
+                            a(href='decisionSupport')
                                 strong Decision Support
                 #identifier
                     | Logged in as !{signedInUser}
@@ -148,7 +148,7 @@ html(lang='en')
                             td
                                 strong Type
                             td
-                                strong Average Delivery Time (days)
+                                strong Avg Delivery Time (days)
                         each avg in avgDays
                             tr
                                 td Route !{avg.id}

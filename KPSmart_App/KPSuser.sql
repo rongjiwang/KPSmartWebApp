@@ -483,6 +483,7 @@ select sum(total_revenue) from TotalsPerRoute AS totalRevenue;
 SELECT * FROM BusinessMonitoringA; -- The table for RevenueAndExpenditure
 
 
+
 -- AverageDeliveryTimes Table
 SELECT ROUND(Avg(arrive_date - send_date),2) AS averageDays FROM mail;
 
@@ -508,3 +509,36 @@ FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.origin, r.destination, 
 DROP VIEW revenueAndExpenditure CASCADE;
 
 DROP VIEW averageDeliveryDays CASCADE;*/
+
+
+
+
+
+
+CREATE VIEW revenueAndExpenditure AS (
+SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
+m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType,
+r.cost_per_kg_customer, r.cost_per_volume_customer,
+r.cost_per_kg_business, r.cost_per_volume_business,
+m.weight * r.cost_per_kg_customer + m.volume * r.cost_per_volume_customer AS revenue,
+m.weight * r.cost_per_kg_business + m.volume * r.cost_per_volume_business AS expenditure
+FROM mail m JOIN route r
+ON m.route_id = r.id);
+
+SELECT * FROM revenueAndExpenditure;
+
+CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType, SUM (weight * cost_per_kg_customer + volume * cost_per_volume_customer) as total_revenue,
+SUM (weight * cost_per_kg_business + volume * cost_per_volume_business) as total_expenditure from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType ORDER BY RouteID);
+
+CREATE VIEW BusinessMonitoringA AS (SELECT * FROM TotalsPerRoute);
+
+select sum(total_revenue) from TotalsPerRoute AS totalRevenue;
+
+SELECT * FROM BusinessMonitoringA; -- The table for RevenueAndExpenditure
+
+SELECT * FROM BussinessMonitoring
+
+SELECT t.origin ,t.destination, t.total_expenditure - t.total_revenue as money_lost
+FROM TotalsPerRoute t WHERE t.total_revenue < t.total_expenditure;
+
+DROP VIEW revenueAndExpenditure CASCADE;
