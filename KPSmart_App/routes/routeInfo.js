@@ -29,8 +29,10 @@ router.post('/', function (req, res, next) {
         .then(() => {
             db.any('select * from route where id=$1', [id]).then(data => {
                     res.render('route-info', {
-                        signedInUser: queries.getSignedInUser()
-                        , manager: queries.isManager(), data: data, message: 'Route availability update successful!'
+                        signedInUser: queries.getSignedInUser(),
+                        manager: queries.isManager(),
+                        data: data,
+                        message: 'Route availability update successful!'
                     });
                 }
             ).catch(error => {

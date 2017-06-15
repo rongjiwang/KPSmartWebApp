@@ -343,8 +343,7 @@ INSERT INTO ROUTE VALUES(
 
 
 INSERT INTO ROUTE VALUES(
-    (DEFAULT,'Dunedin','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true),
-    (DEFAULT,'Dunedin','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true),
+    DEFAULT,'Dunedin','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
 );
 
 INSERT INTO ROUTE VALUES(

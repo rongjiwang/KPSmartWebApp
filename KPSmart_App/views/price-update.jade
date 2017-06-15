@@ -28,7 +28,7 @@ html(lang='en')
                                 li
                                     a(href='../mailDelivery') Mail Delivery
                                 li#currenttab
-                                    a(href='#') Customer Price Update
+                                    a(href='/priceUpdate') Customer Price Update
                                 li
                                     a(href='../transportCostUpdate') Transport Cost Update
                                 li
@@ -73,6 +73,7 @@ html(lang='en')
                 p You may also select the list from the table below.
                 img#page-image(src='images/coin.png')
                 p Filter your results &nbsp
+                p(style="color:red") #{message}
                 br
                 table#trans-filter
                     tr
@@ -89,7 +90,7 @@ html(lang='en')
                                 each item in _location
                                     option(value='#{item}')
                         td
-                            input.trans-filter-drop(list='locations', placeholder='Destination', name='dist')
+                            input.trans-filter-drop(list='locations', placeholder='Destination', name='dest')
 
                         td
                             input.trans-filter-drop(list='firms', placeholder='Firm', name='firm')
@@ -126,7 +127,6 @@ html(lang='en')
                                 td #{item.deliverytype}
                         script(type="text/javascript").
                             function _passvalue(id){
-                                console.log(id);
                                 document.location = 'routePrice/'+id;
                             }
 
