@@ -379,6 +379,9 @@ input:hover{
     background-color: #FFFFFF;
     color: black;
     width: 100%;
+    height: 100px;
+    overflow-y: scroll;
+    display: block;
 }
 #data-table td{
     border: none;
@@ -424,6 +427,14 @@ input:hover{
     background-color: #FFFFFF;
     color: black;
     width: 650px;
+    height: 200px;
+    display: block;
+    overflow-y: scroll;
+
+}
+
+.metrics td{
+    padding-right: 20px;
 }
 
 #times{
