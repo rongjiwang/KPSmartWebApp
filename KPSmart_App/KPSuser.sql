@@ -72,6 +72,11 @@ INSERT INTO MAIL VALUES(
 );
 
 INSERT INTO MAIL VALUES(
+    DEFAULT,15,2,3,current_date,current_date+10,false,1
+);
+
+
+INSERT INTO MAIL VALUES(
     DEFAULT,25,2,3,current_date,current_date+1,false,2
 );
 
@@ -85,6 +90,7 @@ INSERT INTO Users(Username, Password, Manager) VALUES
 ('Cameron', 'cameron1',true),
 ('Kevin', 'kevin1', true),
 ('Chet', 'chet1', true);
+
 
 /*
 
@@ -123,14 +129,18 @@ m.send_date, m.arrive_date,
 m.arrive_date - m.send_date AS deliveryTime
 FROM mail m JOIN route r
 ON m.route_id = r.id);
-*/
 
 
 
-SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, ROUND(Avg(m.arrive_date - m.send_date),2) AS averageDays
+
+SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, ROUND(Avg(m.arrive_date - m.send_date),0) AS averageDays
 FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.id;
 
+// include routes that havent sent any mail yet
+SELECT r.id, r.origin, r.destination,r.deliveryType AS DeliveryType, ROUND(Avg(m.arrive_date - m.send_date),0) AS averageDays
+FROM mail m , route r GROUP BY r.id;
 
 DROP VIEW revenueAndExpenditure CASCADE;
 
 DROP VIEW averageDeliveryDays CASCADE;
+*/

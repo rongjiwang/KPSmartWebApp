@@ -180,11 +180,13 @@ button:hover span:after {
 
 
 #identifier{
-    margin-top: -15%;
+    margin-top: -5%;
     padding: 5% 5% 20% 5%;
     background-color: #262626;
-    width: 91.6%;
+    width: 90%;
     margin-left: -1%;
+    border-left: solid #000000;
+    border-right: solid #000000;
 }
 
 #identifier #logout{
