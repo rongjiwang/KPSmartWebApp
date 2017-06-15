@@ -17,22 +17,27 @@ pg.connect(database, function (err) {
 });
 
 /* GET index page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     res.render('index');
 });
 
 
 /* POST login page */
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
 
-    queries.login(username, password, function(err, result){
+    queries.login(username, password, function (err, result) {
 
-        if(err){
-            res.render('index', {message: 'Incorrect Username or Password'});
+        if (err) {
+            res.render('index', {
+                message: 'Incorrect Username or Password'
+            });
         } else {
-            res.render('welcome', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
+            res.render('welcome', {
+                signedInUser: queries.getSignedInUser(),
+                manager: queries.isManager()
+            });
         }
     });
 });

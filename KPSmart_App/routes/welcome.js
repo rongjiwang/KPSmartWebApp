@@ -4,7 +4,7 @@ var queries = require('../queries');
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     res.render('welcome', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
 });
 
