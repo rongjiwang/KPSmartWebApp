@@ -66,6 +66,9 @@ html(lang='en')
                 p
                     | You can filter your range of Routes to be examined by their Origin, Destination, Transport Firm used,
                     | and Type of transport (Land, Air, or Sea).
+                p
+                    | You may also view a list of all the Critical Routes on the KPS Network at the bottom of the page.
+                h1 Insights
                 table
                     tr
                         td
@@ -92,7 +95,8 @@ html(lang='en')
                             input.trans-filter-drop(list='firms', placeholder='Firm')
                         td
                             input.trans-filter-drop(list='trans-types', placeholder='Type')
-                table
+                br
+                table.metrics
                     tr
                         td Route ID
                         td Origin
@@ -115,5 +119,16 @@ html(lang='en')
                         td
                         td
                         td
-
-                
+                br
+                br
+                h1 Critical Routes
+                p
+                    | The Kelburn Post Service manages a range of Routes on its network, some of which yield less
+                    | income than they cost. These Critical Routes can be seen below.
+                table.metrics
+                    tr
+                        td RouteID
+                        td Origin
+                        td Destination
+                        td Average Cost ($)
+                        td Average Price ($)
