@@ -194,6 +194,22 @@ button:hover span:after {
 
 }
 
+#active-parcels{
+    display: none;
+}
+
+#rev-exp{
+    display: none;
+}
+
+#av-times{
+    display: none;
+}
+
+.head-hover:hover{
+    color: #0093c9;
+}
+
 .nav-contain{
     height: 77%;
 }

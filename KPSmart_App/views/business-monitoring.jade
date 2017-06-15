@@ -64,57 +64,83 @@ html(lang='en')
                 p
                     | From this page you can monitor the Revenue, Expenditure, and Average Delivery Times for each route on the Kelburn
                     | Post Network.
-                h1 Revenue & Expenditure
-                h2 Overview
-                canvas#rev(width='600px')
-                h2 Metrics
-                table.metrics
-                    tr
-                        td
-                            strong Route
-                        td
-                            strong Origin
-                        td
-                            strong Destination
-                        td
-                            strong Type
-                        td
-                            strong Total Revenue ($)
-                        td
-                            strong Total Expenditure ($)
-                    each route in routes
+                p
+                    | Select a heading to display the Business Information.
+                // ACTIVE ITEMS AREA
+                h1.head-hover(onclick="drop('active-parcels')") Active Parcels
+                #active-parcels
+                    table.metrics
                         tr
-                            td Route !{route.routeid}
-                            td !{route.origin}
-                            td !{route.destination}
-                            td !{route.deliverytype}
-                            td !{route.total_revenue}
-                            td !{route.total_expenditure}
+                            td ParcelID
+                            td Origin
+                            td Destination
+                            td Weight
+                            td Volume
+                            td Date Sent
+                            td Status
                         tr
-                h1 Average Delivery Times
-                h2 Overview
-                canvas#times
-                h2 Metrics
-                table.metrics
-                    tr
-                        td
-                            strong Route Name
-                        td
-                            strong Origin
-                        td
-                            strong Destination
-                        td
-                            strong Type
-                        td
-                            strong Average Delivery Time (days)
-                    each avg in avgDays
+                            td
+                            td
+                            td
+                            td
+                            td
+                            td
+                            td
+
+
+                div#rev-exp
+                    h1.head-hover(onclick='drop("active-parcels")') Revenue & Expenditure
+                    h2 Overview
+                    canvas#rev(width='600px')
+                    h2 Metrics
+                    table.metrics
                         tr
-                            td Route !{avg.routeid}
-                            td !{avg.origin}
-                            td !{avg.destination}
-                            td !{avg.deliverytype}
-                            td !{avg.averagedays}
+                            td
+                                strong Route
+                            td
+                                strong Origin
+                            td
+                                strong Destination
+                            td
+                                strong Type
+                            td
+                                strong Total Revenue ($)
+                            td
+                                strong Total Expenditure ($)
+                        each route in routes
+                            tr
+                                td Route !{route.routeid}
+                                td !{route.origin}
+                                td !{route.destination}
+                                td !{route.deliverytype}
+                                td !{route.total_revenue}
+                                td !{route.total_expenditure}
+                            tr
+                div#av-times
+                    h1.head-hover(onclick='drop("av-times")') Average Delivery Times
+                    h2 Overview
+                    canvas#times
+                    h2 Metrics
+                    table.metrics
                         tr
+                            td
+                                strong Route Name
+                            td
+                                strong Origin
+                            td
+                                strong Destination
+                            td
+                                strong Type
+                            td
+                                strong Average Delivery Time (days)
+                        each avg in avgDays
+                            tr
+                                td Route !{avg.routeid}
+                                td !{avg.origin}
+                                td !{avg.destination}
+                                td !{avg.deliverytype}
+                                td !{avg.averagedays}
+                            tr
 
                 script.
                     var graph = document.getElementById("rev");
@@ -212,5 +238,14 @@ html(lang='en')
                                     pointHitDetectionRadius: 10,
                                     data: avgDaysData,
                                 }]
+                        },
+                        options:{
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
                         }
                     });
