@@ -79,15 +79,28 @@ html(lang='en')
                         td Destination
                         td Transport Firm
                         td Type
+
                     tr
+                    form( action="/priceUpdate" method="post")
                         td
-                            input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin')
+                            input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin', name='origin')
+                            datalist#locations
+                                each item in _location
+                                    option(value='#{item}')
                         td
-                            input.trans-filter-drop(list='locations', placeholder='Destination')
+                            input.trans-filter-drop(list='locations', placeholder='Destination', name='dist')
+
                         td
-                            input.trans-filter-drop(list='firms', placeholder='Firm')
+                            input.trans-filter-drop(list='firms', placeholder='Firm', name='firm')
+                            datalist#firms
+                                each item in _firm
+                                    option(value='#{item}')
                         td
-                            input.trans-filter-drop(list='trans-types', placeholder='Type')
+                            input.trans-filter-drop(list='types', placeholder='Type', name='type')
+                            datalist#types
+                                each item in _type
+                                    option(value='#{item}')
+                            input(type="submit" style="display: none")
                 br
 
                 table#data-table
