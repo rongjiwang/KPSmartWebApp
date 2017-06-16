@@ -1,7 +1,5 @@
 var signedInUser = '';
 var manager = false;
-//var database = process.env.DATABASE_URL || "postgres://localhost:5432/cameronmclachlan";
-
 
 //---Database connection---
 var pg = require('pg');
@@ -261,7 +259,7 @@ exports.getDate = function(){
 exports.formatDate = function(date){
     console.log(date);
     var dd = date.getDate();
-    var mm = date.getMonth()+1; //January is 0!
+    var mm = date.getMonth()+1;
 
     var yyyy = date.getFullYear();
     if(dd<10){

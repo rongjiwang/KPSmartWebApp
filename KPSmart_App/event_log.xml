@@ -17,6 +17,36 @@
     <is_arrived>false</is_arrived>
     <route_id>17</route_id>
   </mail>
+  <mail>
+    <id>900</id>
+    <cost>4.859999999999999</cost>
+    <weight>4.5</weight>
+    <volume>3</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Sun Jun 18 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>15</route_id>
+  </mail>
+  <mail>
+    <id>901</id>
+    <cost>0.41324999999999995</cost>
+    <weight>2.9</weight>
+    <volume>0.57</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Thu Jun 29 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>67</route_id>
+  </mail>
+  <mail>
+    <id>902</id>
+    <cost>0.41324999999999995</cost>
+    <weight>2.9</weight>
+    <volume>0.57</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Thu Jun 29 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>67</route_id>
+  </mail>
   <discontinue>
     <id>4</id>
   </discontinue>
