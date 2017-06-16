@@ -65,9 +65,8 @@ exports.getMailDeliveries = function(callback){
             return;
         }
 
-        var query = "SELECT m.id, r.origin, r.destination, m.weight, m.volume, m.send_date, " +
-                    "CASE WHEN current_date < m.arrive_date THEN 'In Transit' ELSE 'Delivered' END " +
-                    "FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.origin, r.destination, m.id ORDER BY m.id;";
+        var query = "SELECT m.id, r.origin, r.destination, m.weight, m.volume, m.send_date, m.is_arrived " +
+                    "FROM mail m JOIN route r ON m.route_id = r.id GROUP BY r.origin, r.destination, m.id;";
 
         client.query(query, function(error, result){
             done();

@@ -417,7 +417,7 @@ input:hover{
 
 #rev{
     background-color: #FFFFFF;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px;
     border: solid;
     border-color: #0093c9;
 }
@@ -435,7 +435,7 @@ input:hover{
 }
 
 .metrics td{
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 #times{

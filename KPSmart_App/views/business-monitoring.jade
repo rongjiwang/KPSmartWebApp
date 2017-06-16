@@ -113,7 +113,10 @@ html(lang='en')
                                     td !{mail.weight}
                                     td !{mail.volume}
                                     td !{queries.formatDate(mail.send_date)}
-                                    td !{mail.case}
+                                    if mail.is_arrived
+                                        td Delivered
+                                    else
+                                        td In Transit
                                 tr
 
                 h1.head-hover(onclick='drop("rev-exp")') Revenue & Expenditure
