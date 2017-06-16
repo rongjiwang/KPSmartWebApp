@@ -396,7 +396,7 @@ DO
 $do$
 BEGIN
     DECLARE
-        k integer := 0;
+        --k integer := 0;
     BEGIN
         FOR i IN 1..83 LOOP
             DECLARE
@@ -424,9 +424,9 @@ BEGIN
                     BEGIN
                         -- Finally insert into mail table
                         INSERT INTO MAIL VALUES(
-                            k, cost, weight, volume, send_date, arrive_date, is_arrived, i
+                            DEFAULT, cost, weight, volume, send_date, arrive_date, is_arrived, i
                         );
-                        k := k + 1;
+                        --k := k + 1;
                     END;
                 END LOOP;
             END;
@@ -517,7 +517,7 @@ DROP VIEW averageDeliveryDays CASCADE;*/
 --working on this stuff
 
 
-CREATE VIEW revenueAndExpenditure AS (
+/*CREATE VIEW revenueAndExpenditure AS (
 SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
 m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType,
 r.cost_per_kg_customer, r.cost_per_volume_customer,
@@ -544,5 +544,5 @@ SELECT * FROM BussinessMonitoring
 SELECT t.origin ,t.destination, t.total_expenditure - t.total_revenue as money_lost
 FROM TotalsPerRoute t WHERE t.total_revenue < t.total_expenditure;
 
-DROP VIEW revenueAndExpenditure CASCADE;
+DROP VIEW revenueAndExpenditure CASCADE;*/
 

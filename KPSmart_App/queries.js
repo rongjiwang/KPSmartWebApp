@@ -1,6 +1,6 @@
 var signedInUser = '';
 var manager = false;
-var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
+var database = process.env.DATABASE_URL || "postgres://localhost:5432/cameronmclachlan";
 
 
 //---Database connection---

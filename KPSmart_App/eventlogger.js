@@ -4,22 +4,17 @@ var parser = new xml2js.Parser();
 var builder = new xml2js.Builder();
 
 exports.logEvent = function(event, type) {
+  console.log('got here 1');
   fs.readFile('event_log.xml', function(err, data) {
-    parser.parseString(data, function (err, result) {
-      switch(type) {
+      console.log('got here 2');
+      parser.parseString(data, function (err, result) {
+        console.log('got here 3');
+        switch(type) {
         case 'mail': //new mail event
+          console.log('got here 4');
           result.simulation.mail.push(event);
           break;
-        case 'routeCostUpdate': //new transpot-cost update
-          result.simulation.cost.push(event);
-          break;
-        case 'routePriceUpdate': //new transpot-cost update
-            result.simulation.cost.push(event);
-            break;
-        case 'routeDiscontinue': //new discontinue-route
-            result.simulation.discontinue.push(event);
-            break;
-        case 'routeDiscontinue': //new discontinue-route
+        case 'routeChange': //new discontinue-route
             result.simulation.discontinue.push(event);
             break;
         default:

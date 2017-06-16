@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var queries = require('../queries');
 var db = require('../db/config');
+var eventlogger = require('../eventlogger');
+
 
 /* Global vars */
 var total_cost = 0, _weight = 0, _volume = 0, days = 0,
@@ -126,11 +128,18 @@ router.post('/confirm', function (req, res) {
                 routeid: route_id,
                 cost: total_cost
             });
+        var mail = {id:data.id, cost: total_cost, weight: _weight, volume: _volume, send_date: new Date().toDateString(),
+        arrive_date: data.arrive_date.toDateString(), is_arrived: false, route_id: route_id };
+        eventlogger.logEvent(mail, 'mail');
         })
         .catch(error => {
             console.error('Error:', error);
 
         });
+
+
+
+
 });
 
 module.exports = router;
