@@ -26,6 +26,9 @@ exports.isManager = function(){
     return manager;
 }
 
+exports.getSignedInUser = function(){
+    return signedInUser;
+}
 
 exports.login = function(username, password, callback){
     console.log('??');
