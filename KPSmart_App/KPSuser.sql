@@ -36,13 +36,6 @@ CREATE TABLE MAIL(
 
 -- generate a table that shows the company cost per gram and cubic cm, next to each of the mail delivery events:
 
-
-
-
-
-
-
-
 INSERT INTO ROUTE VALUES(
     DEFAULT,'Wellington','Auckland',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
 );
@@ -68,7 +61,7 @@ INSERT INTO ROUTE VALUES(
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Auckland',0.5,0.5,0.3,0.3,'Low','van',3,'Van NZ',true
+    DEFAULT,'Wellington','Auckland',0.5,0.5,0.6,0.6,'Low','van',3,'Van NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
@@ -83,11 +76,11 @@ INSERT INTO ROUTE VALUES(
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Christchurch',0.5,0.5,0.3,0.3,'Low','ship',7,'Ship NZ',true
+    DEFAULT,'Wellington','Christchurch',0.3,0.3,0.5,0.5,'Low','ship',7,'Ship NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Wellington','Dunedin',0.6,0.6,0.4,0.4,'Low','ship',8,'Ship NZ',true
+    DEFAULT,'Wellington','Dunedin',0.4,0.4,0.5,0.5,'Low','ship',8,'Ship NZ',true
 );
 
 
@@ -189,7 +182,7 @@ INSERT INTO ROUTE VALUES(
 
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Rotorua','Hamilton',0.5,0.5,0.3,0.3,'High','air',1,'Air NZ',true
+    DEFAULT,'Rotorua','Hamilton',0.5,0.5,0.6,0.6,'High','air',1,'Air NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
@@ -200,7 +193,7 @@ INSERT INTO ROUTE VALUES(
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Rotorua','Palmerston North',0.5,0.5,0.2,0.2,'High','air',1,'Air NZ',true
+    DEFAULT,'Rotorua','Palmerston North',0.5,0.5,0.7,0.7,'High','air',1,'Air NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
@@ -248,7 +241,7 @@ INSERT INTO ROUTE VALUES(
     DEFAULT,'Palmerston North','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
 );
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Palmerston North','Auckland',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
+    DEFAULT,'Palmerston North','Auckland',0.6,0.6,0.7,0.7,'High','air',1,'Air NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
@@ -299,7 +292,7 @@ INSERT INTO ROUTE VALUES(
     DEFAULT,'Christchurch','Wellington',0.6,0.6,0.4,0.4,'High','air',1,'Air NZ',true
 );
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Christchurch','Rotorua',0.6,0.6,0.3,0.3,'High','air',1,'Air NZ',true
+    DEFAULT,'Christchurch','Rotorua',0.4,0.4,0.6,0.6,'High','air',1,'Air NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
@@ -315,14 +308,14 @@ INSERT INTO ROUTE VALUES(
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Christchurch','Auckland',0.5,0.5,0.3,0.3,'Low','ship',10,'Ship NZ',true
+    DEFAULT,'Christchurch','Auckland',0.5,0.5,0.6,0.6,'Low','ship',10,'Ship NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Christchurch','Wellington',0.6,0.6,0.4,0.4,'Low','ship',6,'Ship NZ',true
+    DEFAULT,'Christchurch','Wellington',0.6,0.6,0.7,0.7,'Low','ship',6,'Ship NZ',true
 );
 INSERT INTO ROUTE VALUES(
-    DEFAULT,'Christchurch','Rotorua',0.6,0.6,0.3,0.3,'Low','ship',7,'Ship NZ',true
+    DEFAULT,'Christchurch','Rotorua',0.6,0.6,0.8,0.8,'Low','ship',7,'Ship NZ',true
 );
 
 INSERT INTO ROUTE VALUES(
@@ -417,8 +410,8 @@ BEGIN
                         is_arrived boolean := (arrive_date < current_date);
 
                         -- Generate a random cost depending on assign kg/volume costs
-                        cost_per_kg_customer numeric := 0.2;
-                        cost_per_volume_customer numeric := 0.3;
+                        cost_per_kg_customer numeric := CAST(random() AS numeric);
+                        cost_per_volume_customer numeric := CAST(random() AS numeric);
                         cost integer := round((CAST( cost_per_kg_customer * cost_per_volume_customer * weight * volume AS numeric)),0);
 
                     BEGIN
@@ -516,7 +509,35 @@ DROP VIEW averageDeliveryDays CASCADE;*/
 --working on this stuff
 
 
-/*CREATE VIEW revenueAndExpenditure AS (
+/*
+
+CREATE VIEW revenueAndExpenditure AS (
+SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
+m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType, r.transportFirm AS Firm,
+r.cost_per_kg_customer As cost_per_kg_customer, r.cost_per_volume_customer As cost_per_volume_customer,
+r.cost_per_kg_business AS cost_per_kg_business, r.cost_per_volume_business AS cost_per_volume_business,
+m.weight * r.cost_per_kg_customer + m.volume * r.cost_per_volume_customer AS revenue,
+m.weight * r.cost_per_kg_business + m.volume * r.cost_per_volume_business AS expenditure
+FROM mail m JOIN route r
+ON m.route_id = r.id);
+
+
+SELECT * FROM revenueAndExpenditure;
+
+CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType, Firm, SUM (weight * cost_per_kg_customer + volume * cost_per_volume_customer) as total_revenue,
+SUM (weight * cost_per_kg_business + volume * cost_per_volume_business) as total_expenditure from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType, Firm ORDER BY RouteID);
+
+CREATE VIEW BusinessMonitoringA AS (SELECT * FROM TotalsPerRoute);
+
+select sum(total_revenue) from TotalsPerRoute AS totalRevenue;
+
+SELECT * FROM BusinessMonitoringA; -- The table for RevenueAndExpenditure
+
+
+SELECT t.origin ,t.destination, t.total_expenditure - t.total_revenue as money_lost
+FROM BusinessMonitoringA t WHERE t.total_revenue < t.total_expenditure;
+
+CREATE VIEW revenueAndExpenditure AS (
 SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
 m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType,
 r.cost_per_kg_customer, r.cost_per_volume_customer,
@@ -526,22 +547,32 @@ m.weight * r.cost_per_kg_business + m.volume * r.cost_per_volume_business AS exp
 FROM mail m JOIN route r
 ON m.route_id = r.id);
 
+DROP VIEW revenueAndExpenditure CASCADE;
 
-SELECT * FROM revenueAndExpenditure;
 
-CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType, SUM (weight * cost_per_kg_customer + volume * cost_per_volume_customer) as total_revenue,
-SUM (weight * cost_per_kg_business + volume * cost_per_volume_business) as total_expenditure from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType ORDER BY RouteID);
 
+
+
+
+-- Critical Routes
+
+CREATE VIEW revenueAndExpenditure AS (
+SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination,
+m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType,
+r.cost_per_kg_customer As cost_per_kg_customer, r.cost_per_volume_customer As cost_per_volume_customer,
+r.cost_per_kg_business AS cost_per_kg_business, r.cost_per_volume_business AS cost_per_volume_business,
+m.weight * r.cost_per_kg_customer + m.volume * r.cost_per_volume_customer AS revenue,
+m.weight * r.cost_per_kg_business + m.volume * r.cost_per_volume_business AS expenditure
+FROM mail m JOIN route r
+ON m.route_id = r.id);
+CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType, ROUND(CAST(AVG(weight * cost_per_kg_customer + volume * cost_per_volume_customer) AS numeric), 2) as avg_revenue,
+ROUND(CAST(AVG(weight * cost_per_kg_business + volume * cost_per_volume_business) AS numeric),2) as avg_expenditure from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType ORDER BY RouteID);
 CREATE VIEW BusinessMonitoringA AS (SELECT * FROM TotalsPerRoute);
+SELECT t.RouteID, t.Origin ,t.destination, t.deliveryType, t.avg_expenditure - t.avg_revenue as avg_loss
+FROM BusinessMonitoringA t WHERE t.avg_revenue < t.avg_expenditure;
 
-select sum(total_revenue) from TotalsPerRoute AS totalRevenue;
+DROP VIEW revenueAndExpenditure CASCADE;
 
-SELECT * FROM BusinessMonitoringA; -- The table for RevenueAndExpenditure
 
-SELECT * FROM BussinessMonitoring
-
-SELECT t.origin ,t.destination, t.total_expenditure - t.total_revenue as money_lost
-FROM TotalsPerRoute t WHERE t.total_revenue < t.total_expenditure;
-
-DROP VIEW revenueAndExpenditure CASCADE;*/
+*/
 

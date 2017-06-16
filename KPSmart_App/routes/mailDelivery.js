@@ -12,6 +12,13 @@ var total_cost = 0, _weight = 0, _volume = 0, days = 0,
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+    if(queries.getSignedInUser()==''){
+        res.render('index');
+        return;
+    }
+
+
+
     db.any('select Distinct route.origin from route where is_active=$1'
         , [true])
         .then(data => {

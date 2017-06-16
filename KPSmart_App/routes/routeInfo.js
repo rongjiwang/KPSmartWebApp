@@ -25,6 +25,10 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+    if(queries.getSignedInUser()==''){
+        res.render('index');
+        return;
+    }
     console.log(req.body.active);
     db.any('update route set is_active=$1 where id=$2'
         , [req.body.active, id])

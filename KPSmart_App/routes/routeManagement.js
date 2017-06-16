@@ -8,6 +8,10 @@ var _location = [], _firm = [], _type = [], _active = [];
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+    if(queries.getSignedInUser()==''){
+        res.render('index');
+        return;
+    }
     db.any('select * from route order by id asc')
         .then(data => {
 

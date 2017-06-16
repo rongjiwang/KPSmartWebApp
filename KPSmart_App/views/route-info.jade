@@ -49,13 +49,17 @@ html(lang='en')
                 #identifier
                     | Logged in as !{signedInUser}
                     if manager
-                        img#m-image(src='../images/manager.png')
+                        img#m-image(src='images/manager.png')
+                        br
+                        span#m-status
+                            i Manager
+                        br
                     else
-                        img#m-image(src='../images/clerk.png')
-                    br
-                    span#m-status
-                        i !{signedInUser}
-                    br
+                        img#m-image(src='images/clerk.png')
+                        br
+                        span#m-status
+                            i Clerk
+                        br
                     a#logout(href='index') Log out
         #body
             #page-title

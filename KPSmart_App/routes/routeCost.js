@@ -7,6 +7,10 @@ var db = require('../db/config');
 var id;
 /* GET users listing. */
 router.get('/:id', function (req, res, next) {
+    if(queries.getSignedInUser()==''){
+        res.render('index');
+        return;
+    }
     id = req.params.id;
     db.any('select * from route where id=$1', [id])
         .then(data => {

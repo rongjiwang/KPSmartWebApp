@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 
 //-----Routes directions---
 var index = require('./routes/index');
-var users = require('./routes/users');
 var welcome = require('./routes/welcome');
 var priceUpdate = require('./routes/priceUpdate');
 var mailDelivery = require('./routes/mailDelivery');
@@ -38,7 +37,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //---Routes---
 app.use('/', index);
 app.use('/welcome', welcome);
-app.use('/users', users);
 app.use('/mailDelivery', mailDelivery);
 app.use('/priceUpdate', priceUpdate);
 app.use('/businessMonitoring', businessMonitoring);

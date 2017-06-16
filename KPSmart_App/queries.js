@@ -116,7 +116,7 @@ exports.getRevenueAndExpenditure = function(callback){
 
         var query1 =
             "CREATE VIEW revenueAndExpenditure AS ( " +
-            "SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination, " +
+            "SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination, r.transportFirm AS Firm, " +
             "m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType, " +
             "r.cost_per_kg_customer, r.cost_per_volume_customer, " +
             "r.cost_per_kg_business, r.cost_per_volume_business, " +
@@ -124,8 +124,8 @@ exports.getRevenueAndExpenditure = function(callback){
             "m.weight * r.cost_per_kg_business + m.volume * r.cost_per_volume_business AS expenditure " +
             "FROM mail m JOIN route r " +
             "ON m.route_id = r.id); " +
-            "CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType, SUM (weight * cost_per_kg_customer + volume * cost_per_volume_customer) as total_revenue, " +
-            "SUM (weight * cost_per_kg_business + volume * cost_per_volume_business) as total_expenditure from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType ORDER BY RouteID); " +
+            "CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType, Firm, SUM (weight * cost_per_kg_customer + volume * cost_per_volume_customer) as total_revenue, " +
+            "SUM (weight * cost_per_kg_business + volume * cost_per_volume_business) as total_expenditure from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType, Firm ORDER BY RouteID); " +
             "CREATE VIEW BusinessMonitoring AS (SELECT * FROM TotalsPerRoute); " +
             "SELECT * FROM BusinessMonitoring;";
 
@@ -176,6 +176,59 @@ exports.getAverageDays = function(callback){
                 return;
             }
             callback(null, result.rows);
+        });
+    });
+}
+
+
+exports.getCriticalRoutes = function(callback){
+    pg.connect(database, function (err, client, done) {
+        if (err) {
+            console.error('Could not connect to the database.');
+            console.error(err);
+            callback(err);
+            return;
+        }
+
+        var query1 = "CREATE VIEW revenueAndExpenditure AS (" +
+                     "SELECT r.id AS RouteID, r.origin AS Origin ,r.destination AS Destination, " +
+                     "m.weight AS Weight, m.volume AS Volume, r.deliveryType AS DeliveryType, " +
+                     "r.cost_per_kg_customer As cost_per_kg_customer, r.cost_per_volume_customer As cost_per_volume_customer, " +
+                     "r.cost_per_kg_business AS cost_per_kg_business, r.cost_per_volume_business AS cost_per_volume_business, " +
+                     "m.weight * r.cost_per_kg_customer + m.volume * r.cost_per_volume_customer AS revenue, " +
+                     "m.weight * r.cost_per_kg_business + m.volume * r.cost_per_volume_business AS expenditure " +
+                     "FROM mail m JOIN route r ON m.route_id = r.id); " +
+                     "CREATE VIEW TotalsPerRoute AS (select RouteID, Origin, Destination, DeliveryType , " +
+                     "ROUND(CAST(AVG(weight * cost_per_kg_customer + volume * cost_per_volume_customer) AS numeric), 2) as avg_revenue, " +
+                     "ROUND(CAST(AVG(weight * cost_per_kg_business + volume * cost_per_volume_business) AS numeric),2) as avg_expenditure " +
+                     "from revenueAndExpenditure GROUP BY RouteID, Origin, Destination, DeliveryType ORDER BY RouteID); " +
+                     "CREATE VIEW BusinessMonitoringA AS (SELECT * FROM TotalsPerRoute); " +
+                     "SELECT t.RouteID, t.Origin ,t.destination, t.deliveryType, t.avg_expenditure - t.avg_revenue as avg_loss " +
+                     "FROM BusinessMonitoringA t WHERE t.avg_revenue < t.avg_expenditure; ";
+
+
+        var query2 = "DROP VIEW revenueAndExpenditure CASCADE;";
+        var r = null;
+        client.query(query1, function (error, result) {
+            done();
+            if (error) {
+                console.error('Failed to execute query query1');
+                console.error(error);
+                callback(error)
+                return;
+            }
+            r = result;
+        });
+        client.query(query2, function (error, result) {
+            done();
+            if (error) {
+                console.error('Failed to execute query query2');
+                console.error(error);
+                callback(error)
+                return;
+            }
+            callback(null, r.rows);
+
         });
     });
 }

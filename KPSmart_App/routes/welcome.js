@@ -5,6 +5,10 @@ var queries = require('../queries');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+    if(queries.getSignedInUser()==''){
+        res.render('index');
+        return;
+    }
     res.render('welcome', {signedInUser: queries.getSignedInUser(), manager: queries.isManager()});
 });
 

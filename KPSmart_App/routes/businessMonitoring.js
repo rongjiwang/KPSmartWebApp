@@ -9,6 +9,10 @@ var _location = [], _firm = [], _type = [], _active = [],
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+    if(queries.getSignedInUser()==''){
+        res.render('index');
+        return;
+    }
     /* update mail status */
     let _query = 'update mail set is_arrived=true where arrive_date >= current_date';
     db.any(_query)
