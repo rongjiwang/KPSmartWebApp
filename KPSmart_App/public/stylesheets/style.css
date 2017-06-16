@@ -428,7 +428,7 @@ input:hover{
     background-color: #FFFFFF;
     color: black;
     width: 650px;
-    height: 200px;
+    height: 350px;
     display: block;
     overflow-y: scroll;
 
@@ -443,26 +443,6 @@ input:hover{
     padding: 10px 10px 10px 10px;
     border: solid;
     border-color: #0093c9;
-}
-
-#mailTable{
-    height: 350px;
-    width: 650px;
-    overflow-y: scroll;
-}
-
-
-#deliveryTable{
-    height: 350px;
-    overflow-y: scroll;
-    width: 650px;
-}
-
-#routeTable{
-    height: 350px;
-    overflow-y: scroll;
-    width: 650px;
-
 }
 
 
