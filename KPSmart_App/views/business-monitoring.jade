@@ -77,12 +77,23 @@ html(lang='en')
                             td Destination
                             td Status
                         tr
+                        form( action="/businessMonitoring" method="post")
                             td
-                                input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin')
+                                input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin', name='origin')
+                                datalist#locations
+                                    each item in _location
+                                        option(value='#{item}')
                             td
-                                input.trans-filter-drop(list='locations', placeholder='Destination')
+                                input.trans-filter-drop(list='locations', placeholder='Destination', name='dest')
+
                             td
-                                input.trans-filter-drop(list='firms', placeholder='Status')
+                                input.trans-filter-drop(list='status', placeholder='Status', name='status')
+                                datalist#status
+                                        option(value='In Transit')
+                                        option(value='Delivered')
+
+                                input(type="submit" style="display: none")
+
                     br
                     div#mailTable
                         table.metrics

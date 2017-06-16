@@ -1,11 +1,11 @@
 var signedInUser = '';
 var manager = false;
-var database = process.env.DATABASE_URL || "postgres://localhost:5432/cameronmclachlan";
+//var database = process.env.DATABASE_URL || "postgres://localhost:5432/cameronmclachlan";
 
 
 //---Database connection---
 var pg = require('pg');
-//var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
+var database = process.env.DATABASE_URL || "postgres://localhost:5432/rongjiwang";
 var client = new pg.Client(database);
 client.connect();
 
@@ -199,6 +199,7 @@ exports.getDate = function(){
 }
 
 exports.formatDate = function(date){
+    console.log(date);
     var dd = date.getDate();
     var mm = date.getMonth()+1; //January is 0!
 
@@ -211,4 +212,11 @@ exports.formatDate = function(date){
     }
     var formattedDate = dd+'/'+mm+'/'+yyyy;
     return formattedDate;
+}
+
+exports.dataFormat = function GetFormattedDate(date) {
+    var month = format(date .getMonth() + 1);
+    var day = format(date .getDate());
+    var year = format(date .getFullYear());
+    return month + "/" + day + "/" + year;
 }
