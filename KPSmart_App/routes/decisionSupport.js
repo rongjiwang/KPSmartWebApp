@@ -5,7 +5,7 @@ var db = require('../db/config');
 
 
 /* global vars*/
-var _location = [], _firm = [], _type = [], _active
+var _location = [], _firm = [], _type = [], _active;
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -81,6 +81,8 @@ router.get('/', function (req, res, next) {
 
 /* Filtering */
 router.post('/', function (req, res, next) {
+    console.log("got here");
+
     // cast text to postgres style
     let origin = req.body.origin == '' ? ' is not null' : '=\'' + req.body.origin + '\'';
     let dest = req.body.dest == '' ? ' is not null' : '=\'' + req.body.dest + '\'';
@@ -104,7 +106,7 @@ router.post('/', function (req, res, next) {
         .then(data => {
         // console.log(data.length);
         var message = data.length == 0 ? 'Please, Choose options from drop-down menu, try again.' : '';
-    console.log(data);
+    //console.log(data);
     res.render('decision-support', {
         signedInUser: queries.getSignedInUser(),
         manager: queries.isManager(),
