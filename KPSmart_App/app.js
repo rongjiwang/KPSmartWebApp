@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 
 //-----Routes directions---
 var index = require('./routes/index');
+var logout = require('./routes/logout');
 var welcome = require('./routes/welcome');
 var priceUpdate = require('./routes/priceUpdate');
 var mailDelivery = require('./routes/mailDelivery');
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //---Routes---
 app.use('/', index);
+app.use('/logout', logout);
 app.use('/welcome', welcome);
 app.use('/mailDelivery', mailDelivery);
 app.use('/priceUpdate', priceUpdate);
@@ -46,6 +48,7 @@ app.use('/routeInfo', routeInfo);
 app.use('/routeCost', routeCost);
 app.use('/routePrice', routePrice);
 app.use('/decisionSupport', decisionSupport);
+
 
 
 // catch 404 and forward to error handler

@@ -12,8 +12,7 @@ router.get('/', function (req, res, next) {
     if(queries.getSignedInUser()==''){
         res.render('index');
         return;
-    }
-    if(queries.isManager()==false){
+    }else if(queries.isManager()==false){
         res.render('/');
         return;
     }

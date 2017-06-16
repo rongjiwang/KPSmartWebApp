@@ -9,9 +9,14 @@ var database = process.env.DATABASE_URL || "postgres://localhost:5432/cameronmcl
 var client = new pg.Client(database);
 client.connect();
 
-exports.getSignedInUser = function(){
-   return signedInUser;
+exports.resetManager = function(){
+    manager = false;
 }
+
+exports.resetSignedInUser = function(){
+    signedInUser = '';
+}
+
 
 exports.getDatabse = function(){
     return database;
