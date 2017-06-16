@@ -446,25 +446,22 @@ input:hover{
 }
 
 #mailTable{
-    height: 200px;
+    height: 350px;
     width: 650px;
     overflow-y: scroll;
-    display: block;
 }
 
 
 #deliveryTable{
-    height: 200px;
+    height: 350px;
     overflow-y: scroll;
     width: 650px;
-    display: block;
 }
 
 #routeTable{
-    height: 200px;
+    height: 350px;
     overflow-y: scroll;
     width: 650px;
-    display: block;
 
 }
 

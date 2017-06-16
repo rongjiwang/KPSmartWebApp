@@ -52,7 +52,7 @@ router.get('/', function (req, res, next) {
                                             _active.push(item.is_active);
                                         }
                                     });
-                                    //console.log(resultC);
+                                    console.log(queries);
                                     res.render('business-monitoring', {
                                         signedInUser: queries.getSignedInUser(),
                                         manager: queries.isManager(),
@@ -116,7 +116,9 @@ console.log(origin +' '+dest+' '+status);
                 avgDays:_average,
                 //display it in your format, Cam
                 mailDeliveries:data,
-                message: message
+                message: message,
+                queries: queries
+
             });
         })
         .catch(error => {
@@ -129,7 +131,9 @@ console.log(origin +' '+dest+' '+status);
                 _firm: _firm,
                 _type: _type,
                 _active: _active,
-                message: message
+                message: message,
+                queries: queries
+
             });
         });
 });

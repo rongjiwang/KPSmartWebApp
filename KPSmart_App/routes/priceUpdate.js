@@ -64,6 +64,9 @@ router.post('/', function (req, res, next) {
                 _active: _active,
                 message: message
             });
+            console.log(data[0]);
+            //var priceUpdate = {id: id, newPrice: data[0]};
+            //eventlogger.logEvent(priceUpdate, 'priceUpdate');
 
         })
         .catch(error => {
