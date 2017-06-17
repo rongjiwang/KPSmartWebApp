@@ -75,41 +75,45 @@ html(lang='en')
                     | You may also view a list of all the Critical Routes on the KPS Network at the bottom of the page.
                 h1 Insights
                 table
-                    tr
-                        td
-                            | Begin Date
-                        td
-                            | End Date
-                    tr
-                        td
-                            input(type='date', placeholder='DD/MM/YYYY')
-                        td
-                            input(type='date', placeholder='DD/MM/YYYY')
-                table#trans-filter
-                    tr
-                        td Origin
-                        td Destination
-                        td Transport Firm
-                        td Type
-                    form( action="/decisionSupport" method="post")
-                        td
-                            input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin', name='origin')
-                            datalist#locations
-                                each item in _location
-                                    option(value='#{item}')
-                        td
-                            input.trans-filter-drop(list='locations', placeholder='Destination', name='dest')
+                    //tr
+                    //    td
+                    //        | Begin Date
+                    //    td
+                    //        | End Date
+                //form( action="/decisionSupport" method="post")
+                //    table#trans-filter
+                //        tr
+                //            td
+                //                input(type='date', placeholder='DD/MM/YYYY', name='fromDate')
+                //            td
+                //                input(type='date', placeholder='DD/MM/YYYY', name='toDate')
+                //        tr
+                //            td Origin
+                //            td Destination
+                //
+                //
+                //        td
+                //            input#lead-trans-drop.trans-filter-drop(list='locations', placeholder='Origin', name='origin')
+                //            datalist#locations
+                //                each item in _location
+                //                    option(value='#{item}')
+                //        td
+                //            input.trans-filter-drop(list='locations', placeholder='Destination', name='dest')
+                //        tr
+                //            td Transport Firm
+                //            td Type
+                //        td
+                //            input.trans-filter-drop(list='firms', placeholder='Firm', name='firm')
+                //            datalist#firms
+                //                each item in _firm
+                //                    option(value='#{item}')
+                //        td
+                //            input.trans-filter-drop(list='types', placeholder='Type', name='type')
+                //            datalist#types
+                //                each item in _type
+                //                    option(value='#{item}')
+                //        input(type="submit" style="display: none")
 
-                        td
-                            input.trans-filter-drop(list='firms', placeholder='Firm', name='firm')
-                            datalist#firms
-                                each item in _firm
-                                    option(value='#{item}')
-                        td
-                            input.trans-filter-drop(list='types', placeholder='Type', name='type')
-                            datalist#types
-                                each item in _type
-                                    option(value='#{item}')
                 br
                 table.metrics
                     tr

@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
         return;
     }
     /* update mail status */
-    let _query = 'update mail set is_arrived=true where arrive_date >= current_date';
+    let _query = 'update mail set is_arrived=true where arrive_date <= current_date';
     db.any(_query)
         .then(()=>{
         console.log('Mail Updated to date');

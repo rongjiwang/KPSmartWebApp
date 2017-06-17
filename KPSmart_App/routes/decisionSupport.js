@@ -5,7 +5,7 @@ var db = require('../db/config');
 
 
 /* global vars*/
-var _location = [], _firm = [], _type = [], _active;
+var _location = [], _firm = [], _type = [], _active, _critical, _rev;
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
         return;
     }
     /* update mail status */
-    let _query = 'update mail set is_arrived=true where arrive_date >= current_date';
+    let _query = 'update mail set is_arrived=true where arrive_date <= current_date';
     db.any(_query)
         .then(()=>{
         console.log('Mail Updated to date');
@@ -32,11 +32,13 @@ router.get('/', function (req, res, next) {
         if(err){
             console.log(err);
         } else {
+            _critical = resultA;
             queries.getRevenueAndExpenditure(function(err, resultB){
                 console.log(resultB);
                 if(err){
                     console.log(err);
                 } else {
+                    _rev = resultB;
                     db.any('select * from route where is_active=$1 order by id asc', [true])
                         .then(data => {
                         //console.log("data: " + data);
@@ -58,7 +60,6 @@ router.get('/', function (req, res, next) {
                         _location: _location,
                         _firm: _firm,
                         _type: _type,
-                        _active: _active,
                         criticalRoutes: resultA,
                         routes: resultB,
                         queries: queries
@@ -68,20 +69,12 @@ router.get('/', function (req, res, next) {
             });
         }
     });
-
-
-
-
-
-
-
-
-
 });
+
 
 /* Filtering */
 router.post('/', function (req, res, next) {
-    console.log("got here");
+    console.log(req.body);
 
     // cast text to postgres style
     let origin = req.body.origin == '' ? ' is not null' : '=\'' + req.body.origin + '\'';
