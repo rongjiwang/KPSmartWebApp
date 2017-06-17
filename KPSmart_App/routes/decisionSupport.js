@@ -74,7 +74,7 @@ router.get('/', function (req, res, next) {
 
 /* Filtering */
 router.post('/', function (req, res, next) {
-    console.log(req.body);
+    //console.log(req.body);
 
     // cast text to postgres style
     let origin = req.body.origin == '' ? ' is not null' : '=\'' + req.body.origin + '\'';
@@ -90,7 +90,7 @@ router.post('/', function (req, res, next) {
     status = req.body.status == '' ? ' is not null' : '=\'' + status + '\'';
     //let type = req.body.type == '' ? ' is not null' : '=\'' + req.body.type + '\'';
     //let firm = req.body.firm == '' ? ' is not null' : '=\'' + req.body.firm + '\'';
-    console.log(origin +' '+dest+' '+status);
+    //console.log(origin +' '+dest+' '+status);
     let query = 'select * from route natural join mail ' +
         'where origin' + origin + ' and destination' + dest +
         ' and is_arrived'+status+ ' and is_active= ' + true + ' order by id asc';

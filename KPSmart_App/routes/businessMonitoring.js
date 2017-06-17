@@ -9,18 +9,18 @@ var _location = [], _firm = [], _type = [], _active = [],
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    if(queries.getSignedInUser()==''){
+    if (queries.getSignedInUser() == '') {
         res.render('index');
         return;
     }
     /* update mail status */
     let _query = 'update mail set is_arrived=true where arrive_date <= current_date';
     db.any(_query)
-        .then(()=>{
-        console.log('Mail Updated to date');
+        .then(() => {
+            console.log('Mail Updated to date');
         })
         .catch(error => {
-            console.log('ERROR: '+error);
+            console.log('ERROR: ' + error);
         });
 
     queries.getRevenueAndExpenditure(function (err, resultA) {
@@ -98,16 +98,16 @@ router.post('/', function (req, res, next) {
     status = req.body.status == '' ? ' is not null' : '=\'' + status + '\'';
     //let type = req.body.type == '' ? ' is not null' : '=\'' + req.body.type + '\'';
     //let firm = req.body.firm == '' ? ' is not null' : '=\'' + req.body.firm + '\'';
-console.log(origin +' '+dest+' '+status);
-    let query = 'select * from route natural join mail ' +
-        'where origin' + origin + ' and destination' + dest +
-        ' and is_arrived'+status+ ' and is_active= ' + true + ' order by id asc';
+    console.log(origin + ' ' + dest + ' ' + status);
+    let query = 'select * from route right join mail on route.id=mail.route_id ' +
+        'where route.origin' + origin + ' and route.destination' + dest +
+        ' and mail.is_arrived' + status + ' and route.is_active= ' + true + ' order by mail.id asc';
 
     db.any(query)
         .then(data => {
             // console.log(data.length);
             var message = data.length == 0 ? 'Please, Choose options from drop-down menu, try again.' : '';
-            console.log(data);
+            //console.log(data);
             res.render('business-monitoring', {
                 signedInUser: queries.getSignedInUser(),
                 manager: queries.isManager(),
@@ -116,10 +116,10 @@ console.log(origin +' '+dest+' '+status);
                 _firm: _firm,
                 _type: _type,
                 _active: _active,
-                routes:_revAndExpen,
-                avgDays:_average,
+                routes: _revAndExpen,
+                avgDays: _average,
                 //display it in your format, Cam
-                mailDeliveries:data,
+                mailDeliveries: data,
                 message: message,
                 queries: queries
 
