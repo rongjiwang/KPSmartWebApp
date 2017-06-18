@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simulation>
+  <cost>
+    <id>5</id>
+    <trans_weight_cost>5</trans_weight_cost>
+    <trans_volume_cost>5</trans_volume_cost>
+    <cust_weight_cost>1</cust_weight_cost>
+    <cust_volume_cost>2</cust_volume_cost>
+  </cost>
+  <mail>
+    <id>952</id>
+    <cost>5</cost>
+    <weight>5</weight>
+    <volume>4</volume>
+    <send_date>Fri Jun 16 2017</send_date>
+    <arrive_date>Sun Jun 18 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>17</route_id>
+  </mail>
+  <mail>
+    <id>900</id>
+    <cost>4.859999999999999</cost>
+    <weight>4.5</weight>
+    <volume>3</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Sun Jun 18 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>15</route_id>
+  </mail>
+  <mail>
+    <id>901</id>
+    <cost>0.41324999999999995</cost>
+    <weight>2.9</weight>
+    <volume>0.57</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Thu Jun 29 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>67</route_id>
+  </mail>
+  <mail>
+    <id>902</id>
+    <cost>0.41324999999999995</cost>
+    <weight>2.9</weight>
+    <volume>0.57</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Thu Jun 29 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>67</route_id>
+  </mail>
+  <mail>
+    <id>946</id>
+    <cost>0.002</cost>
+    <weight>0.2</weight>
+    <volume>0.04</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Sun Jun 18 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>17</route_id>
+  </mail>
+  <mail>
+    <id>947</id>
+    <cost>0.009</cost>
+    <weight>0.5</weight>
+    <volume>0.05</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Sun Jun 18 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>2</route_id>
+  </mail>
+  <mail>
+    <id>948</id>
+    <cost>1200</cost>
+    <weight>10</weight>
+    <volume>10</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Sun Jun 18 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>1</route_id>
+  </mail>
+  <mail>
+    <id>949</id>
+    <cost>0.0075</cost>
+    <weight>0.6</weight>
+    <volume>0.05</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Sun Jun 18 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>17</route_id>
+  </mail>
+  <mail>
+    <id>950</id>
+    <cost>0.0125</cost>
+    <weight>1</weight>
+    <volume>0.05</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Mon Jun 19 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>61</route_id>
+  </mail>
+  <mail>
+    <id>951</id>
+    <cost>0.0125</cost>
+    <weight>1</weight>
+    <volume>0.05</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Mon Jun 19 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>61</route_id>
+  </mail>
+  <mail>
+    <id>952</id>
+    <cost>0.00225</cost>
+    <weight>0.3</weight>
+    <volume>0.03</volume>
+    <send_date>Sat Jun 17 2017</send_date>
+    <arrive_date>Sun Jun 18 2017</arrive_date>
+    <is_arrived>false</is_arrived>
+    <route_id>25</route_id>
+  </mail>
+  <discontinue>
+    <id>4</id>
+  </discontinue>
+  <continue>
+    <id>4</id>
+  </continue>
+  <continue>
+    <id>3</id>
+  </continue>
+</simulation>

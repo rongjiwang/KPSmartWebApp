@@ -1,7 +1,7 @@
 body {
-
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 a {
@@ -9,7 +9,11 @@ a {
     text-decoration: none;
 }
 
-
+e {
+    size: 12pt;
+    font-style: italic;
+    color: #FF0000;
+}
 p {
     size: 12pt;
     color: #000000;
@@ -24,13 +28,14 @@ body{
 }
 
 #username{
-    padding-bottom: 10px;
+    padding-bottom: 2%;
 }
 
 #container{
     width: 80%;
     text-align: center;
     margin: auto;
+
 }
 
 
@@ -41,8 +46,8 @@ p{
 }
 
 #titlelogo{
-  padding-top: 15px;
-  height: 100px;
+  padding-top: 6%;
+  height: 60%;
 }
 
 #logo{
@@ -53,23 +58,23 @@ p{
 }
 
 #loginbutton{
-    padding-top: 15px;
+    padding-top: 1%;
 
 }
 
 #logoimage{
-  height: 120px;
+  height: 10%;
 }
 
 input {
   padding: 7px 12px;
-  border: 2px solid white;
-  border-radius: 7px;
+    border: 2px solid white;
+    border-radius: 7px;
 
 }
 
 input:focus {
-    border: 3px solid lightskyblue;
+    border: 2px solid lightskyblue;
     border-radius: 7px;
     -webkit-transition: all 0.30s ease-in-out;
     outline: none;
@@ -125,10 +130,14 @@ button:hover span:after {
     height: 200px;
     border: none;
     float: right;
+    padding-bottom: 60px;
+    margin-right: -200px;
 }
 
 #page-title{
     float: left;
+    position: fixed;
+    background-color: #004c6b;
     width: 65%;
     border-bottom-style: solid;
     border-color: #0093c9;
@@ -138,6 +147,7 @@ button:hover span:after {
     font-size: 36pt;
     font-weight: normal;
 
+
 }
 
 #content{
@@ -146,17 +156,64 @@ button:hover span:after {
     font-size: 12pt;
     color: #FFFFFF;
     width: 70%;
+    border: none;
+    padding-top: 13%;
+
 }
 
+#parcel-details{
+    width: 75%;
+}
+
+#parcel-details td{
+    width: 10%;
+}
+
+.parcel-details-cost{
+    border-top: solid;
+    border-color: #0093c9;
+}
+
+.parcel-details-value{
+    text-align: right;
+}
+
+
 #identifier{
-    padding: 10px 10px 15px 10px;
+    margin-top: -5%;
+    padding: 5% 5% 20% 5%;
     background-color: #262626;
+    width: 90%;
+    margin-left: -1%;
+    border-left: solid #000000;
+    border-right: solid #000000;
+}
 
+#identifier #logout{
+    text-align: right;
+    padding-left: 0 !important;
+    color: #0093c9;
 
+}
+
+#active-parcels{
+    display: block;
+}
+
+#rev-exp{
+    display: block;
+}
+
+#av-times{
+    display: block;
+}
+
+.head-hover:hover{
+    color: #0093c9;
 }
 
 .nav-contain{
-    height: 77.3%;
+    height: 77%;
 }
 
 #m-status{
@@ -168,6 +225,9 @@ button:hover span:after {
     float: left;
     padding-right: 2%;
     border: none;
+    position: fixed;
+    height:91%;
+
 }
 
 #m-image{
@@ -179,7 +239,7 @@ button:hover span:after {
 .sidenav {
     width: 100%;
     background: #3f3f3f;
-    height: 500px;
+    height: 100%;
     font-size: 12pt;
     border: solid;
     border-color: #000000;
@@ -249,6 +309,9 @@ button:hover span:after {
 }
 
 
+#body{
+    margin-left: 25%;
+}
 
 #content form input{
     width: 250px;
@@ -267,10 +330,124 @@ button:hover span:after {
     margin-left: 72px;
 }
 
-#content {
+#priority input{
+    margin-left: -90px;
+}
+
+#submit{
+    float: right;
+}
+
+#confirm{
+   left: 50%
+
+}
+input:hover{
+    border-color: lightskyblue;
+}
+
+.pricing-min{
+    float: right;
+    padding-right: 15px;
 
 }
 
+#route-price{
+    display: none;
+}
+
+#go{
+    transform: rotate(-90deg);
+    height: 16px;
+    padding-right: 10px;
+    border: none;
+}
+
+
+#trans-filter td{
+    border: none;
+    padding-right: 20px;
+}
+
+.trans-filter-drop{
+    width: 90%;
+}
+
+#data-table{
+    border: solid;
+    border-color: #0093c9;
+    background-color: #FFFFFF;
+    color: black;
+    height: 350px;
+    overflow-y: scroll;
+    display: block;
+
+}
+#data-table td{
+    border: none;
+    padding-right: 30px;
+
+}
+
+#data-table a{
+    color: black;
+}
+
+#data-table a:hover{
+    color: #FFFFFF;
+}
+
+
+#data-table tr.hover:hover{
+    background-color: #0093c9;
+    color: #FFFFFF;
+
+}
+
+#data-table td.hover:hover{
+    background-color: #0093c9;
+    color: #FFFFFF;
+
+}
+
+#active-select{
+    float: right;
+}
+
+#rev{
+    background-color: #FFFFFF;
+    padding: 10px 10px;
+    border: solid;
+    border-color: #0093c9;
+}
+
+.metrics{
+    border: solid;
+    border-color: #0093c9;
+    background-color: #FFFFFF;
+    color: black;
+    width: 650px;
+    height: 350px;
+    display: block;
+    overflow-y: scroll;
+
+}
+
+.metrics td{
+    padding-right: 10px;
+}
+
+#times{
+    background-color: #FFFFFF;
+    padding: 10px 10px 10px 10px;
+    border: solid;
+    border-color: #0093c9;
+}
+
+#criticalRoutes{
+    padding: 10px 10px 10px 10px;
+
+}
 
 
 

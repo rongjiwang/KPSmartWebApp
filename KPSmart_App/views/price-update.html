@@ -17,13 +17,13 @@
         <div class="nav-contain">
 
             <ul id=" nav-events">
-                <li id="currenttab"><a href="#"><strong>Welcome</strong></a></li>
+                <li><a href="#"><strong>Welcome</strong></a></li>
 
-                <li id="drop" onclick="toggle_visibility()"><a href="#"><strong>Business Events</strong><span class="arrow"></span></a>
+                <li id="drop"  onclick="toggle_visibility()"><a href="#"><strong>Business Events</strong><span class="arrow"></span></a>
                     <ul id="be">
-                        <li><a href="#">Mail Delivery</a></li>
-                        <li><a href="price-update.html">Customer Price Update</a></li>
-                        <li><a href="cost-update.html">Transport Cost Update</a></li>
+                        <li><a href="mail-delivery.html">Mail Delivery</a></li>
+                        <li id="currenttab"><a href="#">Customer Price Update</a></li>
+                        <li><a href="transport-update.html">Transport Cost Update</a></li>
                         <li><a href="route-management.html">Route Management</a></li>
                     </ul>
                 </li>
@@ -58,40 +58,53 @@
         Customer Price Update
     </div>
     <div id="content">
-        <p>Please enter the details for the parcel you would like to send.</p>
-        <br>
-        <br>
-        <img src="../public/images/delivery.png" id="page-image"/>
-        <form>
-            Parcel ID<br>
-            <input type="text" placeholder="Parcel ID"><br>
-            <br>
-            Origin<br>
-            <input list="locations" placeholder="Select a Location">
-            <datalist id="locations">
-                <option value="Auckland">
-                <option value="Hamilton">
-                <option value="Tauranga">
-                <option value="Napier">
-                <option value="Taupo">
-                <option value="New Plymouth">
-                <option value="Palmerston North">
-                <option value="Wellington">
-                <option value="Nelson">
-                <option value="Chrischurch">
-                <option value="Dunedin">
+        <p>Please enter the pricing element you would like to adjust</p>
+        Select a Route &nbsp
+        <input id="select-route" list="routes" >
+        <img src="../public/images/arrow.png" id="go" onclick="showRoute()"/><br><br>
+
+            <datalist id="routes">
+                <option value="Route 1">
+                <option value="Route 2">
             </datalist>
-            <br><br>
-            Destination<br>
-            <input list="locations" placeholder="Select a Location">
-            <br><br>
-            Weight (kg) <span id="vol-lab">Volume (m3)</span><br>
-            <input id="weight" type="number" placeholder="0.1 - 25.0" min="0.1" max="25.0">
-            <input id="vol" type="number" placeholder="0.1 - 25.0" min="0.1" max="25.0">
-            <br><br>
 
-            <input id="submit" type="submit" value="Submit">
+        <script type="text/javascript">
+            function showRoute() {
+                var block = document.getElementById('route-price');
+                var routename = document.getElementById('select-route');
 
+                var routes = document.getElementsByTagName('option');
+
+                for( var i = 0; i < routes.length; i++){
+                    if(routes[i].value == routename.value){
+                        block.style.display = 'block'
+                        return;
+                    }
+                }
+            }
+        </script>
+
+
+
+        <img src="../public/images/coin.png" id="page-image"><br>
+
+        <form id="route-price">
+            Price per Kilometre ($/km)<span class="pricing-min"><strong>- Current Price: $x:xx/km</strong></span>
+            <input type="number" placeholder="Price per km"> <span class="pricing-min">Cost: $x:xx</span><br>
+            <br>
+            Price per Kilogram ($/kg)<span class="pricing-min"><strong>- Current Price: $x:xx/km</strong></span>
+            <input type="number" placeholder="Price per kg"> <span class="pricing-min">Cost: $x:xx</span><br>
+            <br>
+
+            Price per Cubic Metre ($/m<sup>3</sup>)<span class="pricing-min"><strong>- Current Price: $x:xx/km</strong></span>
+            <input type="number" placeholder="Price per cubic m"> <span class="pricing-min">Cost: $x:xx</span><br>
+            <br>
+
+            Final Markup ($) <span class="pricing-min"><strong>Current Value: xx.xx%</strong></span><br>
+            <input type="number" placeholder="Final Markup"> <span class="pricing-min">Nominal Margin: 10.0%</span><br>
+            <br>
+
+            <input id="submit" type="submit" value="submit">
         </form>
     </div>
 
